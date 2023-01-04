@@ -6,13 +6,12 @@
 
 # api versions
 API_Version = {
-    "Stable": "2021-10-01",
+    "Stable": "2022-11-01",
     "Preview": "2022-07-01-preview"
 }
 
 # authorization types
 AUTH_BEHALF_OF_USER = "On behalf of User - Delegate Permission"
-AUTH_USING_APP = "Without a User - Application Permission"
 
 REFRESH_TOKEN_FLAG = False
 
@@ -20,7 +19,6 @@ REFRESH_TOKEN_FLAG = False
 DEFAULT_REDIRECT_URL = 'https://localhost/myapp'
 
 # grant types
-CLIENT_CREDENTIALS = 'client_credentials'
 AUTHORIZATION_CODE = 'authorization_code'
 REFRESH_TOKEN = 'refresh_token'
 
@@ -31,3 +29,13 @@ INCIDENT_RELATION_API = "/subscriptions/{0}/resourceGroups/{1}/providers/Microso
 INCIDENT_COMMENT_API = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OperationalInsights/workspaces/{2}/providers/Microsoft.SecurityInsights/incidents/{3}/comments"
 WATCHLIST_API = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OperationalInsights/workspaces/{2}/providers/Microsoft.SecurityInsights/watchlists"
 WATCHLIST_ITEM_API = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OperationalInsights/workspaces/{2}/providers/Microsoft.SecurityInsights/watchlists/{3}/watchlistItems"
+
+# pattern types
+
+PATTERN_TYPE = {
+    "Domain Name": "domain-name",
+    "File": "file",
+    "IPV4 Address": "ipv4-addr",
+    "IPV6 Address": "ipv6-addr",
+    "URL": "url"
+}

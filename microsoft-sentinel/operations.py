@@ -75,6 +75,7 @@ def threat_indicator_payload(params):
     threatTypes = params.get('threatTypes')
     indicatorTypes = params.get('indicatorTypes')
     labels = params.get('labels')
+    pattern_type = PATTERN_TYPE.get(params.get('patternType'))
     payload = {
         'kind': 'indicator',
         'properties': {
@@ -84,7 +85,10 @@ def threat_indicator_payload(params):
             'threatIntelligenceTags': threatIntelligenceTags.split(",") if threatIntelligenceTags else "",
             'threatTypes': threatTypes.split(",") if threatTypes else "",
             'indicatorTypes': indicatorTypes.split(",") if indicatorTypes else "",
-            'labels': labels.split(",") if labels else ""
+            'labels': labels.split(",") if labels else "",
+            'patternType': pattern_type,
+            'pattern': "[{0}:value = {1}]".format(pattern_type, params.get('pattern')),
+            'source': params.get('source')
         }
     }
     additional_fields = params.get('additional_fields')
@@ -97,9 +101,9 @@ def threat_indicator_payload(params):
 def create_threat_intelligence_indicator(config, params, connector_info):
     url = THREAT_INDICATORS_API + "/createIndicator?api-version={3}"
     endpoint = url.format(params.get('WorkspaceSubscriptionId'),
-                                                                            params.get('WorkspaceResourceGroup'),
-                                                                            params.get('WorkspaceName'),
-                                                                            API_Version.get(config.get('api_version')))
+                          params.get('WorkspaceResourceGroup'),
+                          params.get('WorkspaceName'),
+                          API_Version.get(config.get('api_version')))
     payload = threat_indicator_payload(params)
     response = api_request("POST", endpoint, connector_info, config, json=payload)
     return response
@@ -120,7 +124,7 @@ def get_all_threat_intelligence_indicators(config, params, connector_info):
     }
     payload = {k: v for k, v in payload.items() if v is not None and v != ''}
     response = api_request("GET", endpoint, connector_info, config, params=payload)
-    return response
+    return response.get('value')
 
 
 def get_threat_intelligence_indicator(config, params, connector_info):
@@ -137,21 +141,20 @@ def update_threat_intelligence_indicator(config, params, connector_info):
     url = THREAT_INDICATORS_API + "/indicators/{3}?api-version={4}"
     endpoint = url.format(
         params.get('WorkspaceSubscriptionId'), params.get('WorkspaceResourceGroup'), params.get('WorkspaceName'),
-        params.get('name'), API_Version.get(config.get('api_version')))
+        params.get('id'), API_Version.get(config.get('api_version')))
     payload = threat_indicator_payload(params)
     response = api_request("PUT", endpoint, connector_info, config, json=payload)
-    if response:
-        return {"result": "Successfully updated indicator# {0}".format(params.get("id"))}
+    return response
 
 
 def delete_threat_intelligence_indicator(config, params, connector_info):
     url = THREAT_INDICATORS_API + "/indicators/{3}?api-version={4}"
     endpoint = url.format(
-        params.get('WorkspaceSubscriptionId'), params.get('WorkspaceResourceGroup'), params.get('WorkspaceName'), id,
-        API_Version.get(config.get('api_version')))
+        params.get('WorkspaceSubscriptionId'), params.get('WorkspaceResourceGroup'), params.get('WorkspaceName'),
+        params.get('id'), API_Version.get(config.get('api_version')))
     response = api_request("DELETE", endpoint, connector_info, config, params={})
     if response:
-        return {"result": "Successfully deleted the indicator# {0}".format(params.get("id"))}
+        return {"result": "Successfully deleted the indicator {0}".format(params.get("id"))}
 
 
 def get_incident_list(config, params, connector_info):
@@ -163,13 +166,15 @@ def get_incident_list(config, params, connector_info):
     filter = params.get('$filter')
     if filter:
         if date_time:
-            filter = 'properties/{0} and createdTimeUtc gt {1} and lastModifiedTimeUtc gt {2}'.format(filter, date_time,
-                                                                                                      date_time)
+            filter = 'properties/{0} and properties/createdTimeUtc gt {1} and properties/lastModifiedTimeUtc gt {2}'.format(
+                filter, date_time,
+                date_time)
         else:
             filter = 'properties/{0}'.format(filter)
     else:
-        if datetime:
-            filter = 'properties/createdTimeUtc gt {0} and lastModifiedTimeUtc gt {1}'.format(date_time, date_time)
+        if date_time:
+            filter = 'properties/createdTimeUtc gt {0} and properties/lastModifiedTimeUtc gt {1}'.format(date_time,
+                                                                                                         date_time)
     orderby = params.get('$orderby')
     payload = {
         '$filter': filter,
@@ -222,7 +227,7 @@ def get_alert_list(config, params, connector_info):
         params.get('WorkspaceSubscriptionId'), params.get('WorkspaceResourceGroup'), params.get('WorkspaceName'),
         params.get('incidentId'), API_Version.get(config.get('api_version')))
     response = api_request("POST", endpoint, connector_info, config, json={})
-    return response
+    return response.get('value')
 
 
 def get_entities_list(config, params, connector_info):
@@ -240,10 +245,10 @@ def get_bookmarks_list(config, params, connector_info):
         params.get('WorkspaceSubscriptionId'), params.get('WorkspaceResourceGroup'), params.get('WorkspaceName'),
         params.get('incidentId'), API_Version.get(config.get('api_version')))
     response = api_request("POST", endpoint, connector_info, config, json={})
-    return response
+    return response.get('value')
 
 
-def create_incident_relation(config, params, connector_info):
+def create_incident_relations(config, params, connector_info):
     url = INCIDENT_RELATION_API + "/{4}?api-version={5}"
     endpoint = url.format(params.get('WorkspaceSubscriptionId'),
                           params.get('WorkspaceResourceGroup'),
@@ -256,7 +261,7 @@ def create_incident_relation(config, params, connector_info):
             'relatedResourceId': params.get('resourceId')
         }
     }
-    response = api_request("POST", endpoint, connector_info, config, json=payload)
+    response = api_request("PUT", endpoint, connector_info, config, json=payload)
     return response
 
 
@@ -318,9 +323,8 @@ def delete_incident_relation(config, params, connector_info):
                           params.get('relationName'),
                           API_Version.get(config.get('api_version')))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
-    if response:
-        return {"result": "Successfully deleted the incident relation {0} for specific incident {1}".format(
-            params.get("relationName"), params.get('incidentId'))}
+    return {"result": "Successfully deleted the incident relation \'{0}\' for specific incident \'{1}\'".format(
+        params.get("relationName"), params.get('incidentId'))}
 
 
 def create_incident_comment(config, params, connector_info):
@@ -397,16 +401,16 @@ def delete_incident_comment(config, params, connector_info):
                           params.get('incidentcommentId'),
                           API_Version.get(config.get('api_version')))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
-    if response:
-        return {"result": "Successfully deleted the indicident comment {0} for a particular incident {1}".format(
-            params.get("incidentcommentId"), params.get('incidentId'))}
+    return {"result": "Successfully deleted the indicident comment {0} for a particular incident {1}".format(
+        params.get("incidentcommentId"), params.get('incidentId'))}
 
 
 def create_watchlist(config, params, connector_info):
-    url = WATCHLIST_API + "?api-version={3}"
+    url = WATCHLIST_API + "/{3}?api-version={4}"
     endpoint = url.format(params.get('WorkspaceSubscriptionId'),
                           params.get('WorkspaceResourceGroup'),
                           params.get('WorkspaceName'),
+                          params.get('watchlistAlias'),
                           API_Version.get(config.get('api_version')))
     payload = {
         'etag': params.get('etag'),
@@ -422,7 +426,7 @@ def create_watchlist(config, params, connector_info):
     if custom_attributes:
         payload.update({'properties': custom_attributes})
     payload = check_payload(payload)
-    response = api_request("POST", endpoint, connector_info, config, json=payload)
+    response = api_request("PUT", endpoint, connector_info, config, json=payload)
     return response
 
 
@@ -452,7 +456,7 @@ def get_watchlist(config, params, connector_info):
 
 
 def update_watchlist(config, params, connector_info):
-    url = INCIDENT_COMMENT_API + "/{3}?api-version={4}"
+    url = WATCHLIST_API + "/{3}?api-version={4}"
     endpoint = url.format(params.get('WorkspaceSubscriptionId'),
                           params.get('WorkspaceResourceGroup'),
                           params.get('WorkspaceName'),
@@ -484,13 +488,12 @@ def delete_watchlist(config, params, connector_info):
                           params.get('watchlistAlias'),
                           API_Version.get(config.get('api_version')))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
-    if response:
-        return {"result": "Successfully deleted the watchlist {0}".format(
-            params.get("incidentcommentId"))}
+    return {"result": "Successfully deleted the watchlist {0}".format(
+        params.get("watchlistAlias"))}
 
 
 def create_watchlist_item(config, params, connector_info):
-    url = WATCHLIST_ITEM_API + "?api-version={4}"
+    url = WATCHLIST_ITEM_API + "?api-version={5}"
     endpoint = url.format(
         params.get('WorkspaceSubscriptionId'),
         params.get('WorkspaceResourceGroup'),
@@ -498,13 +501,16 @@ def create_watchlist_item(config, params, connector_info):
         params.get('watchlistAlias'),
         API_Version.get(config.get('api_version')))
     payload = {
-        'etag': params.get('etag')
+        'etag': params.get('etag'),
+        'properties': {
+            'itemsKeyValue': params.get('itemsKeyValue')
+        }
     }
     custom_attributes = params.get('custom_attributes')
     if custom_attributes:
         payload.update({'properties': custom_attributes})
     payload = check_payload(payload)
-    response = api_request("POST", endpoint, connector_info, config, json=payload)
+    response = api_request("PUT", endpoint, connector_info, config, json=payload)
     return response
 
 
@@ -525,7 +531,7 @@ def get_all_watchlist_items(config, params, connector_info):
 
 
 def get_watchlist_item(config, params, connector_info):
-    url = WATCHLIST_API + "/{4}?api-version={5}"
+    url = WATCHLIST_ITEM_API + "/{4}?api-version={5}"
     endpoint = url.format(params.get('WorkspaceSubscriptionId'),
                           params.get('WorkspaceResourceGroup'),
                           params.get('WorkspaceName'),
@@ -537,7 +543,7 @@ def get_watchlist_item(config, params, connector_info):
 
 
 def update_watchlist_item(config, params, connector_info):
-    url = INCIDENT_COMMENT_API + "/{4}?api-version={5}"
+    url = WATCHLIST_ITEM_API + "/{4}?api-version={5}"
     endpoint = url.format(params.get('WorkspaceSubscriptionId'),
                           params.get('WorkspaceResourceGroup'),
                           params.get('WorkspaceName'),
@@ -545,7 +551,10 @@ def update_watchlist_item(config, params, connector_info):
                           params.get('watchlistItemId'),
                           API_Version.get(config.get('api_version')))
     payload = {
-        'etag': params.get('etag')
+        'etag': params.get('etag'),
+        'properties': {
+            'itemsKeyValue': params.get('itemsKeyValue')
+        }
     }
     custom_attributes = params.get('custom_attributes')
     if custom_attributes:
@@ -556,7 +565,7 @@ def update_watchlist_item(config, params, connector_info):
 
 
 def delete_watchlist_item(config, params, connector_info):
-    url = WATCHLIST_API + "/{4}?api-version={5}"
+    url = WATCHLIST_ITEM_API + "/{4}?api-version={5}"
     endpoint = url.format(params.get('WorkspaceSubscriptionId'),
                           params.get('WorkspaceResourceGroup'),
                           params.get('WorkspaceName'),
@@ -564,9 +573,8 @@ def delete_watchlist_item(config, params, connector_info):
                           params.get('watchlistItemId'),
                           API_Version.get(config.get('api_version')))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
-    if response:
-        return {"result": "Successfully deleted the watchlist item {0}".format(
-            params.get("watchlistItemId"))}
+    return {"result": "Successfully deleted the watchlist item {0}".format(
+        params.get("watchlistItemId"))}
 
 
 def _check_health(config, connector_info):
@@ -588,7 +596,7 @@ operations = {
     'get_alert_list': get_alert_list,
     'get_entities_list': get_entities_list,
     'get_bookmarks_list': get_bookmarks_list,
-    'create_incident_relation': create_incident_relation,
+    'create_incident_relations': create_incident_relations,
     'get_all_incident_relations': get_all_incident_relations,
     'get_incident_relations': get_incident_relations,
     'update_incident_relations': update_incident_relations,

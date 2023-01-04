@@ -22,7 +22,7 @@ class MicrosoftAuth:
         self.client_id = config.get("client_id")
         self.client_secret = config.get("client_secret")
         self.verify_ssl = config.get('verify_ssl')
-        self.scope = "https://management.azure.com/.default offline_access"
+        self.scope = "https://management.azure.com/user_impersonation offline_access user.read"
         self.host = config.get("resource")
         if self.host[:7] == "http://":
             self.host = self.host.replace('http://', 'https://')
@@ -34,14 +34,12 @@ class MicrosoftAuth:
         self.auth_url = 'https://login.microsoftonline.com/{0}'.format(tenant_id)
         self.auth_type = config.get("auth_type")
         self.token_url = "https://login.microsoftonline.com/{0}/oauth2/v2.0/token".format(tenant_id)
-        if self.auth_type == AUTH_BEHALF_OF_USER:
-            self.refresh_token = ""
-            self.code = config.get("code")
-            self.scope = 'https://management.azure.com/.default'
-            if not config.get("redirect_url"):
-                self.redirect_url = DEFAULT_REDIRECT_URL
-            else:
-                self.redirect_url = config.get("redirect_url")
+        self.refresh_token = ""
+        self.code = config.get("code")
+        if not config.get("redirect_uri"):
+            self.redirect_url = DEFAULT_REDIRECT_URL
+        else:
+            self.redirect_url = config.get("redirect_uri")
 
     def convert_ts_epoch(self, ts):
         datetime_object = datetime.strptime(ctime(ts), "%a %b %d %H:%M:%S %Y")
@@ -49,20 +47,12 @@ class MicrosoftAuth:
 
     def generate_token(self, REFRESH_TOKEN_FLAG):
         try:
-            if not self.auth_type == AUTH_BEHALF_OF_USER:
-                resp = self.acquire_token_with_client_credentials()
-                ts_now = time()
-                resp['expiresOn'] = (ts_now + resp['expires_in']) if resp.get("expires_in") else None
-                resp['accessToken'] = resp.get("access_token")
-                resp.pop("access_token")
-                return resp
-            else:
-                resp = self.acquire_token_on_behalf_of_user(REFRESH_TOKEN_FLAG)
-                ts_now = time()
-                resp['expiresOn'] = (ts_now + resp['expires_in']) if resp.get("expires_in") else None
-                resp['accessToken'] = resp.get("access_token")
-                resp.pop("access_token")
-                return resp
+            resp = self.acquire_token_on_behalf_of_user(REFRESH_TOKEN_FLAG)
+            ts_now = time()
+            resp['expiresOn'] = (ts_now + resp['expires_in']) if resp.get("expires_in") else None
+            resp['accessToken'] = resp.get("access_token")
+            resp.pop("access_token")
+            return resp
         except Exception as err:
             logger.error("{0}".format(err))
             raise ConnectorError("{0}".format(err))
@@ -92,42 +82,13 @@ class MicrosoftAuth:
                 logger.info("Token is valid till {0}".format(expires))
                 return "Bearer {0}".format(connector_config.get('accessToken'))
 
-    def acquire_token_with_client_credentials(self):
-        try:
-            data = {
-                "grant_type": CLIENT_CREDENTIALS,
-                "client_id": self.client_id,
-                "client_secret": self.client_secret,
-                "scope": self.scope
-            }
-            res = request("POST", self.token_url, data=data, verify=self.verify_ssl)
-            if res.status_code in [200, 204, 201]:
-                return res.json()
-            else:
-                if res.text != "":
-                    error_msg = ''
-                    err_resp = res.json()
-                    if err_resp and 'error' in err_resp:
-                        failure_msg = err_resp.get('error_description')
-                        error_msg = 'Response {0}: {1} \n Error Message: {2}'.format(res.status_code,
-                                                                                     res.reason,
-                                                                                     failure_msg if failure_msg else '')
-                    else:
-                        err_resp = res.text
-                else:
-                    error_msg = '{0}:{1}'.format(res.status_code, res.reason)
-                raise ConnectorError(error_msg)
-        except Exception as err:
-            logger.error("{0}".format(err))
-            raise ConnectorError("{0}".format(err))
-
     def acquire_token_on_behalf_of_user(self, REFRESH_TOKEN_FLAG):
         try:
             data = {
                 "client_id": self.client_id,
-                "scope": self.scope,
                 "client_secret": self.client_secret,
-                "redirect_uri": self.redirect_url
+                "redirect_uri": self.redirect_url,
+                "scope": self.scope
             }
 
             if not REFRESH_TOKEN_FLAG:
