@@ -166,19 +166,16 @@ def get_incident_list(config, params, connector_info):
     filter = params.get('$filter')
     if filter:
         if date_time:
-            filter = 'properties/{0} and properties/createdTimeUtc gt {1} and properties/lastModifiedTimeUtc gt {2}'.format(
-                filter, date_time,
-                date_time)
+            filter = 'properties/{0} and properties/createdTimeUtc ge {1}'.format(filter, date_time)
         else:
             filter = 'properties/{0}'.format(filter)
     else:
         if date_time:
-            filter = 'properties/createdTimeUtc gt {0} and properties/lastModifiedTimeUtc gt {1}'.format(date_time,
-                                                                                                         date_time)
+            filter = 'properties/createdTimeUtc ge {0}'.format(date_time)
     orderby = params.get('$orderby')
     payload = {
         '$filter': filter,
-        '$orderby': 'properties/' + orderby if orderby else '',
+        '$orderby': orderby,
         '$top': params.get('$top'),
         '$skipToken': params.get('$skipToken')
     }
