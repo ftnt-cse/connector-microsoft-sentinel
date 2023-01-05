@@ -6,7 +6,6 @@
 
 from connectors.core.connector import Connector, get_logger, ConnectorError
 from .operations import operations, _check_health
-from .constant import AUTH_BEHALF_OF_USER
 from connectors.core.utils import update_connnector_config
 
 logger = get_logger('microsoft-sentinel')
@@ -36,7 +35,7 @@ class MicrosoftSentinel(Connector):
         connector_info = {"connector_name": self._info_json.get('name'),
                           "connector_version": self._info_json.get('version')}
 
-        if new_config.get('auth_type', '') == AUTH_BEHALF_OF_USER and CONFIG_SUPPORTS_TOKEN:
+        if CONFIG_SUPPORTS_TOKEN:
             old_auth_code = old_config.get('code')
             new_auth_code = new_config.get('code')
             if old_auth_code != new_auth_code:

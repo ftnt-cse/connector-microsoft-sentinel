@@ -4,15 +4,6 @@
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
 
-# api versions
-API_Version = {
-    "Stable": "2022-11-01",
-    "Preview": "2022-07-01-preview"
-}
-
-# authorization types
-AUTH_BEHALF_OF_USER = "On behalf of User - Delegate Permission"
-
 REFRESH_TOKEN_FLAG = False
 
 # redirect url

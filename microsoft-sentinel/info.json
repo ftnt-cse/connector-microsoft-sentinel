@@ -6,7 +6,7 @@
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
-  "category": "SIEM",
+  "category": "Analytics and SIEM",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "help_online": "",
@@ -78,20 +78,6 @@
         "required": false,
         "editable": true,
         "visible": true
-      },
-      {
-        "title": "API Version",
-        "description": "Specify the version of the API that you are using to access the Sentinel REST endpoint.",
-        "required": true,
-        "editable": true,
-        "visible": true,
-        "type": "select",
-        "name": "api_version",
-        "value": "Stable",
-        "options": [
-          "Stable",
-          "Preview"
-        ]
       },
       {
         "title": "Verify SSL",
@@ -760,6 +746,30 @@
         }
       ],
       "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "kind": "",
+        "properties": {
+          "confidence": "",
+          "created": "",
+          "createdByRef": "",
+          "externalId": "",
+          "externalReferences": [],
+          "granularMarkings": [],
+          "lastUpdatedTimeUtc": "",
+          "revoked": "",
+          "source": "",
+          "threatIntelligenceTags": [],
+          "displayName": "",
+          "description": "",
+          "threatTypes": [],
+          "killChainPhases": [],
+          "pattern": "",
+          "patternType": "",
+          "validFrom": ""
+        }
       },
       "enabled": true
     },
@@ -1147,7 +1157,27 @@
           "name": "WorkspaceName"
         }
       ],
-      "output_schema": {},
+      "output_schema": {
+        "entities": [
+          {
+            "id": "",
+            "name": "",
+            "type": "",
+            "kind": "",
+            "properties": {
+              "friendlyName": "",
+              "accountName": "",
+              "ntDomain": ""
+            }
+          }
+        ],
+        "metaData": [
+          {
+            "entityKind": "",
+            "count": ""
+          }
+        ]
+      },
       "enabled": true
     },
     {
@@ -1194,7 +1224,40 @@
           "name": "WorkspaceName"
         }
       ],
-      "output_schema": {},
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "name": "",
+            "type": "",
+            "kind": "",
+            "properties": {
+              "displayName": "",
+              "created": "",
+              "updated": "",
+              "createdBy": {
+                "objectId": "",
+                "email": "",
+                "name": ""
+              },
+              "updatedBy": {
+                "objectId": "",
+                "email": "",
+                "name": ""
+              },
+              "eventTime": "",
+              "labels": [],
+              "query": "",
+              "queryResult": "",
+              "additionalData": {
+                "ETag": "",
+                "EntityId": ""
+              },
+              "friendlyName": ""
+            }
+          }
+        ]
+      },
       "enabled": true
     },
     {
@@ -1392,7 +1455,39 @@
           "editable": true
         }
       ],
-      "output_schema": {},
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "properties": {
+          "title": "",
+          "description": "",
+          "severity": "",
+          "status": "",
+          "owner": {
+            "objectId": "",
+            "email": "",
+            "assignedTo": "",
+            "userPrincipalName": ""
+          },
+          "labels": [],
+          "firstActivityTimeUtc": "",
+          "lastActivityTimeUtc": "",
+          "lastModifiedTimeUtc": "",
+          "createdTimeUtc": "",
+          "incidentNumber": "",
+          "additionalData": {
+            "alertsCount": "",
+            "bookmarksCount": "",
+            "commentsCount": "",
+            "alertProductNames": [],
+            "tactics": []
+          },
+          "relatedAnalyticRuleIds": [],
+          "incidentUrl": ""
+        }
+      },
       "enabled": true
     },
     {
@@ -1823,7 +1918,23 @@
           "name": "WorkspaceName"
         }
       ],
-      "output_schema": {},
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "properties": {
+          "message": "",
+          "createdTimeUtc": "",
+          "lastModifiedTimeUtc": "",
+          "author": {
+            "objectId": "",
+            "email": "",
+            "name": "",
+            "userPrincipalName": ""
+          }
+        }
+      },
       "enabled": true
     },
     {
@@ -2760,7 +2871,44 @@
           "editable": true
         }
       ],
-      "output_schema": {},
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "systemData": {
+          "createdAt": "",
+          "createdBy": "",
+          "createdByType": "",
+          "lastModifiedAt": "",
+          "lastModifiedBy": "",
+          "lastModifiedByType": ""
+        },
+        "properties": {
+          "watchlistItemType": "",
+          "watchlistItemId": "",
+          "tenantId": "",
+          "isDeleted": "",
+          "created": "",
+          "updated": "",
+          "createdBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "updatedBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "itemsKeyValue": {
+            "ID": "",
+            "Name": "",
+            "Address": ""
+          },
+          "entityMapping": {}
+        }
+      },
       "enabled": true
     },
     {
@@ -3117,7 +3265,9 @@
           "name": "WorkspaceName"
         }
       ],
-      "output_schema": {},
+      "output_schema": {
+        "result": ""
+      },
       "enabled": true
     }
   ]
