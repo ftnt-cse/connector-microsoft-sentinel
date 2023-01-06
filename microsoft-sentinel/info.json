@@ -1,0 +1,3304 @@
+{
+  "name": "microsoft-sentinel",
+  "label": "Microsoft Sentinel",
+  "version": "1.0.0",
+  "description": "Microsoft Sentinel is Cloud-native SIEM for intelligent security analytics for your entire enterprise. These connector connects to Microsoft sentinel using Sentinel APIs to investigate on alerts, threats intelligence indicator, incidents, incident entities, incident relations, incident comments, and incident bookmarks.",
+  "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "category": "Analytics and SIEM",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "",
+  "ingestion_supported": true,
+  "ingestion_modes": [
+    "scheduled"
+  ],
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "name": "resource",
+        "type": "text",
+        "description": "The service-based URL to which you will connect and perform the automated operations.",
+        "tooltip": "The service-based URL to which you will connect and perform the automated operations.",
+        "placeholder": "https://management.azure.com",
+        "value": "https://management.azure.com",
+        "required": true,
+        "editable": true,
+        "visible": true
+      },
+      {
+        "title": "Tenant ID",
+        "name": "tenant_id",
+        "type": "text",
+        "description": "The ID of the tenant that you have been provided for your Azure Active Directory instance.",
+        "tooltip": "The ID of the tenant that you have been provided for your Azure Active Directory instance.",
+        "required": true,
+        "editable": true,
+        "visible": true
+      },
+      {
+        "title": "Client ID",
+        "name": "client_id",
+        "type": "text",
+        "description": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
+        "tooltip": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
+        "required": true,
+        "editable": true,
+        "visible": true
+      },
+      {
+        "title": "Client Secret",
+        "name": "client_secret",
+        "type": "password",
+        "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
+        "tooltip": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
+        "required": true,
+        "editable": true,
+        "visible": true
+      },
+      {
+        "title": "Authorization Code",
+        "name": "code",
+        "type": "password",
+        "tooltip": "The authorization code that you acquired in the authorization step.",
+        "description": "The authorization code that you acquired during the authorization step. For more information, see the Getting Access Tokens using the On behalf of the user – Delegate Permission method section. ",
+        "required": true,
+        "editable": true,
+        "visible": true
+      },
+      {
+        "title": "Redirect URI",
+        "name": "redirect_uri",
+        "type": "text",
+        "tooltip": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal.",
+        "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. The redirect URL that you specify here must exactly match one of the redirect_uri's you have registered in your app registration portal.",
+        "placeholder": "E.g. https://localhost/myapp",
+        "required": false,
+        "editable": true,
+        "visible": true
+      },
+      {
+        "title": "Verify SSL",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true,
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "title": "Create Threat Intelligence Indicator",
+      "description": "Creates a threat intelligence indicator in Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+      "operation": "create_threat_intelligence_indicator",
+      "category": "investigation",
+      "annotation": "create_threat_intelligence_indicator",
+      "parameters": [
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to create the threat intelligence indicator in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to create the threat intelligence indicator in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to create the threat intelligence indicator in Microsoft Sentinel",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "Pattern Type",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "name": "patternType",
+          "description": "Type of the pattern that represented by the indicator that you want to create in Microsoft Sentinel.",
+          "options": [
+            "Domain Name",
+            "File",
+            "IPV4 Address",
+            "IPV6 Address",
+            "URL"
+          ],
+          "onchange": {
+            "Domain Name": [
+              {
+                "title": "Domain Name",
+                "name": "pattern",
+                "type": "text",
+                "description": "Specify a domain name for those you want to create a indicator in Microsoft Sentinel.",
+                "required": true,
+                "editable": true,
+                "visible": true
+              }
+            ],
+            "File": [
+              {
+                "title": "Hashes",
+                "name": "pattern",
+                "type": "text",
+                "description": "Specify a hashes for those you want to create a indicator in Microsoft Sentinel.",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "placeholder": "For e.g. <hashName>:<value>"
+              }
+            ],
+            "IPV4 Address": [
+              {
+                "title": "IPV4 Address",
+                "name": "pattern",
+                "type": "text",
+                "description": "Specify a IPV4 address for those you want to create a indicator in Microsoft Sentinel.",
+                "required": true,
+                "editable": true,
+                "visible": true
+              }
+            ],
+            "IPV6 Address": [
+              {
+                "title": "IPV6 Address",
+                "name": "pattern",
+                "type": "text",
+                "description": "Specify a IPV6 address for those you want to create a indicator in Microsoft Sentinel.",
+                "required": true,
+                "editable": true,
+                "visible": true
+              }
+            ],
+            "URL": [
+              {
+                "title": "URL",
+                "name": "pattern",
+                "type": "text",
+                "description": "Specify a URL for those you want to create a indicator in Microsoft Sentinel.",
+                "required": true,
+                "editable": true,
+                "visible": true
+              }
+            ]
+          }
+        },
+        {
+          "title": "Source",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "source",
+          "description": "Specify a source of a threat intelligence entity that you want to create in Microsoft Sentinel.",
+          "value": "Microsoft Sentinel",
+          "placeholder": "For e.g. Microsoft Sentinel"
+        },
+        {
+          "title": "Display Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "displayName",
+          "description": "Display name of the threat represented by the indicator that you want to create in Microsoft Sentinel."
+        },
+        {
+          "title": "Confidence",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "confidence",
+          "description": "(Optional) Integer value representing the confidence in the accuracy of the data within the indicator that identifies malicious behavior. You can enter any value between 0-100, where 100 is the highest.",
+          "tooltip": "Acceptable values are 0 – 100 with 100 being the highest."
+        },
+        {
+          "title": "Description",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "description",
+          "description": "Brief description (100 characters or less) of the threat represented by the indicator that you want to create in Microsoft Sentinel."
+        },
+        {
+          "title": "Tags",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "threatIntelligenceTags",
+          "description": "Tags of threat that you want to assign to the indicator that you are creating in Microsoft Sentinel."
+        },
+        {
+          "title": "Threat Type",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "threatTypes",
+          "description": "Type of threat that you want to assign to the indicator that you are creating in Microsoft Sentinel.",
+          "tooltip": "Specify a valid indicator threat type."
+        },
+        {
+          "title": "Indicator Type",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "indicatorTypes",
+          "description": "Type of indicator that you want to assign to the indicator that you are creating in Microsoft Sentinel.",
+          "tooltip": "Specify a valid indicator type."
+        },
+        {
+          "title": "Labels",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "labels",
+          "description": "Labels of indicator that you want to assign to the indicator that you are creating in Microsoft Sentinel."
+        },
+        {
+          "title": "Additional Fields",
+          "name": "additional_fields",
+          "type": "json",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Additional fields, in the JSON format, based on which you want to create threat intelligence indicator in Microsoft Sentinel.",
+          "description": "Additional fields, in the JSON format, based on which you want to create threat intelligence indicator in Microsoft Sentinel."
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "kind": "",
+        "properties": {
+          "confidence": "",
+          "created": "",
+          "extensions": {
+            "sentinel-ext": {
+              "severity": ""
+            }
+          },
+          "externalId": "",
+          "labels": [],
+          "lastUpdatedTimeUtc": "",
+          "source": "",
+          "threatIntelligenceTags": [],
+          "displayName": "",
+          "description": "",
+          "parsedPattern": [
+            {
+              "patternTypeKey": "",
+              "patternTypeValues": [
+                {
+                  "valueType": "",
+                  "value": ""
+                }
+              ]
+            }
+          ],
+          "pattern": "",
+          "patternType": "",
+          "validFrom": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get All Threat Intelligence Indicators",
+      "description": "Retrieves all threat intelligence indicators from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+      "operation": "get_all_threat_intelligence_indicators",
+      "category": "investigation",
+      "annotation": "get_all_threat_intelligence_indicators",
+      "parameters": [
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the threat intelligence indicators from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the threat intelligence indicators from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the threat intelligence indicators from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "Search Query",
+          "tooltip": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [properties/created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "$filter",
+          "placeholder": "e.g. properties/created gt 2020-04-23T00:00:00Z",
+          "description": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [properties/created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z"
+        },
+        {
+          "title": "Order By",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "$orderby",
+          "description": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "tooltip": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "placeholder": "e.g. properties/displayName desc"
+        },
+        {
+          "title": "Number of Indicators to Fetch",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "$top",
+          "description": "(Optional) Maximum number of indicators that this operation should return from Microsoft Sentinel."
+        },
+        {
+          "title": "Skip Token",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "$skipToken",
+          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+        }
+      ],
+      "output_schema": [
+        {
+          "id": "",
+          "name": "",
+          "etag": "",
+          "type": "",
+          "kind": "",
+          "properties": {
+            "confidence": "",
+            "created": "",
+            "createdByRef": "",
+            "extensions": {
+              "sentinel-ext": {
+                "severity": ""
+              }
+            },
+            "externalId": "",
+            "externalReferences": [],
+            "granularMarkings": [],
+            "labels": [],
+            "lastUpdatedTimeUtc": "",
+            "revoked": "",
+            "source": "",
+            "threatIntelligenceTags": [],
+            "displayName": "",
+            "description": "",
+            "threatTypes": [],
+            "killChainPhases": [],
+            "parsedPattern": [
+              {
+                "patternTypeKey": "",
+                "patternTypeValues": [
+                  {
+                    "valueType": "",
+                    "value": ""
+                  }
+                ]
+              }
+            ],
+            "pattern": "",
+            "patternType": "",
+            "validFrom": "",
+            "validUntil": ""
+          }
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "title": "Get Threat Intelligence Indicator",
+      "description": "Retrieves a specific threat intelligence indicator from Microsoft Sentinel based on the threat intelligence indicator ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "operation": "get_threat_intelligence_indicator",
+      "category": "investigation",
+      "annotation": "get_threat_intelligence_indicator",
+      "parameters": [
+        {
+          "title": "Threat Intelligence Indicator ID",
+          "description": "ID of the indicator based on which you want to retrieve a specific threat intelligence indicator from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "id"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve a specific threat intelligence indicator from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve a specific threat intelligence indicator from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve a specific threat intelligence indicator from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "kind": "",
+        "properties": {
+          "confidence": "",
+          "created": "",
+          "createdByRef": "",
+          "extensions": {
+            "sentinel-ext": {
+              "severity": ""
+            }
+          },
+          "externalId": "",
+          "externalReferences": [],
+          "granularMarkings": [],
+          "labels": [],
+          "lastUpdatedTimeUtc": "",
+          "revoked": "",
+          "source": "",
+          "threatIntelligenceTags": [],
+          "displayName": "",
+          "description": "",
+          "threatTypes": [],
+          "killChainPhases": [],
+          "parsedPattern": [
+            {
+              "patternTypeKey": "",
+              "patternTypeValues": [
+                {
+                  "valueType": "",
+                  "value": ""
+                }
+              ]
+            }
+          ],
+          "pattern": "",
+          "patternType": "",
+          "validFrom": "",
+          "validUntil": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Update Threat Intelligence Indicator",
+      "description": "Updates a specific threat intelligence indicator in Microsoft Sentinel based on the threat intelligence indicator ID, workspace subscription ID, workspace resource group, workspace name and other input parameters that you have specified.",
+      "operation": "update_threat_intelligence_indicator",
+      "category": "investigation",
+      "annotation": "update_threat_intelligence_indicator",
+      "parameters": [
+        {
+          "title": "Threat Intelligence Indicator ID",
+          "description": "Unique GUID or ID that is generated by the system when an indicator is ingested based on which you want to update a specific threat intelligence indicator in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "id"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to update the indicator in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to update the indicator in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to update the indicator in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "Pattern Type",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "name": "patternType",
+          "description": "Type of the pattern that represented by the indicator that you want to update in Microsoft Sentinel.",
+          "options": [
+            "Domain Name",
+            "File",
+            "IPV4 Address",
+            "IPV6 Address",
+            "URL"
+          ],
+          "onchange": {
+            "Domain Name": [
+              {
+                "title": "Domain Name",
+                "name": "pattern",
+                "type": "text",
+                "description": "Specify a domain name for those you want to update a indicator in Microsoft Sentinel.",
+                "required": true,
+                "editable": true,
+                "visible": true
+              }
+            ],
+            "File": [
+              {
+                "title": "Hashes",
+                "name": "pattern",
+                "type": "text",
+                "description": "Specify a hashes for those you want to update a indicator in Microsoft Sentinel.",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "placeholder": "For e.g. <hashName>:<value>"
+              }
+            ],
+            "IPV4 Address": [
+              {
+                "title": "IPV4 Address",
+                "name": "pattern",
+                "type": "text",
+                "description": "Specify a IPV4 address for those you want to update a indicator in Microsoft Sentinel.",
+                "required": true,
+                "editable": true,
+                "visible": true
+              }
+            ],
+            "IPV6 Address": [
+              {
+                "title": "IPV6 Address",
+                "name": "pattern",
+                "type": "text",
+                "description": "Specify a IPV6 address for those you want to update a indicator in Microsoft Sentinel.",
+                "required": true,
+                "editable": true,
+                "visible": true
+              }
+            ],
+            "URL": [
+              {
+                "title": "URL",
+                "name": "pattern",
+                "type": "text",
+                "description": "Specify a URL for those you want to update a indicator in Microsoft Sentinel.",
+                "required": true,
+                "editable": true,
+                "visible": true
+              }
+            ]
+          }
+        },
+        {
+          "title": "Source",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "source",
+          "description": "Specify a source of a threat intelligence entity that you want to update in Microsoft Sentinel.",
+          "value": "Microsoft Sentinel",
+          "placeholder": "For e.g. Microsoft Sentinel"
+        },
+        {
+          "title": "Confidence",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "confidence",
+          "description": "(Optional) Integer value representing the confidence in the accuracy of the data within the indicator that identifies malicious behavior. You can enter any value between 0-100, where 100 is the highest.",
+          "tooltip": "Acceptable values are 0 – 100 with 100 being the highest."
+        },
+        {
+          "title": "Description",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "description",
+          "description": "Brief description (100 characters or less) of the threat represented by the indicator that you want to update in Microsoft Sentinel."
+        },
+        {
+          "title": "Display Name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "displayName",
+          "description": "Display name of the threat represented by the indicator that you want to update in Microsoft Sentinel."
+        },
+        {
+          "title": "Tags",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "threatIntelligenceTags",
+          "description": "Tags of threat that you want to assign to the indicator that you are updating in Microsoft Sentinel."
+        },
+        {
+          "title": "Threat Type",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "threatTypes",
+          "description": "Type of threat that you want to assign to the indicator that you are updating in Microsoft Sentinel.",
+          "tooltip": "Specify a valid indicator threat type."
+        },
+        {
+          "title": "Indicator Type",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "indicatorTypes",
+          "description": "Type of indicator that you want to assign to the indicator that you are updating in Microsoft Sentinel.",
+          "tooltip": "Specify a valid indicator type."
+        },
+        {
+          "title": "Labels",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "labels",
+          "description": "Labels of indicator that you want to assign to the indicator that you are updating in Microsoft Sentinel."
+        },
+        {
+          "title": "Additional Fields",
+          "name": "additional_fields",
+          "type": "json",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "tooltip": "Additional fields, in the JSON format, based on which you want to update indicator in Microsoft Sentinel.",
+          "description": "Additional fields, in the JSON format, based on which you want to update indicator in Microsoft Sentinel."
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "kind": "",
+        "properties": {
+          "confidence": "",
+          "created": "",
+          "createdByRef": "",
+          "externalId": "",
+          "externalReferences": [],
+          "granularMarkings": [],
+          "lastUpdatedTimeUtc": "",
+          "revoked": "",
+          "source": "",
+          "threatIntelligenceTags": [],
+          "displayName": "",
+          "description": "",
+          "threatTypes": [],
+          "killChainPhases": [],
+          "pattern": "",
+          "patternType": "",
+          "validFrom": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Delete Threat Intelligence Indicator",
+      "description": "Deletes a specific threat intelligence indicator in Microsoft Sentinel based on the threat Intelligence Indicator ID, workspace subscription ID, workspace resource group, workspace name that you have specified.",
+      "operation": "delete_threat_intelligence_indicator",
+      "category": "investigation",
+      "annotation": "delete_threat_intelligence_indicator",
+      "parameters": [
+        {
+          "title": "Threat Intelligence Indicator ID",
+          "description": "Unique GUID or ID that is generated by the system when an indicator is ingested based on which you want to delete a specific threat intelligence indicator in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "id"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to delete the indicator in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to delete the indicator in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to delete the indicator in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "result": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Incident List",
+      "description": "Retrieves all incidents from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameters that you have specified.",
+      "operation": "get_incident_list",
+      "category": "investigation",
+      "annotation": "get_incident_list",
+      "parameters": [
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the incident from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the incident from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the incident from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "Created DateTime",
+          "description": "(Optional) Created Datetime based on which you want to retrieve incidents from Microsoft Sentinel.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "name": "created_datetime",
+          "tooltip": "(Optional) Created Datetime based on which you want to retrieve incidents from Microsoft Sentinel."
+        },
+        {
+          "title": "Severity",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "name": "Severity",
+          "description": "(Optional) Specify a severity for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational.",
+          "options": [
+            "High",
+            "Medium",
+            "Low",
+            "Informational"
+          ]
+        },
+        {
+          "title": "Status",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "name": "Status",
+          "description": "(Optional) Specify a status for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Active, New, or Closed.",
+          "options": [
+            "Active",
+            "New",
+            "Closed"
+          ]
+        },
+        {
+          "title": "Search Query",
+          "tooltip": "(Optional) Query using which you want to filter incidents to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [classification eq 'FalsePositive'] retrieves all the incidents that classification are FalsePositive",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "$filter",
+          "placeholder": "e.g. classification eq 'FalsePositive'",
+          "description": "(Optional) Query using which you want to filter incidents to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [classification eq 'FalsePositive'] retrieves all the incidents that classification are FalsePositive"
+        },
+        {
+          "title": "Order By",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "$orderby",
+          "description": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "tooltip": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "placeholder": "e.g. properties/title desc"
+        },
+        {
+          "title": "Number of Incidents to Fetch",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "$top",
+          "description": "(Optional) Maximum number of incidents that this operation should return from Microsoft Sentinel."
+        },
+        {
+          "title": "Skip Token",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "$skipToken",
+          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "name": "",
+            "etag": "",
+            "type": "",
+            "properties": {
+              "title": "",
+              "description": "",
+              "severity": "",
+              "status": "",
+              "owner": {
+                "objectId": "",
+                "email": "",
+                "assignedTo": "",
+                "userPrincipalName": ""
+              },
+              "labels": [],
+              "firstActivityTimeUtc": "",
+              "lastActivityTimeUtc": "",
+              "lastModifiedTimeUtc": "",
+              "createdTimeUtc": "",
+              "incidentNumber": "",
+              "additionalData": {
+                "alertsCount": "",
+                "bookmarksCount": "",
+                "commentsCount": "",
+                "alertProductNames": [],
+                "tactics": []
+              },
+              "relatedAnalyticRuleIds": [],
+              "incidentUrl": ""
+            }
+          }
+        ],
+        "nextLink": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Incident Details",
+      "description": "Retrieves an specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "operation": "get_incident",
+      "category": "investigation",
+      "annotation": "get_incident",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those details you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the incident from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the incident from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the incident from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "properties": {
+          "title": "",
+          "description": "",
+          "severity": "",
+          "status": "",
+          "owner": {
+            "objectId": "",
+            "email": "",
+            "assignedTo": "",
+            "userPrincipalName": ""
+          },
+          "labels": [],
+          "firstActivityTimeUtc": "",
+          "lastActivityTimeUtc": "",
+          "lastModifiedTimeUtc": "",
+          "createdTimeUtc": "",
+          "incidentNumber": "",
+          "additionalData": {
+            "alertsCount": "",
+            "bookmarksCount": "",
+            "commentsCount": "",
+            "alertProductNames": [],
+            "tactics": []
+          },
+          "relatedAnalyticRuleIds": [],
+          "incidentUrl": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Incident Alert List",
+      "description": "Retrieves all alerts associated with a specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group, workspace name ID that you have specified.",
+      "operation": "get_alert_list",
+      "category": "investigation",
+      "annotation": "get_alert_list",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those associated alerts that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the alerts from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the alerts from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the alerts from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": [
+        {
+          "id": "",
+          "name": "",
+          "type": "",
+          "kind": "",
+          "properties": {
+            "systemAlertId": "",
+            "tactics": [],
+            "alertDisplayName": "",
+            "description": "",
+            "confidenceLevel": "",
+            "severity": "",
+            "vendorName": "",
+            "productName": "",
+            "productComponentName": "",
+            "alertType": "",
+            "processingEndTime": "",
+            "status": "",
+            "endTimeUtc": "",
+            "startTimeUtc": "",
+            "timeGenerated": "",
+            "providerAlertId": "",
+            "resourceIdentifiers": [
+              {
+                "type": "",
+                "workspaceId": "",
+                "subscriptionId": "",
+                "resourceGroup": ""
+              }
+            ],
+            "additionalData": {
+              "AlertMessageEnqueueTime": "",
+              "Search Query Results Overall Count": "",
+              "OriginalProductName": "",
+              "OriginalProductComponentName": ""
+            },
+            "friendlyName": ""
+          }
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "title": "Get Incident Entities List",
+      "description": "Retrieves all entities associated with a specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace name ID, workspace resource group, workspace name that you have specified.",
+      "operation": "get_entities_list",
+      "category": "investigation",
+      "annotation": "get_entities_list",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those associated entities that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the incident entities from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the incident entities from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the incident entities from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "entities": [
+          {
+            "id": "",
+            "name": "",
+            "type": "",
+            "kind": "",
+            "properties": {
+              "friendlyName": "",
+              "accountName": "",
+              "ntDomain": ""
+            }
+          }
+        ],
+        "metaData": [
+          {
+            "entityKind": "",
+            "count": ""
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Incident Bookmarks List",
+      "description": "Retrieves an bookmarks associated with a specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "operation": "get_bookmarks_list",
+      "category": "investigation",
+      "annotation": "get_bookmarks_list",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those associated bookmarks that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the bookmarks from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the bookmarks from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the bookmarks from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "name": "",
+            "type": "",
+            "kind": "",
+            "properties": {
+              "displayName": "",
+              "created": "",
+              "updated": "",
+              "createdBy": {
+                "objectId": "",
+                "email": "",
+                "name": ""
+              },
+              "updatedBy": {
+                "objectId": "",
+                "email": "",
+                "name": ""
+              },
+              "eventTime": "",
+              "labels": [],
+              "query": "",
+              "queryResult": "",
+              "additionalData": {
+                "ETag": "",
+                "EntityId": ""
+              },
+              "friendlyName": ""
+            }
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Update Incident",
+      "description": "Updates an incident in Microsoft Sentinel based on the incident ID, Workspace Subscription ID, Workspace Resource Group, workspace name ID, and other input parameters that you have specified.",
+      "operation": "update_incident",
+      "category": "investigation",
+      "annotation": "update_incident",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID in which you want to update the incident in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group in which you want to update the incident in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace based on which you want to update the incident in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "Severity",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "name": "Severity",
+          "description": "(Optional) Updates the severity of the specific incident in Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational.",
+          "options": [
+            "High",
+            "Medium",
+            "Low",
+            "Informational"
+          ]
+        },
+        {
+          "title": "Status",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "name": "Status",
+          "description": "(Optional) Updates the status of the specific incident in Microsoft Sentinel. You can choose from the following options: Active, New, or Closed.",
+          "options": [
+            "Active",
+            "New",
+            "Closed"
+          ],
+          "onchange": {
+            "Closed": [
+              {
+                "title": "Classification Comment",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "Comment",
+                "description": "Comment that you want to associate with the specified incident that you want to closed in Microsoft Sentinel."
+              },
+              {
+                "title": "Classification",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "classification",
+                "description": "Reason that you want to associate with the specified incident that you want to closed in Microsoft Sentinel.",
+                "options": [
+                  "BenignPositive",
+                  "FalsePositive",
+                  "TruePositive",
+                  "Undetermined"
+                ]
+              },
+              {
+                "title": "Classification Reason",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "name": "reason",
+                "description": "Classification Reason that you want to associate with the specified incident that you want to closed with InaccurateData, IncorrectAlertLogic, SuspiciousActivity, or SuspiciousButExpected in Microsoft Sentinel.",
+                "options": [
+                  "InaccurateData",
+                  "IncorrectAlertLogic",
+                  "SuspiciousActivity",
+                  "SuspiciousButExpected"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "title": "Title",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Title",
+          "description": "(Optional) Title of the specified incident that you want to update in Microsoft Sentinel."
+        },
+        {
+          "title": "ETag",
+          "description": "(Optional) Etag in which you want to update the incident in Microsoft Sentinel.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "etag",
+          "tooltip": "(Optional) Etag in which you want to update the incident in Microsoft Sentinel."
+        },
+        {
+          "title": "Description",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Description",
+          "description": "(Optional) Description of the specified incident that you want to update in Microsoft Sentinel."
+        },
+        {
+          "title": "Classification",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "name": "classification",
+          "description": "(Optional) Updates the classification of the specific incident in Microsoft Sentinel. You can choose from the following options: BenignPositive, FalsePositive, TruePositive, or Undetermined.",
+          "options": [
+            "BenignPositive",
+            "FalsePositive",
+            "TruePositive",
+            "Undetermined"
+          ],
+          "tooltip": "The reason the incident was closed."
+        },
+        {
+          "title": "Classification Reason",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "name": "reason",
+          "description": "(Optional) Updates the classification reason of the specific incident in Microsoft Sentinel. You can choose from the following options: InaccurateData, IncorrectAlertLogic, SuspiciousActivity, or SuspiciousButExpected.",
+          "options": [
+            "InaccurateData",
+            "IncorrectAlertLogic",
+            "SuspiciousActivity",
+            "SuspiciousButExpected"
+          ],
+          "tooltip": "The classification reason the incident was closed with."
+        },
+        {
+          "title": "Classification Comment",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "Comment",
+          "description": "(Optional) Describes the reason the incident was closed in Microsoft Sentinel."
+        },
+        {
+          "title": "Custom Properties",
+          "name": "custom_attributes",
+          "type": "json",
+          "description": "Additional properties, in the JSON format, that you want to update incident in Microsoft Sentinel. The additional properties signify additional fields associated with the incident.",
+          "tooltip": "Additional properties, in the JSON format, that you want to update incident in Microsoft Sentinel. The additional properties signify additional fields associated with the incident.",
+          "visible": true,
+          "required": false,
+          "editable": true
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "properties": {
+          "title": "",
+          "description": "",
+          "severity": "",
+          "status": "",
+          "owner": {
+            "objectId": "",
+            "email": "",
+            "assignedTo": "",
+            "userPrincipalName": ""
+          },
+          "labels": [],
+          "firstActivityTimeUtc": "",
+          "lastActivityTimeUtc": "",
+          "lastModifiedTimeUtc": "",
+          "createdTimeUtc": "",
+          "incidentNumber": "",
+          "additionalData": {
+            "alertsCount": "",
+            "bookmarksCount": "",
+            "commentsCount": "",
+            "alertProductNames": [],
+            "tactics": []
+          },
+          "relatedAnalyticRuleIds": [],
+          "incidentUrl": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Create Incident Relations",
+      "description": "Creates a incident relations in Microsoft Sentinel based on the incident ID, relation name, resource ID, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+      "operation": "create_incident_relations",
+      "category": "investigation",
+      "annotation": "create_incident_relations",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those relations that you want to create in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Relation Name",
+          "description": "Name of the relation those relations that you want to create in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "relationName"
+        },
+        {
+          "title": "Resource ID",
+          "description": "ID of the resource those associate incident relations that you want to create in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceId"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to create the incident relations in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to create the incident relations in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to create the incident relations in Microsoft Sentinel",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "type": "",
+        "properties": {
+          "relatedResourceId": "",
+          "relatedResourceName": "",
+          "relatedResourceType": "",
+          "relatedResourceKind": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get All Incident Relations",
+      "description": "Retrieves all incident relations from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+      "operation": "get_all_incident_relations",
+      "category": "investigation",
+      "annotation": "get_all_incident_relations",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those incident relations that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the incident relations from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the incident relations from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the incident relations from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "Search Query",
+          "tooltip": "(Optional) Query using which you want to filter incident relations to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on fields.\nFor example [name eq sample] retrieves all the indicators that are equal to specific name.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "$filter",
+          "placeholder": "e.g. name eq sample",
+          "description": "(Optional) Query using which you want to filter incident relations to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on fields.\nFor example [name eq sample] retrieves all the indicators that are equal to specific name."
+        },
+        {
+          "title": "Order By",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "$orderby",
+          "description": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "tooltip": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "placeholder": "e.g. properties/relatedResourceName desc"
+        },
+        {
+          "title": "Number of Incident Relations to Fetch",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "$top",
+          "description": "(Optional) Maximum number of incident relations that this operation should return from Microsoft Sentinel."
+        },
+        {
+          "title": "Skip Token",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "$skipToken",
+          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "name": "",
+            "type": "",
+            "properties": {
+              "relatedResourceId": "",
+              "relatedResourceName": "",
+              "relatedResourceType": "",
+              "relatedResourceKind": ""
+            }
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Incident Relation",
+      "description": "Retrieves a specific relation of a incident from Microsoft Sentinel based on the incident ID, relation name, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "operation": "get_incident_relations",
+      "category": "investigation",
+      "annotation": "get_incident_relations",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those incident relation that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Relation Name",
+          "description": "Name of the relation those incident relation that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "relationName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the incident relation from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the incident relation from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the incident relation from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "type": "",
+        "properties": {
+          "relatedResourceId": "",
+          "relatedResourceName": "",
+          "relatedResourceType": "",
+          "relatedResourceKind": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Update Incident Relations",
+      "description": "Updates an incident relations in Microsoft Sentinel based on the incident ID, relation name, resource ID, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+      "operation": "update_incident_relations",
+      "category": "investigation",
+      "annotation": "update_incident_relations",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those relations that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Relation Name",
+          "description": "Name of the relation those relations that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "relationName"
+        },
+        {
+          "title": "Resource ID",
+          "description": "ID of the resource those associate incident relations that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "resourceId"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to update the incident relations in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to update the incident relations in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to update the incident relations in Microsoft Sentinel",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "type": "",
+        "properties": {
+          "relatedResourceId": "",
+          "relatedResourceName": "",
+          "relatedResourceType": "",
+          "relatedResourceKind": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Delete Incident Relation",
+      "description": "Deletes a specific incident relation in Microsoft Sentinel based on the incident ID, relation name, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "operation": "delete_incident_relation",
+      "category": "investigation",
+      "annotation": "delete_incident_relation",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those incident relation that you want to delete in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Relation Name",
+          "description": "Name of the relation those incident relation that you want to delete in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "relationName"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to delete the incident relation in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to delete the incident relation in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to delete the incident relation in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "result": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Create Incident Comment",
+      "description": "Creates a incident comment in Microsoft Sentinel based on the incident ID, message, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+      "operation": "create_incident_comment",
+      "category": "investigation",
+      "annotation": "create_incident_comment",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident based on which you want to add comment in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Message",
+          "description": "Specify a message those you want to add for incident in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "message"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to create the incident comment in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to create the incident comment in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to create the incident comment in Microsoft Sentinel",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "properties": {
+          "message": "",
+          "createdTimeUtc": "",
+          "lastModifiedTimeUtc": "",
+          "author": {
+            "objectId": "",
+            "email": "",
+            "name": "",
+            "userPrincipalName": ""
+          }
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get All Incident Comments",
+      "description": "Retrieves all incident comments from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+      "operation": "get_all_incident_comments",
+      "category": "investigation",
+      "annotation": "get_all_incident_comments",
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those incident comments that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the incident comments from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the incident comments from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the incident comments from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "Search Query",
+          "tooltip": "(Optional) Query using which you want to filter incident comments to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [createdDateTime gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "$filter",
+          "placeholder": "e.g. createdTimeUtc gt 2020-04-23T00:00:00Z",
+          "description": "(Optional) Query using which you want to filter incident comments to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [createdDateTime gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z"
+        },
+        {
+          "title": "Order By",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "$orderby",
+          "description": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "tooltip": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "placeholder": "e.g. properties/createdTimeUtc desc"
+        },
+        {
+          "title": "Number of Incident Comments to Fetch",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "$top",
+          "description": "(Optional) Maximum number of incident comments that this operation should return from Microsoft Sentinel."
+        },
+        {
+          "title": "Skip Token",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "$skipToken",
+          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "name": "",
+            "etag": "",
+            "type": "",
+            "properties": {
+              "message": "",
+              "createdTimeUtc": "",
+              "lastModifiedTimeUtc": "",
+              "author": {
+                "objectId": "",
+                "email": "",
+                "name": "",
+                "userPrincipalName": ""
+              }
+            }
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Incident Comment",
+      "description": "Retrieves a specific comment of a incident from Microsoft Sentinel based on the incident comment ID, incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "operation": "get_incident_comment",
+      "category": "investigation",
+      "annotation": "get_incident_comment",
+      "parameters": [
+        {
+          "title": "Incident Comment ID",
+          "description": "Comment ID of the incident those incident comment that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentcommentId"
+        },
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those incident comment that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the incident comment from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the incident comment from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the incident comment from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "properties": {
+          "message": "",
+          "createdTimeUtc": "",
+          "lastModifiedTimeUtc": "",
+          "author": {
+            "objectId": "",
+            "email": "",
+            "name": "",
+            "userPrincipalName": ""
+          }
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Update Incident Comment",
+      "description": "Updates an incident comment in Microsoft Sentinel based on the incident comment ID, incident ID, message, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+      "operation": "update_incident_comment",
+      "category": "investigation",
+      "annotation": "update_incident_comment",
+      "parameters": [
+        {
+          "title": "Incident Comment ID",
+          "description": "Comment ID of the incident those comment that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentcommentId"
+        },
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those comment that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Message",
+          "description": "Specify a message those associate incident comment that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "message"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to update the incident comment in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to update the incident comment in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to update the incident comment in Microsoft Sentinel",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "properties": {
+          "message": "",
+          "createdTimeUtc": "",
+          "lastModifiedTimeUtc": "",
+          "author": {
+            "objectId": "",
+            "email": "",
+            "name": "",
+            "userPrincipalName": ""
+          }
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Delete Incident Comment",
+      "description": "Deletes a specific incident comment in Microsoft Sentinel based on the incident comment ID, incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "operation": "delete_incident_comment",
+      "category": "investigation",
+      "annotation": "delete_incident_comment",
+      "parameters": [
+        {
+          "title": "Incident Comment ID",
+          "description": "Comment ID of the incident those incident comment that you want to delete in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentcommentId"
+        },
+        {
+          "title": "Incident ID",
+          "description": "ID of the incident those incident comment that you want to delete in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "incidentId"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to delete the incident comment in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to delete the incident comment in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to delete the incident comment in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "result": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Create Watchlist",
+      "description": "Creates a watchlist in Microsoft Sentinel based on the display name, item search key, provider, source, workspace subscription ID, workspace resource group, workspace name and other input parameters that you have specified.",
+      "operation": "create_watchlist",
+      "category": "investigation",
+      "annotation": "create_watchlist",
+      "parameters": [
+        {
+          "title": "Watchlist Alias",
+          "description": "Alias of the watchlist that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistAlias"
+        },
+        {
+          "title": "Display Name",
+          "description": "Display Name of the watchlist that you want to create in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "displayName",
+          "tooltip": "The value must be between 3 and 64 characters long. Should start with alphabet and end with alphanumeric. The rest may contain hyphens and underscores."
+        },
+        {
+          "title": "Item Search key",
+          "description": "The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "itemsSearchKey",
+          "tooltip": "The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address."
+        },
+        {
+          "title": "Provider",
+          "description": "The provider of the watchlist that you want to create in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "provider",
+          "placeholder": "For e.g. Microsoft",
+          "value": "Microsoft"
+        },
+        {
+          "title": "Source",
+          "description": "The source of the watchlist that you want to create in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "source",
+          "placeholder": "For e.g. Local file or Remote storage"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to create the watchlist in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to create the watchlist in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to create the watchlist in Microsoft Sentinel",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "Description",
+          "description": "(Optional) Description of the watchlist that you want to create in Microsoft Sentinel.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "description"
+        },
+        {
+          "title": "ETag",
+          "description": "(Optional) Etag in which you want to create the watchlist in Microsoft Sentinel.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "etag",
+          "tooltip": "(Optional) Etag in which you want to create the watchlist in Microsoft Sentinel."
+        },
+        {
+          "title": "Custom Properties",
+          "name": "custom_attributes",
+          "type": "json",
+          "description": "Additional properties, in the JSON format, that you want to create watchlist in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist.",
+          "tooltip": "Additional properties, in the JSON format, that you want to create watchlist in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist.",
+          "visible": true,
+          "required": false,
+          "editable": true
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "systemData": {
+          "createdAt": "",
+          "createdBy": "",
+          "createdByType": "",
+          "lastModifiedAt": "",
+          "lastModifiedBy": "",
+          "lastModifiedByType": ""
+        },
+        "properties": {
+          "watchlistId": "",
+          "displayName": "",
+          "provider": "",
+          "source": "",
+          "itemsSearchKey": "",
+          "created": "",
+          "updated": "",
+          "createdBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "updatedBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "watchlistType": "",
+          "watchlistAlias": "",
+          "isDeleted": "",
+          "labels": [],
+          "tenantId": "",
+          "numberOfLinesToSkip": "",
+          "uploadStatus": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get All Watchlist",
+      "description": "Retrieves all watchlist from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameter you have specified.",
+      "operation": "get_all_watchlist",
+      "category": "investigation",
+      "annotation": "get_all_watchlist",
+      "parameters": [
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the watchlist from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the watchlist from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the watchlist from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "Skip Token",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "$skipToken",
+          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "name": "",
+            "type": "",
+            "systemData": {
+              "createdAt": "",
+              "createdBy": "",
+              "createdByType": "",
+              "lastModifiedAt": "",
+              "lastModifiedBy": "",
+              "lastModifiedByType": ""
+            },
+            "properties": {
+              "watchlistId": "",
+              "displayName": "",
+              "provider": "",
+              "source": "",
+              "itemsSearchKey": "",
+              "created": "",
+              "updated": "",
+              "createdBy": {
+                "objectId": "",
+                "email": "",
+                "name": ""
+              },
+              "updatedBy": {
+                "objectId": "",
+                "email": "",
+                "name": ""
+              },
+              "watchlistType": "",
+              "watchlistAlias": "",
+              "isDeleted": "",
+              "labels": [],
+              "tenantId": "",
+              "numberOfLinesToSkip": "",
+              "uploadStatus": ""
+            }
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Watchlist",
+      "description": "Retrieves a specific watchlist without watchlist items from Microsoft Sentinel based on the watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "operation": "get_watchlist",
+      "category": "investigation",
+      "annotation": "get_watchlist",
+      "parameters": [
+        {
+          "title": "Watchlist Alias",
+          "description": "Alias of the watchlist that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistAlias"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the watchlist from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the watchlist from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the watchlist from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "systemData": {
+          "createdAt": "",
+          "createdBy": "",
+          "createdByType": "",
+          "lastModifiedAt": "",
+          "lastModifiedBy": "",
+          "lastModifiedByType": ""
+        },
+        "properties": {
+          "watchlistId": "",
+          "displayName": "",
+          "provider": "",
+          "source": "",
+          "itemsSearchKey": "",
+          "created": "",
+          "updated": "",
+          "createdBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "updatedBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "watchlistType": "",
+          "watchlistAlias": "",
+          "isDeleted": "",
+          "labels": [],
+          "tenantId": "",
+          "numberOfLinesToSkip": "",
+          "uploadStatus": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Update Watchlist",
+      "description": "Updates an watchlist in Microsoft Sentinel based on the watchlist alias, display name, item search key, provider, source, workspace subscription ID, workspace resource group, workspace name, and other input parameters that you have specified.",
+      "operation": "update_watchlist",
+      "category": "investigation",
+      "annotation": "update_watchlist",
+      "parameters": [
+        {
+          "title": "Watchlist Alias",
+          "description": "Alias of the watchlist that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistAlias"
+        },
+        {
+          "title": "Display Name",
+          "description": "Display Name of the watchlist that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "displayName"
+        },
+        {
+          "title": "Item Search key",
+          "description": "The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "itemsSearchKey",
+          "tooltip": "The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address."
+        },
+        {
+          "title": "Provider",
+          "description": "The provider of the watchlist that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "provider",
+          "placeholder": "For e.g. Microsoft"
+        },
+        {
+          "title": "Source",
+          "description": "The source of the watchlist that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "source",
+          "placeholder": "For e.g. Local file or Remote storage"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to update the watchlist in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to update the watchlist in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to update the watchlist in Microsoft Sentinel",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "Description",
+          "description": "(Optional) Description of the watchlist that you want to update in Microsoft Sentinel.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "description"
+        },
+        {
+          "title": "ETag",
+          "description": "(Optional) Etag in which you want to update the watchlist in Microsoft Sentinel.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "etag",
+          "tooltip": "(Optional) Etag in which you want to update the watchlist in Microsoft Sentinel."
+        },
+        {
+          "title": "Custom Properties",
+          "name": "custom_attributes",
+          "type": "json",
+          "description": "Additional properties, in the JSON format, that you want to update watchlist in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist.",
+          "tooltip": "Additional properties, in the JSON format, that you want to update watchlist in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist.",
+          "visible": true,
+          "required": false,
+          "editable": true
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "systemData": {
+          "createdAt": "",
+          "createdBy": "",
+          "createdByType": "",
+          "lastModifiedAt": "",
+          "lastModifiedBy": "",
+          "lastModifiedByType": ""
+        },
+        "properties": {
+          "watchlistId": "",
+          "displayName": "",
+          "provider": "",
+          "source": "",
+          "itemsSearchKey": "",
+          "created": "",
+          "updated": "",
+          "createdBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "updatedBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "watchlistType": "",
+          "watchlistAlias": "",
+          "isDeleted": "",
+          "labels": [],
+          "tenantId": "",
+          "numberOfLinesToSkip": ""
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Delete Watchlist",
+      "description": "Deletes a specific watchlist in Microsoft Sentinel based on the watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "operation": "delete_watchlist",
+      "category": "investigation",
+      "annotation": "delete_watchlist",
+      "parameters": [
+        {
+          "title": "Watchlist Alias",
+          "description": "Alias of the watchlist that you want to delete in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistAlias"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to delete the watchlist in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to delete the watchlist in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to delete the watchlist in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "result": ""
+      },
+      "enabled": true
+    },
+    {
+      "title": "Create Watchlist Item",
+      "description": "Creates a watchlist item in Microsoft Sentinel based on the watchlist alias, item key value, workspace subscription ID, workspace resource group, workspace name and other input parameters that you have specified.",
+      "operation": "create_watchlist_item",
+      "category": "investigation",
+      "annotation": "create_watchlist_item",
+      "parameters": [
+        {
+          "title": "Watchlist Item ID",
+          "description": "ID of the watchlist item that you want to create in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistItemId"
+        },
+        {
+          "title": "Watchlist Alias",
+          "description": "Alias of the watchlist item that you want to create in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistAlias"
+        },
+        {
+          "title": "Item Key Value",
+          "description": "Specify a key-value pairs for a watchlist item to create the watchlist item in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "itemsKeyValue",
+          "tooltip": "Specify a key-value pairs for a watchlist item to create the watchlist item in Microsoft Sentinel."
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to create the watchlist item in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to create the watchlist item in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to create the watchlist item in Microsoft Sentinel",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "ETag",
+          "description": "(Optional) Etag in which you want to create the watchlist item in Microsoft Sentinel.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "etag",
+          "tooltip": "(Optional) Etag in which you want to create the watchlist item in Microsoft Sentinel."
+        },
+        {
+          "title": "Custom Properties",
+          "name": "custom_attributes",
+          "type": "json",
+          "description": "Additional properties, in the JSON format, that you want to create watchlist item in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist item.",
+          "tooltip": "Additional properties, in the JSON format, that you want to create watchlist item in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist item.",
+          "visible": true,
+          "required": false,
+          "editable": true
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "systemData": {
+          "createdAt": "",
+          "createdBy": "",
+          "createdByType": "",
+          "lastModifiedAt": "",
+          "lastModifiedBy": "",
+          "lastModifiedByType": ""
+        },
+        "properties": {
+          "watchlistItemType": "",
+          "watchlistItemId": "",
+          "tenantId": "",
+          "isDeleted": "",
+          "created": "",
+          "updated": "",
+          "createdBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "updatedBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "itemsKeyValue": {
+            "ID": "",
+            "Name": "",
+            "Address": ""
+          },
+          "entityMapping": {}
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get All Watchlist Items",
+      "description": "Retrieves all watchlist items from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameter you have specified.",
+      "operation": "get_all_watchlist_items",
+      "category": "investigation",
+      "annotation": "get_all_watchlist_items",
+      "parameters": [
+        {
+          "title": "Watchlist Alias",
+          "description": "Alias of the watchlist items that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistAlias"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the watchlist items from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the watchlist items from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the watchlist items from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "Skip Token",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "$skipToken",
+          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+        }
+      ],
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "name": "",
+            "etag": "",
+            "type": "",
+            "systemData": {
+              "createdAt": "",
+              "createdBy": "",
+              "createdByType": "",
+              "lastModifiedAt": "",
+              "lastModifiedBy": "",
+              "lastModifiedByType": ""
+            },
+            "properties": {
+              "watchlistItemType": "",
+              "watchlistItemId": "",
+              "tenantId": "",
+              "isDeleted": "",
+              "created": "",
+              "updated": "",
+              "createdBy": {
+                "objectId": "",
+                "email": "",
+                "name": ""
+              },
+              "updatedBy": {
+                "objectId": "",
+                "email": "",
+                "name": ""
+              },
+              "itemsKeyValue": {},
+              "entityMapping": {}
+            }
+          }
+        ]
+      },
+      "enabled": true
+    },
+    {
+      "title": "Get Watchlist Item",
+      "description": "Retrieves a specific watchlist item from Microsoft Sentinel based on the watchlist item ID, watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "operation": "get_watchlist_item",
+      "category": "investigation",
+      "annotation": "get_watchlist_item",
+      "parameters": [
+        {
+          "title": "Watchlist Item ID",
+          "description": "ID of the watchlist item that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistItemId"
+        },
+        {
+          "title": "Watchlist Alias",
+          "description": "Alias of the watchlist item that you want to retrieve from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistAlias"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to retrieve the watchlist item from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to retrieve the watchlist item from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to retrieve the watchlist item from Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "systemData": {
+          "createdAt": "",
+          "createdBy": "",
+          "createdByType": "",
+          "lastModifiedAt": "",
+          "lastModifiedBy": "",
+          "lastModifiedByType": ""
+        },
+        "properties": {
+          "watchlistItemType": "",
+          "watchlistItemId": "",
+          "tenantId": "",
+          "isDeleted": "",
+          "created": "",
+          "updated": "",
+          "createdBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "updatedBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "itemsKeyValue": {},
+          "entityMapping": {}
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Update Watchlist Item",
+      "description": "Updates an watchlist item in Microsoft Sentinel based on the watchlist item ID, watchlist alias, item key value, workspace subscription ID, workspace resource group, workspace name, and other input parameters that you have specified.",
+      "operation": "update_watchlist_item",
+      "category": "investigation",
+      "annotation": "update_watchlist_item",
+      "parameters": [
+        {
+          "title": "Watchlist Item ID",
+          "description": "ID of the watchlist item that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistItemId"
+        },
+        {
+          "title": "Watchlist Alias",
+          "description": "Alias of the watchlist that you want to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistAlias"
+        },
+        {
+          "title": "Item Key Value",
+          "description": "Specify a key-value pairs for a watchlist item to update the watchlist item in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "itemsKeyValue",
+          "tooltip": "Specify a key-value pairs for a watchlist item to update the watchlist item in Microsoft Sentinel."
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to update the watchlist item in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to update the watchlist item in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to update the watchlist item in Microsoft Sentinel",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        },
+        {
+          "title": "ETag",
+          "description": "(Optional) Etag in which you want to update the watchlist item in Microsoft Sentinel.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "etag",
+          "tooltip": "(Optional) Etag in which you want to update the watchlist item in Microsoft Sentinel."
+        },
+        {
+          "title": "Custom Properties",
+          "name": "custom_attributes",
+          "type": "json",
+          "description": "Additional properties, in the JSON format, that you want to update watchlist item in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist item.",
+          "tooltip": "Additional properties, in the JSON format, that you want to update watchlist item in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist item.",
+          "visible": true,
+          "required": false,
+          "editable": true
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "name": "",
+        "etag": "",
+        "type": "",
+        "systemData": {
+          "createdAt": "",
+          "createdBy": "",
+          "createdByType": "",
+          "lastModifiedAt": "",
+          "lastModifiedBy": "",
+          "lastModifiedByType": ""
+        },
+        "properties": {
+          "watchlistItemType": "",
+          "watchlistItemId": "",
+          "tenantId": "",
+          "isDeleted": "",
+          "created": "",
+          "updated": "",
+          "createdBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "updatedBy": {
+            "objectId": "",
+            "email": "",
+            "name": ""
+          },
+          "itemsKeyValue": {},
+          "entityMapping": {}
+        }
+      },
+      "enabled": true
+    },
+    {
+      "title": "Delete Watchlist Item",
+      "description": "Deletes a specific watchlist item in Microsoft Sentinel based on the watchlist item ID, watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "operation": "delete_watchlist_item",
+      "category": "investigation",
+      "annotation": "delete_watchlist_item",
+      "parameters": [
+        {
+          "title": "Watchlist Item ID",
+          "description": "ID of the watchlist item that you want to delete in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistItemId"
+        },
+        {
+          "title": "Watchlist Alias",
+          "description": "Alias of the watchlist item that you want to delete in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistAlias"
+        },
+        {
+          "title": "Workspace Subscription ID",
+          "description": "Azure active directory subscription ID from which you want to delete the watchlist item in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceSubscriptionId"
+        },
+        {
+          "title": "Workspace Resource Group",
+          "description": "Azure active directory resource group from which you want to delete the watchlist item in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceResourceGroup"
+        },
+        {
+          "title": "Workspace Name",
+          "description": "Name of the workspace from which you want to delete the watchlist item in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "WorkspaceName"
+        }
+      ],
+      "output_schema": {
+        "result": ""
+      },
+      "enabled": true
+    }
+  ]
+}
+

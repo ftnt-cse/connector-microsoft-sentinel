@@ -1,0 +1,3667 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Microsoft Sentinel - 1.0.0",
+      "description": "Sample playbooks for \"Microsoft Sentinel\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": null,
+      "uuid": "8589641d-44c6-4319-b1ee-46d286522fe3",
+      "id": 138,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Threat Intelligence Indicator",
+          "aliasName": null,
+          "tag": null,
+          "description": "Updates a specific threat intelligence indicator in Microsoft Sentinel based on the threat intelligence indicator ID, workspace subscription ID, workspace resource group, workspace name and other input parameters that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672205445,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/2f10bc55-036f-44a9-9395-ad1602e667be",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "86ab936b-7c44-43eb-b40e-1fba93afec98",
+                "title": "Microsoft Sentinel: Update Threat Intelligence Indicator",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "2f10bc55-036f-44a9-9395-ad1602e667be"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Threat Intelligence Indicator",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47",
+                  "labels": "",
+                  "confidence": "",
+                  "description": "",
+                  "displayName": "",
+                  "threatTypes": "",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "indicatorTypes": "",
+                  "additional_fields": "",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "threatIntelligenceTags": "",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "update_threat_intelligence_indicator",
+                "operationTitle": "Update Threat Intelligence Indicator",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "e2053554-c107-4e5d-8733-43ad84adec32"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Update Threat Intelligence Indicator",
+              "targetStep": "/api/3/workflow_steps/e2053554-c107-4e5d-8733-43ad84adec32",
+              "sourceStep": "/api/3/workflow_steps/2f10bc55-036f-44a9-9395-ad1602e667be",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "fded3739-3628-4c1e-9079-9c8f94f15d5b"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "21d735d8-0d07-4df6-9add-66cfcae2ce26",
+          "id": 1626,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Watchlist",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a specific watchlist without watchlist items from Microsoft Sentinel based on the watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672638569,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/1a38e5a9-78de-4a6d-bf44-ae44d4a89a43",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "be0aab58-52b4-4532-833b-2e883e4208a5",
+                "title": "Microsoft Sentinel: Get Watchlist",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "1a38e5a9-78de-4a6d-bf44-ae44d4a89a43"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Watchlist",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "watchlistAlias": "highValueAsset",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_watchlist",
+                "operationTitle": "Get Watchlist",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a7561092-f4b2-4624-82c8-32b7222eea82"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Watchlist",
+              "targetStep": "/api/3/workflow_steps/a7561092-f4b2-4624-82c8-32b7222eea82",
+              "sourceStep": "/api/3/workflow_steps/1a38e5a9-78de-4a6d-bf44-ae44d4a89a43",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "0e9d6ac5-f6f8-4348-ad6c-46bbc2642392"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "38c7fcb0-16a2-4ae9-b10b-b38d93cae0dc",
+          "id": 1627,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get All Incident Relations",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves all incident relations from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672206705,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/02d04e17-d3f2-4c9d-820e-f8cb00b69256",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "762035a6-497e-48d5-831f-799285d86c05",
+                "title": "Microsoft Sentinel: Get All Incident Relations",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "02d04e17-d3f2-4c9d-820e-f8cb00b69256"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get All Incident Relations",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$top": "",
+                  "$filter": "",
+                  "$orderby": "",
+                  "$skipToken": "",
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_all_incident_relations",
+                "operationTitle": "Get All Incident Relations",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "44072ece-0382-4566-82fb-df09f84e7213"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get All Incident Relations",
+              "targetStep": "/api/3/workflow_steps/44072ece-0382-4566-82fb-df09f84e7213",
+              "sourceStep": "/api/3/workflow_steps/02d04e17-d3f2-4c9d-820e-f8cb00b69256",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "b1bb5a3b-3ad2-49ba-ba2f-4b7ce4558934"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "3b9b5b99-67db-4509-857a-582dcc022603",
+          "id": 1628,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incident List",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves all incidents from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameters that you have specified.",
+          "isActive": false,
+          "debug": true,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672901772,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d92d5fbe-6df9-4ab4-8666-aa69ef824ba5",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident List",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$top": "",
+                  "$filter": "",
+                  "$orderby": "",
+                  "$skipToken": "",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "created_datetime": "2023-01-05T06:17:00.000Z",
+                  "WorkspaceResourceGroup": "ftnt-fsr-pune-office",
+                  "WorkspaceSubscriptionId": "b490cd38-86fd-4a84-9557-01d895873451"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_incident_list",
+                "operationTitle": "Get Incident List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "38552fd1-8c64-426b-80ae-40da97dff77d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "386dcc50-e303-4404-b552-db2f46528708",
+                "title": "Microsoft Sentinel: Get Incident List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "d92d5fbe-6df9-4ab4-8666-aa69ef824ba5"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Incident List",
+              "targetStep": "/api/3/workflow_steps/38552fd1-8c64-426b-80ae-40da97dff77d",
+              "sourceStep": "/api/3/workflow_steps/d92d5fbe-6df9-4ab4-8666-aa69ef824ba5",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "77eb0294-4697-4f2f-aaa2-d3ee88a01b85"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "3c603956-4cbf-45d1-83d1-ec05537b68f6",
+          "id": 1629,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Incident",
+          "aliasName": null,
+          "tag": null,
+          "description": "Updates an incident in Microsoft Sentinel based on the incident ID, Workspace Subscription ID, Workspace Resource Group, workspace name ID, and other input parameters that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672206277,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d78061d1-b5f4-4f17-bceb-f0585fd17bff",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Incident",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "etag": "",
+                  "Title": "New Incident",
+                  "Status": "Active",
+                  "Severity": "Low",
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "Description": "",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "update_incident",
+                "operationTitle": "Update Incident",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8fe376cf-ca94-45fe-934f-96b8a5d17694"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "7e2faa18-aedb-4330-b035-22b0789f5b3c",
+                "title": "Microsoft Sentinel: Update Incident",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "d78061d1-b5f4-4f17-bceb-f0585fd17bff"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Update Incident",
+              "targetStep": "/api/3/workflow_steps/8fe376cf-ca94-45fe-934f-96b8a5d17694",
+              "sourceStep": "/api/3/workflow_steps/d78061d1-b5f4-4f17-bceb-f0585fd17bff",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "22885c30-2d89-4329-8a78-ba5c939f5abf"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "3e2944e6-4fec-4cff-9044-09b29d9aea5f",
+          "id": 1630,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Threat Intelligence Indicator",
+          "aliasName": null,
+          "tag": null,
+          "description": "Deletes a specific threat intelligence indicator in Microsoft Sentinel based on the threat Intelligence Indicator ID, workspace subscription ID, workspace resource group, workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672205629,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/5c2ad680-ea3e-4354-a0dc-6fc407842594",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "f046c728-fb4c-40c2-9491-5f2004e5a560",
+                "title": "Microsoft Sentinel: Delete Threat Intelligence Indicator",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "5c2ad680-ea3e-4354-a0dc-6fc407842594"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Threat Intelligence Indicator",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "delete_threat_intelligence_indicator",
+                "operationTitle": "Delete Threat Intelligence Indicator",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8a40fdac-2f03-4c5c-b581-0b6a05c0ad34"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Delete Threat Intelligence Indicator",
+              "targetStep": "/api/3/workflow_steps/8a40fdac-2f03-4c5c-b581-0b6a05c0ad34",
+              "sourceStep": "/api/3/workflow_steps/5c2ad680-ea3e-4354-a0dc-6fc407842594",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "8464a79c-0075-4a93-a401-69bd1e7ee221"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "422da236-ecb8-4b6e-946f-50514a1add02",
+          "id": 1631,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Create Threat Intelligence Indicator",
+          "aliasName": null,
+          "tag": null,
+          "description": "Creates a threat intelligence indicator in Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672204894,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/df64d5cd-05cd-4498-8a28-0370b5fc7db2",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Threat Intelligence Indicator",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "labels": "",
+                  "confidence": "",
+                  "description": "",
+                  "displayName": "",
+                  "threatTypes": "",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "indicatorTypes": "",
+                  "additional_fields": "",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "threatIntelligenceTags": "",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "create_threat_intelligence_indicator",
+                "operationTitle": "Create Threat Intelligence Indicator",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a2f7d064-068a-463d-891b-d99d6c234b16"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "dbf7822f-6212-48ac-bf6c-f3a3063ce10c",
+                "title": "Microsoft Sentinel: Create Threat Intelligence Indicator",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "df64d5cd-05cd-4498-8a28-0370b5fc7db2"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Create Threat Intelligence Indicator",
+              "targetStep": "/api/3/workflow_steps/a2f7d064-068a-463d-891b-d99d6c234b16",
+              "sourceStep": "/api/3/workflow_steps/df64d5cd-05cd-4498-8a28-0370b5fc7db2",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "28f6d8bc-6d43-4586-b83e-9e061e503c8f"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "5bf4eeeb-b76a-491b-8ad7-a206829c4fa6",
+          "id": 1632,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incident Alert List",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves all alerts associated with a specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group, workspace name ID that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672205993,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f7fa59fd-881f-4ac7-b90b-dee778c45c1c",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Alert List",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_alert_list",
+                "operationTitle": "Get Incident Alert List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "edc66969-16e6-4b75-8917-a0d89e8da662"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "50d866d3-88aa-4d8b-b36b-0ae26dc570de",
+                "title": "Microsoft Sentinel: Get Incident Alert List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "f7fa59fd-881f-4ac7-b90b-dee778c45c1c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Incident Alert List",
+              "targetStep": "/api/3/workflow_steps/edc66969-16e6-4b75-8917-a0d89e8da662",
+              "sourceStep": "/api/3/workflow_steps/f7fa59fd-881f-4ac7-b90b-dee778c45c1c",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "8a6681a9-d1c1-4d48-9d57-1d0fa9689b13"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "5ef2c493-fc19-4485-997a-3d421e76b1f6",
+          "id": 1633,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incident Relation",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a specific relation of a incident from Microsoft Sentinel based on the incident ID, relation name, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672206825,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/3f7ef624-f9b8-4537-8903-c6f6c9292225",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Relation",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_incident_relations",
+                "operationTitle": "Get Incident Relation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "187938d5-3ccd-4ccb-924a-07177b13de61"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "2e8605c4-4b89-4744-9f68-fbf01a457839",
+                "title": "Microsoft Sentinel: Get Incident Relation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "3f7ef624-f9b8-4537-8903-c6f6c9292225"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Incident Relation",
+              "targetStep": "/api/3/workflow_steps/187938d5-3ccd-4ccb-924a-07177b13de61",
+              "sourceStep": "/api/3/workflow_steps/3f7ef624-f9b8-4537-8903-c6f6c9292225",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "d3cae834-90cb-4453-a407-6bb51c850c68"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "6f68b530-8200-49f5-ba6a-cf5cbba523ab",
+          "id": 1634,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get All Incident Comments",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves all incident comments from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672207436,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/6f48da8d-2bc1-4b8b-84b7-4de4b58363b4",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "6e81ade7-2185-4ac2-a444-f457b92e3bc8",
+                "title": "Microsoft Sentinel: Get All Incident Comments",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "6f48da8d-2bc1-4b8b-84b7-4de4b58363b4"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get All Incident Comments",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$top": "",
+                  "$filter": "",
+                  "$orderby": "",
+                  "$skipToken": "",
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_all_incident_comments",
+                "operationTitle": "Get All Incident Comments",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "ac12de3b-94c5-499f-b534-a4dfcba26d25"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get All Incident Comments",
+              "targetStep": "/api/3/workflow_steps/ac12de3b-94c5-499f-b534-a4dfcba26d25",
+              "sourceStep": "/api/3/workflow_steps/6f48da8d-2bc1-4b8b-84b7-4de4b58363b4",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "9697a1ce-2a08-46da-9ac3-be99779988ff"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "70264404-fe02-4398-b083-e0a2862c5892",
+          "id": 1635,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Incident Comment",
+          "aliasName": null,
+          "tag": null,
+          "description": "Updates an incident comment in Microsoft Sentinel based on the incident comment ID, incident ID, message, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672207691,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/b496d7b4-f768-4aea-80fd-7d9ea2d1f4a5",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Incident Comment",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "message": "Also, please provide bookmark id.",
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "update_incident_comment",
+                "operationTitle": "Update Incident Comment",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "53c2966e-6ddd-4a7b-9744-c71ef9039899"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "4dca251d-e1db-4c48-ac83-28c3b2fcdad2",
+                "title": "Microsoft Sentinel: Update Incident Comment",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "b496d7b4-f768-4aea-80fd-7d9ea2d1f4a5"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Update Incident Comment",
+              "targetStep": "/api/3/workflow_steps/53c2966e-6ddd-4a7b-9744-c71ef9039899",
+              "sourceStep": "/api/3/workflow_steps/b496d7b4-f768-4aea-80fd-7d9ea2d1f4a5",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "c431675a-9857-41c5-b276-33c623620512"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "72d5fda3-8778-4044-96b5-7d4148ec6456",
+          "id": 1636,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "> Microsoft Sentinel > Fetch Incidents",
+          "aliasName": null,
+          "tag": null,
+          "description": "Fetches all incidents from Microsoft Sentinel based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672998468,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/3c8dd29e-e8c7-4fdc-95be-0248026b2f15",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Macro Value",
+              "description": null,
+              "arguments": {
+                "params": {
+                  "iri": "/api/wf/api/dynamic-variable/?format=json&name={{vars.MicrosoftSentinelLastIncidentPullTime}}",
+                  "body": "",
+                  "method": "GET"
+                },
+                "version": "3.2.2",
+                "connector": "cyops_utilities",
+                "operation": "make_cyops_request",
+                "operationTitle": "FSR: Make FortiSOAR API Call",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "2e0f7c52-b4eb-4478-b785-d896e722ad9d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  },
+                  "_configuration_schema": "[\n  {\n    \"title\": \"Workspace Subscription ID\",\n    \"description\": \"Azure active directory subscription ID from which you want to retrieve the incident from Microsoft Sentinel.\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"text\",\n    \"name\": \"WorkspaceSubscriptionId\",\n    \"value\": \"b490cd38-86fd-4a84-9557-01d895873451\"\n  },\n  {\n    \"title\": \"Workspace Resource Group\",\n    \"description\": \"Azure active directory resource group from which you want to retrieve the incident from Microsoft Sentinel.\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"text\",\n    \"name\": \"WorkspaceResourceGroup\",\n    \"value\": \"ftnt-fsr-pune-office\"\n  },\n  {\n    \"title\": \"Workspace Name\",\n    \"description\": \"Name of the workspace from which you want to retrieve the incident from Microsoft Sentinel.\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"text\",\n    \"name\": \"WorkspaceName\",\n    \"value\": \"FortiSOAR-Integration\"\n  },\n  {\n    \"title\": \"Pull Incidents from Last X Minutes\",\n    \"name\": \"Pull_Sample_Events_in_Past_X_Minutes\",\n    \"type\": \"text\",\n    \"tooltip\": \"Fetch incidents from last X minutes. e.g 5\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"value\": 10\n  },\n  {\n    \"title\": \"Severity\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"select\",\n    \"name\": \"Severity\",\n    \"description\": \"(Optional) Specify a severity for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational.\",\n    \"options\": [\n      \"High\",\n      \"Medium\",\n      \"Low\",\n      \"Informational\"\n    ]\n  },\n  {\n    \"title\": \"Status\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"select\",\n    \"name\": \"Status\",\n    \"description\": \"(Optional) Specify a status for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Active, New, or Closed.\",\n    \"options\": [\n      \"Active\",\n      \"New\",\n      \"Closed\"\n    ]\n  }\n]",
+                  "MicrosoftSentinelLastIncidentPullTime": "MicrosoftSentinelLastIncidentPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}"
+                }
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "3c8dd29e-e8c7-4fdc-95be-0248026b2f15"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Configuration",
+              "description": null,
+              "arguments": {
+                "Status": "New",
+                "Severity": "High",
+                "WorkspaceName": "FortiSOAR-Integration",
+                "WorkspaceResourceGroup": "ftnt-fsr-pune-office",
+                "WorkspaceSubscriptionId": "b490cd38-86fd-4a84-9557-01d895873451",
+                "Pull_Sample_Events_in_Past_X_Minutes": "10"
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "6218abef-42fa-4630-975d-a054681c3a50"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Save Result",
+              "description": null,
+              "arguments": {
+                "data": "{{vars.steps.Get_Incident_List.data.get(\"value\", [])}}",
+                "macro_name": "{{vars.MicrosoftSentinelLastIncidentPullTime}}",
+                "WorkspaceName": "{{vars.WorkspaceName}}",
+                "curr_timestamp": "{{vars.curr_timestamp}}",
+                "WorkspaceResourceGroup": "{{vars.WorkspaceResourceGroup}}",
+                "WorkspaceSubscriptionId": "{{vars.WorkspaceSubscriptionId}}"
+              },
+              "status": null,
+              "top": "705",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "7e1c74ef-96c5-416e-88f0-84a58b2d730e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident List",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$top": "",
+                  "Status": "{{vars.Status}}",
+                  "$filter": "",
+                  "$orderby": "",
+                  "Severity": "{{vars.Severity}}",
+                  "$skipToken": "",
+                  "WorkspaceName": "{{vars.WorkspaceName}}",
+                  "created_datetime": "{{vars.last_pull_time}}",
+                  "WorkspaceResourceGroup": "{{vars.WorkspaceResourceGroup}}",
+                  "WorkspaceSubscriptionId": "{{vars.WorkspaceSubscriptionId}}"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_incident_list",
+                "operationTitle": "Get Incident List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "570",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a0e6cdaf-5607-495d-9788-09deaef98a54"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Set Time Configuration",
+              "description": null,
+              "arguments": {
+                "curr_timestamp": "{{arrow.utcnow().format('YYYY-MM-DDTHH:mm:ss.ssss')+\"Z\"}}",
+                "last_pull_time": "{% if (vars.steps.Get_Macro_Value.data[\"hydra:member\"] | length) < 1%}{{arrow.utcnow().shift(minutes=-vars.Pull_Sample_Events_in_Past_X_Minutes).format('YYYY-MM-DDTHH:mm:ss.ssss')}}Z{% else %}{{vars.steps.Get_Macro_Value.data['hydra:member'][0]['value']}}{% endif %}"
+              },
+              "status": null,
+              "top": "435",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "c74d0632-c95a-427d-a2d9-edde4875f907"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Configuration -> Get Macro Value",
+              "targetStep": "/api/3/workflow_steps/2e0f7c52-b4eb-4478-b785-d896e722ad9d",
+              "sourceStep": "/api/3/workflow_steps/6218abef-42fa-4630-975d-a054681c3a50",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "05c2b921-1f59-4f9d-95c9-a61698198c47"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get Macro Value -> Set Time Configuration",
+              "targetStep": "/api/3/workflow_steps/c74d0632-c95a-427d-a2d9-edde4875f907",
+              "sourceStep": "/api/3/workflow_steps/2e0f7c52-b4eb-4478-b785-d896e722ad9d",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "622742e1-8d37-4983-b481-acd8d133dbb2"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Configuration",
+              "targetStep": "/api/3/workflow_steps/6218abef-42fa-4630-975d-a054681c3a50",
+              "sourceStep": "/api/3/workflow_steps/3c8dd29e-e8c7-4fdc-95be-0248026b2f15",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "66721ae3-814b-476b-b4c9-4752a8ba336d"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Set Time Configuration -> Get Incident List",
+              "targetStep": "/api/3/workflow_steps/a0e6cdaf-5607-495d-9788-09deaef98a54",
+              "sourceStep": "/api/3/workflow_steps/c74d0632-c95a-427d-a2d9-edde4875f907",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "72676761-3435-4fd1-9123-4a1802e03fc8"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get Incident List -> Save Result",
+              "targetStep": "/api/3/workflow_steps/7e1c74ef-96c5-416e-88f0-84a58b2d730e",
+              "sourceStep": "/api/3/workflow_steps/a0e6cdaf-5607-495d-9788-09deaef98a54",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "9fa34ebc-619b-438f-b3c2-7d496cdad5f0"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "73f30444-db95-411c-ace9-dada9da16781",
+          "id": 1637,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "dataingestion",
+            "fetch",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Create Watchlist",
+          "aliasName": null,
+          "tag": null,
+          "description": "Creates a watchlist in Microsoft Sentinel based on the display name, item search key, provider, source, workspace subscription ID, workspace resource group, workspace name and other input parameters that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672638400,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/78fac159-a29e-481e-919d-9eae6718d684",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "f425c4d0-034d-4cd6-8823-2ae2bf1d30d4",
+                "title": "Microsoft Sentinel: Create Watchlist",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "78fac159-a29e-481e-919d-9eae6718d684"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Watchlist",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "etag": "",
+                  "source": "Microsoft",
+                  "provider": "Local file",
+                  "description": "",
+                  "displayName": "High Value Assets Watchlist",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "itemsSearchKey": "Header",
+                  "custom_attributes": "",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "create_watchlist",
+                "operationTitle": "Create Watchlist",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a1c3bbf3-3cdb-4fb6-94db-14afd109fef0"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Create Watchlist",
+              "targetStep": "/api/3/workflow_steps/a1c3bbf3-3cdb-4fb6-94db-14afd109fef0",
+              "sourceStep": "/api/3/workflow_steps/78fac159-a29e-481e-919d-9eae6718d684",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "48ba2281-6df1-44d3-9f34-f23d6dd93d58"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "7b40607b-6269-4b46-9a74-2d5ee69a81f3",
+          "id": 1638,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Create Watchlist Item",
+          "aliasName": null,
+          "tag": null,
+          "description": "Creates a watchlist item in Microsoft Sentinel based on the watchlist alias, item key value, workspace subscription ID, workspace resource group, workspace name and other input parameters that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672638933,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/9d4e6476-c290-426b-bea6-6102bd04b637",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "ab11b4e3-09d8-41d1-bb1f-e7ac65c1ebce",
+                "title": "Microsoft Sentinel: Create Watchlist Item",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "9d4e6476-c290-426b-bea6-6102bd04b637"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Watchlist Item",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "etag": "",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "itemsKeyValue": "{\n  \"Gateway subnet\": \"10.0.255.224/27\",\n  \"Web Tier\": \"10.0.1.0/24\",\n  \"Business tier\": \"10.0.2.0/24\",\n  \"Data tier\": \"10.0.2.0/24\",\n  \"Private DMZ in\": \"10.0.0.0/27\",\n  \"Public DMZ out\": \"10.0.0.96/27\"\n}",
+                  "watchlistAlias": "highValueAsset",
+                  "custom_attributes": "",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "create_watchlist_item",
+                "operationTitle": "Create Watchlist Item",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "bfa20b68-727b-4e5a-b296-e04bd6520e7a"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Create Watchlist Item",
+              "targetStep": "/api/3/workflow_steps/bfa20b68-727b-4e5a-b296-e04bd6520e7a",
+              "sourceStep": "/api/3/workflow_steps/9d4e6476-c290-426b-bea6-6102bd04b637",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "a127e111-300d-4dd8-935d-9f20655a9fca"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "7cdb076a-3891-4c3d-8442-831401d9bcc5",
+          "id": 1639,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Incident Relation",
+          "aliasName": null,
+          "tag": null,
+          "description": "Deletes a specific incident relation in Microsoft Sentinel based on the incident ID, relation name, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672207220,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/fd1c4c9d-f1b2-42e1-9738-d130a4691503",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Incident Relation",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "delete_incident_relation",
+                "operationTitle": "Delete Incident Relation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "cb459df8-6456-4ea0-a1f5-76e9ffdcb0c9"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "dd31ebdc-5dcf-4b70-9f73-c3638fef27db",
+                "title": "Microsoft Sentinel: Delete Incident Relation",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "fd1c4c9d-f1b2-42e1-9738-d130a4691503"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Delete Incident Relation",
+              "targetStep": "/api/3/workflow_steps/cb459df8-6456-4ea0-a1f5-76e9ffdcb0c9",
+              "sourceStep": "/api/3/workflow_steps/fd1c4c9d-f1b2-42e1-9738-d130a4691503",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "1f36e903-9ab1-425d-b8c9-1282fa1b5f22"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "8195a3ca-f6dc-4ea0-a6ea-c97b4684c5b6",
+          "id": 1640,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Create Incident Comment",
+          "aliasName": null,
+          "tag": null,
+          "description": "Creates a incident comment in Microsoft Sentinel based on the incident ID, message, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672207342,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/733dd832-78ac-4554-8507-50c57680faaa",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "cbd59a89-1e12-4f2c-b740-c5f9b24c6d8c",
+                "title": "Microsoft Sentinel: Create Incident Comment",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "733dd832-78ac-4554-8507-50c57680faaa"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Incident Comment",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "message": "Please provide entity id.",
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "create_incident_comment",
+                "operationTitle": "Create Incident Comment",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "f9d4836b-a01c-4056-bf39-b69d2983755f"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Create Incident Comment",
+              "targetStep": "/api/3/workflow_steps/f9d4836b-a01c-4056-bf39-b69d2983755f",
+              "sourceStep": "/api/3/workflow_steps/733dd832-78ac-4554-8507-50c57680faaa",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "72b965da-2850-45c1-8076-1f3b35a2ade0"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "9084d9e0-4e29-474d-a013-f5a321b68f28",
+          "id": 1641,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Watchlist",
+          "aliasName": null,
+          "tag": null,
+          "description": "Updates an watchlist in Microsoft Sentinel based on the watchlist alias, display name, item search key, provider, source, workspace subscription ID, workspace resource group, workspace name, and other input parameters that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672638683,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/7700dfce-0729-44f8-9277-b9ff457750a4",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Watchlist",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "etag": "",
+                  "source": "Microsoft",
+                  "provider": "Local file",
+                  "description": "",
+                  "displayName": "High Value Assets Watchlist",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "itemsSearchKey": "Header",
+                  "watchlistAlias": "highValueAsset",
+                  "custom_attributes": "",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "update_watchlist",
+                "operationTitle": "Update Watchlist",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "4104a7ff-b196-4749-9001-e43efdc1c988"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "4a8e517e-58a8-4cf6-9872-258420e67d62",
+                "title": "Microsoft Sentinel: Update Watchlist",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "7700dfce-0729-44f8-9277-b9ff457750a4"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Update Watchlist",
+              "targetStep": "/api/3/workflow_steps/4104a7ff-b196-4749-9001-e43efdc1c988",
+              "sourceStep": "/api/3/workflow_steps/7700dfce-0729-44f8-9277-b9ff457750a4",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "97202f5a-ffbb-4a2c-934a-303f7eb8712c"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "972e1925-802c-421b-9395-ad6b147857a7",
+          "id": 1642,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Watchlist Item",
+          "aliasName": null,
+          "tag": null,
+          "description": "Updates an watchlist item in Microsoft Sentinel based on the watchlist item ID, watchlist alias, item key value, workspace subscription ID, workspace resource group, workspace name, and other input parameters that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672639276,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/44f6a4f6-d106-4a32-89b5-22400a7a7e77",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Watchlist Item",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "etag": "",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "itemsKeyValue": "{\n  \"Gateway subnet\": \"10.0.255.224/27\",\n  \"Web Tier\": \"10.0.1.0/24\",\n  \"Business tier\": \"10.0.2.0/24\",\n  \"Data tier\": \"10.0.2.0/24\",\n  \"Private DMZ in\": \"10.0.0.0/27\",\n  \"Public DMZ out\": \"10.0.0.96/27\"\n}",
+                  "watchlistAlias": "highValueAsset",
+                  "watchlistItemId": "3f8901fe-63d9-4875-9ad5-9fb3b8105797",
+                  "custom_attributes": "",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "update_watchlist_item",
+                "operationTitle": "Update Watchlist Item",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "20977bcd-2cf9-4d7e-9710-9dbf48b6d3e5"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "e1e0f347-1455-4dba-9e15-5d72bede0397",
+                "title": "Microsoft Sentinel: Update Watchlist Item",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "44f6a4f6-d106-4a32-89b5-22400a7a7e77"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Update Watchlist Item",
+              "targetStep": "/api/3/workflow_steps/20977bcd-2cf9-4d7e-9710-9dbf48b6d3e5",
+              "sourceStep": "/api/3/workflow_steps/44f6a4f6-d106-4a32-89b5-22400a7a7e77",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "f8b128de-95ca-4813-ba9b-0b702139d7f2"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "9cf9b558-561f-45dd-9c3c-61f61fad8a47",
+          "id": 1643,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incident Comment",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a specific comment of a incident from Microsoft Sentinel based on the incident comment ID, incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672207569,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/2ed40b27-96b7-4fec-87bb-c30852862acd",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "900eb88d-8aaa-4c05-93e8-55c2d7e8f9ab",
+                "title": "Microsoft Sentinel: Get Incident Comment",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "2ed40b27-96b7-4fec-87bb-c30852862acd"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Comment",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_incident_comment",
+                "operationTitle": "Get Incident Comment",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "3d41e6a7-6a26-4b04-963b-100855243726"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Incident Comment",
+              "targetStep": "/api/3/workflow_steps/3d41e6a7-6a26-4b04-963b-100855243726",
+              "sourceStep": "/api/3/workflow_steps/2ed40b27-96b7-4fec-87bb-c30852862acd",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "f1f13997-d151-4d09-beac-59818fb8d3c0"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "a2f75f28-2ed8-4b3b-837a-7bf198bae0c9",
+          "id": 1644,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get All Threat Intelligence Indicators",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves all threat intelligence indicators from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672205001,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/7fdb39fa-4f4b-4c5a-ae3c-01d7d81fee61",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "5eff9f19-eaa4-400d-8900-62106012c72d",
+                "title": "Microsoft Sentinel: Get All Threat Intelligence Indicators",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "7fdb39fa-4f4b-4c5a-ae3c-01d7d81fee61"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get All Threat Intelligence Indicators",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$top": "",
+                  "$filter": "",
+                  "$orderby": "",
+                  "$skipToken": "",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_all_threat_intelligence_indicators",
+                "operationTitle": "Get All Threat Intelligence Indicators",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "9dd62349-0f4a-49ae-a84e-18f3a354460c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get All Threat Intelligence Indicators",
+              "targetStep": "/api/3/workflow_steps/9dd62349-0f4a-49ae-a84e-18f3a354460c",
+              "sourceStep": "/api/3/workflow_steps/7fdb39fa-4f4b-4c5a-ae3c-01d7d81fee61",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "027da6d2-14be-4f56-906f-984ceedbebed"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "a478ffbe-4a0c-429f-abb5-72f030f17053",
+          "id": 1645,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Incident Comment",
+          "aliasName": null,
+          "tag": null,
+          "description": "Deletes a specific incident comment in Microsoft Sentinel based on the incident comment ID, incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672207785,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/9b4097f2-972f-4a99-aed9-94dc6e3d26f2",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0d8796a9-bc7e-4805-add2-eebae27ec7ce",
+                "title": "Microsoft Sentinel: Delete Incident Comment",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "9b4097f2-972f-4a99-aed9-94dc6e3d26f2"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Incident Comment",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "delete_incident_comment",
+                "operationTitle": "Delete Incident Comment",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "f7ea100e-833d-4221-97cc-7d64eebe8732"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Delete Incident Comment",
+              "targetStep": "/api/3/workflow_steps/f7ea100e-833d-4221-97cc-7d64eebe8732",
+              "sourceStep": "/api/3/workflow_steps/9b4097f2-972f-4a99-aed9-94dc6e3d26f2",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "97226b23-cab5-4731-b177-b7aa3ed83c84"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "af6026ed-2667-4c93-bbf5-c5b28876b8bc",
+          "id": 1646,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Watchlist Item",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a specific watchlist item from Microsoft Sentinel based on the watchlist item ID, watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672639133,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/15d96830-6c0d-4b19-9356-3b00c6c528fa",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "181ab7f6-7b37-45b1-9c5b-45a9641742aa",
+                "title": "Microsoft Sentinel: Get Watchlist Item",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "15d96830-6c0d-4b19-9356-3b00c6c528fa"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Watchlist Item",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "watchlistAlias": "highValueAsset",
+                  "watchlistItemId": "3f8901fe-63d9-4875-9ad5-9fb3b8105797",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_watchlist_item",
+                "operationTitle": "Get Watchlist Item",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "2aaeffe9-0668-4691-9c19-29d654c323ed"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Watchlist Item",
+              "targetStep": "/api/3/workflow_steps/2aaeffe9-0668-4691-9c19-29d654c323ed",
+              "sourceStep": "/api/3/workflow_steps/15d96830-6c0d-4b19-9356-3b00c6c528fa",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "392134bb-710d-4907-b76d-3127502aeb08"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "b7534939-a911-45b0-ac4e-587b923f3f76",
+          "id": 1647,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incident Bookmarks List",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves an bookmarks associated with a specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672206160,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/a5396a55-f85c-4ce6-8699-5670c7513975",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Bookmarks List",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_bookmarks_list",
+                "operationTitle": "Get Incident Bookmarks List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "6e5c9d96-e5bd-41da-9c86-5802b27df701"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "88e01041-1990-4f39-b5cd-cbc2f48a5a81",
+                "title": "Microsoft Sentinel: Get Incident Bookmarks List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "a5396a55-f85c-4ce6-8699-5670c7513975"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Incident Bookmarks List",
+              "targetStep": "/api/3/workflow_steps/6e5c9d96-e5bd-41da-9c86-5802b27df701",
+              "sourceStep": "/api/3/workflow_steps/a5396a55-f85c-4ce6-8699-5670c7513975",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "b906d4a1-4463-4e0f-afe4-fed629013c4d"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "b88d8b6e-bd13-4288-9aea-27734e990d89",
+          "id": 1648,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Microsoft Sentinel > Ingest",
+          "aliasName": null,
+          "tag": null,
+          "description": "This playbook demonstrate the list incidents operation.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672998460,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/06c6dcba-cf29-497c-bd3e-95995362d0cf",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "aaf03203-f6c9-4e37-ab0b-d9c237647be9",
+                "title": "Microsoft Sentinel > Ingest",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "06c6dcba-cf29-497c-bd3e-95995362d0cf"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "List Incidents",
+              "description": null,
+              "arguments": {
+                "arguments": [],
+                "apply_async": false,
+                "step_variables": [],
+                "pass_parent_env": false,
+                "pass_input_record": false,
+                "workflowReference": "/api/3/workflows/73f30444-db95-411c-ace9-dada9da16781"
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+              "group": null,
+              "uuid": "4fd6af08-4486-4d87-9ead-9920af0fc17f"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Fetch Incident Alert",
+              "description": null,
+              "arguments": {
+                "for_each": {
+                  "item": "{{vars.steps.List_Incidents.data}}",
+                  "parallel": false,
+                  "condition": ""
+                },
+                "arguments": {
+                  "incidentdata": "{{vars.item}}",
+                  "WorkspaceName": "{{vars.steps.List_Incidents.WorkspaceName}}",
+                  "WorkspaceResourceGroup": "{{vars.steps.List_Incidents.WorkspaceResourceGroup}}",
+                  "WorkspaceSubscriptionId": "{{vars.steps.List_Incidents.WorkspaceSubscriptionId}}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "pass_parent_env": false,
+                "pass_input_record": false,
+                "workflowReference": "/api/3/workflows/cf89bfca-2b17-4338-b712-aa9beb11ca97"
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+              "group": null,
+              "uuid": "5089bafb-3edc-4af8-87a8-ff00dae5d115"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Last Incident Pull Time",
+              "description": null,
+              "arguments": {
+                "params": {
+                  "macro": "{{vars.steps.List_Incidents.macro_name}}",
+                  "value": "{{vars.steps.List_Incidents.curr_timestamp}}"
+                },
+                "version": "3.2.2",
+                "connector": "cyops_utilities",
+                "operation": "updatemacro",
+                "operationTitle": "FSR: Create/Update Global Variables",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "435",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "ef85b427-33cc-4018-8feb-a0f74e511448"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "List Incidents -> Fetch Incident Alert",
+              "targetStep": "/api/3/workflow_steps/5089bafb-3edc-4af8-87a8-ff00dae5d115",
+              "sourceStep": "/api/3/workflow_steps/4fd6af08-4486-4d87-9ead-9920af0fc17f",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "5952d10b-5186-48de-b492-6ccf10e5b599"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> List Incidents",
+              "targetStep": "/api/3/workflow_steps/4fd6af08-4486-4d87-9ead-9920af0fc17f",
+              "sourceStep": "/api/3/workflow_steps/06c6dcba-cf29-497c-bd3e-95995362d0cf",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "acfb3e75-109d-4877-a372-3c70f1d31bfe"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Fetch Incident Alert -> Update Last Incident Pull Time",
+              "targetStep": "/api/3/workflow_steps/ef85b427-33cc-4018-8feb-a0f74e511448",
+              "sourceStep": "/api/3/workflow_steps/5089bafb-3edc-4af8-87a8-ff00dae5d115",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "d78db12c-7a12-40b5-a74f-a50a7af4dc82"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "ba46dcc0-5bb2-4b27-b390-ef7433be2bb5",
+          "id": 1649,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "dataingestion",
+            "ingest",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Watchlist",
+          "aliasName": null,
+          "tag": null,
+          "description": "Deletes a specific watchlist in Microsoft Sentinel based on the watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672638777,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/80d122cd-726e-40ce-a5e9-75f0749fd384",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Watchlist",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "relationName": "highValueAsset",
+                  "WorkspaceName": "FortiSOAR-Integratio",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "delete_watchlist",
+                "operationTitle": "Delete Watchlist",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "5c11beca-e633-4a85-a8f5-9adbe0ec412e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "21d7cee5-3346-437b-8b8e-bc98fd30729d",
+                "title": "Microsoft Sentinel: Delete Watchlist",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "80d122cd-726e-40ce-a5e9-75f0749fd384"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Delete Watchlist",
+              "targetStep": "/api/3/workflow_steps/5c11beca-e633-4a85-a8f5-9adbe0ec412e",
+              "sourceStep": "/api/3/workflow_steps/80d122cd-726e-40ce-a5e9-75f0749fd384",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "76bd6f48-3260-432e-80f8-8b060e92932f"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "bf695c0f-3c70-49b3-a2ff-3327f6adefaa",
+          "id": 1650,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Threat Intelligence Indicator",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a specific threat intelligence indicator from Microsoft Sentinel based on the threat intelligence indicator ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672205278,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/28496036-b528-40c9-9050-1497f93ff1a3",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "a8e8d260-3728-4dd8-8553-083b9be6ddad",
+                "title": "Microsoft Sentinel: Get Threat Intelligence Indicator",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "28496036-b528-40c9-9050-1497f93ff1a3"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Threat Intelligence Indicator",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_threat_intelligence_indicator",
+                "operationTitle": "Get Threat Intelligence Indicator",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8404465c-0100-4c6b-9238-0e7ebf3a714a"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Threat Intelligence Indicator",
+              "targetStep": "/api/3/workflow_steps/8404465c-0100-4c6b-9238-0e7ebf3a714a",
+              "sourceStep": "/api/3/workflow_steps/28496036-b528-40c9-9050-1497f93ff1a3",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "1add5766-3bc9-46e6-a1d0-ead182ade1f6"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "c0975faa-a3a2-4e53-9b23-46f78dbbf4be",
+          "id": 1651,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incident Details",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves an specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672205903,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/95cf092f-dbac-499e-a332-b5a3da70d350",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Details",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_incident",
+                "operationTitle": "Get Incident Details",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "2a7d9928-c611-4cfa-bf05-8a72a24657d9"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "7a7afece-075a-459d-a28d-5a828100bb5e",
+                "title": "Microsoft Sentinel: Get Incident Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "95cf092f-dbac-499e-a332-b5a3da70d350"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Incident Details",
+              "targetStep": "/api/3/workflow_steps/2a7d9928-c611-4cfa-bf05-8a72a24657d9",
+              "sourceStep": "/api/3/workflow_steps/95cf092f-dbac-499e-a332-b5a3da70d350",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "a486db0a-7008-46d1-9ed8-9794533b1eef"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "c0de2fe1-6521-46ec-adaf-600f32ffd309",
+          "id": 1652,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get All Watchlist Items",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves all watchlist items from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameter you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672639044,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/cc5b8574-ab5e-46a2-84ab-f9547b03414b",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get All Watchlist Items",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$skipToken": "",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "watchlistAlias": "highValueAsset",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_all_watchlist_items",
+                "operationTitle": "Get All Watchlist Items",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "7f36591f-c681-41e3-8d09-411a72313c40"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "2823cb8b-6260-49f1-afb5-dfc26ba5dd85",
+                "title": "Microsoft Sentinel: Get All Watchlist Items",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "cc5b8574-ab5e-46a2-84ab-f9547b03414b"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get All Watchlist Items",
+              "targetStep": "/api/3/workflow_steps/7f36591f-c681-41e3-8d09-411a72313c40",
+              "sourceStep": "/api/3/workflow_steps/cc5b8574-ab5e-46a2-84ab-f9547b03414b",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "4cdf8cb2-8928-47f6-8f98-417aa72fbfe6"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "cad7c746-7290-4906-a4c0-af9c0b657973",
+          "id": 1653,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Microsoft Sentinel > Fetch Incident Alerts",
+          "aliasName": null,
+          "tag": null,
+          "description": "Fetch alerts for specified incident.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [
+            "incidentdata",
+            "WorkspaceSubscriptionId",
+            "WorkspaceResourceGroup",
+            "WorkspaceName"
+          ],
+          "synchronous": false,
+          "lastModifyDate": 1672998477,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d97d5829-38e3-408a-ad05-8c15a0887dcf",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Record",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "name": "{{vars.list_incident.properties.title}}",
+                  "phase": "/api/3/picklists/bb740542-f699-11e7-8c3f-9a214cf093ae",
+                  "resSla": "/api/3/picklists/72979f64-e8b9-4888-a965-957e0ec24818",
+                  "source": "Microsoft Sentinel",
+                  "status": "{{vars.list_incident.properties.status | resolveRange(vars.incident_status_map)}}",
+                  "category": "/api/3/picklists/703218fc-f69a-11e7-8c3f-9a214cf093ae",
+                  "severity": "{{vars.list_incident.properties.severity | resolveRange(vars.incident_severity_map)}}",
+                  "slaState": "/api/3/picklists/72979f64-e8b9-4888-a965-957e0ec24818",
+                  "sourceId": "{{vars.list_incident.name}}",
+                  "__replace": "true",
+                  "sourcedata": "{{vars.list_incident | toJSON}}",
+                  "description": "{{vars.list_incident.properties.description}}",
+                  "slaPercentage": 0
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/incidents",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "435",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "150d1246-fdff-4807-9f6b-ebf1b6b8eaad"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Alert List",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "{{vars.input.params.incidentdata.name}}",
+                  "WorkspaceName": "{{vars.input.params.WorkspaceName}}",
+                  "WorkspaceResourceGroup": "{{vars.input.params.WorkspaceResourceGroup}}",
+                  "WorkspaceSubscriptionId": "{{vars.input.params.WorkspaceSubscriptionId}}"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_alert_list",
+                "operationTitle": "Get Incident Alert List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "6bd7c22c-72eb-44d8-a8a9-c940f2198c61"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Append Incident List And Alert List",
+              "description": null,
+              "arguments": {
+                "incident": "{% set incident = vars.input.params['incidentdata'].update({'alerts': vars.steps.Get_Incident_Alert_List.data})%}",
+                "list_incident": "{{vars.input.params['incidentdata']}}",
+                "incident_status_map": "{'Active': {{'IncidentStatus' | picklist('In Progress') }}, 'Closed': {{'IncidentStatus' | picklist('Resolved') }}, 'New': {{'IncidentStatus'| picklist('Open') }}}",
+                "incident_severity_map": "{'Informational': {{'Severity' | picklist('Minimal') }}, 'Low': {{'Severity' | picklist('Low') }}, 'Medium': {{'Severity' | picklist('Medium') }}, 'High': {{'Severity'| picklist('High') }}}"
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "aed3028f-0e68-4129-9b90-99c8b00488b9"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "d97d5829-38e3-408a-ad05-8c15a0887dcf"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Incident Alert List",
+              "targetStep": "/api/3/workflow_steps/6bd7c22c-72eb-44d8-a8a9-c940f2198c61",
+              "sourceStep": "/api/3/workflow_steps/d97d5829-38e3-408a-ad05-8c15a0887dcf",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "6ca6ecea-8f27-4926-9234-b9e5b4053019"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Append Incident List And Alert List -> Create Record",
+              "targetStep": "/api/3/workflow_steps/150d1246-fdff-4807-9f6b-ebf1b6b8eaad",
+              "sourceStep": "/api/3/workflow_steps/aed3028f-0e68-4129-9b90-99c8b00488b9",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "9b17ec0f-ea4c-4895-93c8-3eb0cb3f9fc3"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get Incident Alert List -> Append Incident List And Alert List",
+              "targetStep": "/api/3/workflow_steps/aed3028f-0e68-4129-9b90-99c8b00488b9",
+              "sourceStep": "/api/3/workflow_steps/6bd7c22c-72eb-44d8-a8a9-c940f2198c61",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "e5a7f4ed-2a79-457b-b824-44caae5fcc66"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "cf89bfca-2b17-4338-b712-aa9beb11ca97",
+          "id": 1654,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "dataingestion",
+            "create",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Incident Relations",
+          "aliasName": null,
+          "tag": null,
+          "description": "Updates an incident relations in Microsoft Sentinel based on the incident ID, relation name, resource ID, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672207093,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/a42e2676-48e8-4e22-8d1c-d853b1dd38a8",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Incident Relations",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "resourceId": "/subscriptions/6212c9c8-54a6-41ee-846b-37727030c040/resourceGroups/fortinet-pune/providers/Microsoft.OperationalInsights/workspaces/FortiSOAR-Integration/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096",
+                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "update_incident_relations",
+                "operationTitle": "Update Incident Relations",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "2707a795-6189-45bd-8df3-f4af4d483734"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "be9fbc24-f034-45f4-8df7-36768f7c22ca",
+                "title": "Microsoft Sentinel: Update Incident Relations",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "a42e2676-48e8-4e22-8d1c-d853b1dd38a8"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Update Incident Relations",
+              "targetStep": "/api/3/workflow_steps/2707a795-6189-45bd-8df3-f4af4d483734",
+              "sourceStep": "/api/3/workflow_steps/a42e2676-48e8-4e22-8d1c-d853b1dd38a8",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "8c1cfac9-de0a-48d7-8f69-4ab9abb5e8bb"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "d53d5c45-c7bb-44f4-98b8-ee1b9fc38ec4",
+          "id": 1655,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Create Incident Relations",
+          "aliasName": null,
+          "tag": null,
+          "description": "Creates a incident relations in Microsoft Sentinel based on the incident ID, relation name, resource ID, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672207118,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/53d91333-c7e0-4f3d-96ba-ba4524cdd5ea",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0bf96e29-1007-424b-b04e-c55aaf9aee49",
+                "title": "Microsoft Sentinel: Create Incident Relations",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "53d91333-c7e0-4f3d-96ba-ba4524cdd5ea"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Incident Relations",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "resourceId": "/subscriptions/6212c9c8-54a6-41ee-846b-37727030c040/resourceGroups/fortinet-pune/providers/Microsoft.OperationalInsights/workspaces/FortiSOAR-Integration/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096",
+                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "create_incident_relations",
+                "operationTitle": "Create Incident Relations",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "e4aa85c7-2ba1-4537-9c85-4b3e88d0b54d"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Create Incident Relations",
+              "targetStep": "/api/3/workflow_steps/e4aa85c7-2ba1-4537-9c85-4b3e88d0b54d",
+              "sourceStep": "/api/3/workflow_steps/53d91333-c7e0-4f3d-96ba-ba4524cdd5ea",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "dbd0e323-cfdf-4a8c-bcf5-1411548005b7"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "e8f5053e-d8d6-4ad9-b2bf-eb9065ca6e37",
+          "id": 1656,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incident Entities List",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves all entities associated with a specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace name ID, workspace resource group, workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672206074,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/68765b7d-a23d-463e-8d88-b0643e900345",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "173e782a-8807-40ab-a791-8e1247b7451a",
+                "title": "Microsoft Sentinel: Get Incident Entities List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "68765b7d-a23d-463e-8d88-b0643e900345"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Entities List",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_entities_list",
+                "operationTitle": "Get Incident Entities List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "fef293df-9142-43fd-ac91-719f5d178dcd"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Incident Entities List",
+              "targetStep": "/api/3/workflow_steps/fef293df-9142-43fd-ac91-719f5d178dcd",
+              "sourceStep": "/api/3/workflow_steps/68765b7d-a23d-463e-8d88-b0643e900345",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "e3a3600f-339e-4d60-92d4-ba1a13a60773"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "f4a34344-b9fd-45b3-9097-0625ff327bcf",
+          "id": 1657,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Watchlist Item",
+          "aliasName": null,
+          "tag": null,
+          "description": "Deletes a specific watchlist item in Microsoft Sentinel based on the watchlist item ID, watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672639364,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/b872c93c-6ec9-4db0-abe0-9fdac4ccf508",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Watchlist Item",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "watchlistAlias": "highValueAsset",
+                  "watchlistItemId": "82ba292c-dc97-4dfc-969d-d4dd9e666842",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "delete_watchlist_item",
+                "operationTitle": "Delete Watchlist Item",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a005b46a-1901-4250-8e3e-5b3d41138acc"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "5266a9fb-4a8d-4156-855d-a22f88664b3d",
+                "title": "Microsoft Sentinel: Delete Watchlist Item",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "b872c93c-6ec9-4db0-abe0-9fdac4ccf508"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Delete Watchlist Item",
+              "targetStep": "/api/3/workflow_steps/a005b46a-1901-4250-8e3e-5b3d41138acc",
+              "sourceStep": "/api/3/workflow_steps/b872c93c-6ec9-4db0-abe0-9fdac4ccf508",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "90146641-997b-4c4f-815a-364ed994f76c"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "f68de8d1-a3a3-4f70-aa8d-3a1f6e191717",
+          "id": 1658,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get All Watchlist",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves all watchlist from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameter you have specified.",
+          "isActive": false,
+          "debug": true,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1672997322,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/6e8e890c-057f-4183-b7e2-22ec4c005af7",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "1af52996-0345-4fe3-bf93-069563193ec4",
+                "title": "Microsoft Sentinel: Get All Watchlist",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "6e8e890c-057f-4183-b7e2-22ec4c005af7"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get All Watchlist",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$skipToken": "",
+                  "WorkspaceName": "FortiSOAR-Integration",
+                  "WorkspaceResourceGroup": "fortinet-pune",
+                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                },
+                "version": "1.0.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_all_watchlist",
+                "operationTitle": "Get All Watchlist",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "c59bfbf3-4f96-40e5-885f-57f2ac223641"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get All Watchlist",
+              "targetStep": "/api/3/workflow_steps/c59bfbf3-4f96-40e5-885f-57f2ac223641",
+              "sourceStep": "/api/3/workflow_steps/6e8e890c-057f-4183-b7e2-22ec4c005af7",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "365b2f1e-ad86-4021-9ce1-6dd1f8e6668c"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "ffbc41be-c852-4b73-96d8-3032e992f363",
+          "id": 1659,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-sentinel"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "Microsoft",
+    "microsoft-sentinel",
+    "dataingestion",
+    "fetch",
+    "ingest",
+    "create"
+  ]
+}
