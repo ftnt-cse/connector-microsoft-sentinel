@@ -363,14 +363,14 @@
         },
         {
           "title": "Search Query",
-          "tooltip": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on: \"Id\", \"Created\", \"Status\", \"Severity\", and \"Category\".\nFor example [properties/created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z",
+          "tooltip": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [properties/created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "$filter",
           "placeholder": "e.g. properties/created gt 2020-04-23T00:00:00Z",
-          "description": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on: \"Id\", \"Created\", \"Status\", \"Severity\", and \"Category\".\nFor example [properties/created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z"
+          "description": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [properties/created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z"
         },
         {
           "title": "Order By",
@@ -867,15 +867,44 @@
           "tooltip": "(Optional) Created Datetime based on which you want to retrieve incidents from Microsoft Sentinel."
         },
         {
+          "title": "Severity",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "name": "Severity",
+          "description": "(Optional) Specify a severity for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational.",
+          "options": [
+            "High",
+            "Medium",
+            "Low",
+            "Informational"
+          ]
+        },
+        {
+          "title": "Status",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "name": "Status",
+          "description": "(Optional) Specify a status for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Active, New, or Closed.",
+          "options": [
+            "Active",
+            "New",
+            "Closed"
+          ]
+        },
+        {
           "title": "Search Query",
-          "tooltip": "(Optional) Query using which you want to filter incidents to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on: \"Id\", \"CreatedDateTime\", \"Status\", \"Severity\", and \"Category\".\nFor example [createdDateTime gt 2019-09-22T00:00:00Z] retrieves all the incidents that are created after 2019-09-22T00:00:00Z",
+          "tooltip": "(Optional) Query using which you want to filter incidents to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [classification eq 'FalsePositive'] retrieves all the incidents that classification are FalsePositive",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "$filter",
-          "placeholder": "e.g. createdTimeUtc gt 2020-04-23T00:00:00Z",
-          "description": "(Optional) Query using which you want to filter incidents to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on: \"Id\", \"CreatedDateTime\", \"Status\", \"Severity\", and \"Category\".\nFor example [createdDateTime gt 2019-09-22T00:00:00Z] retrieves all the incidents that are created after 2019-09-22T00:00:00Z"
+          "placeholder": "e.g. classification eq 'FalsePositive'",
+          "description": "(Optional) Query using which you want to filter incidents to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [classification eq 'FalsePositive'] retrieves all the incidents that classification are FalsePositive"
         },
         {
           "title": "Order By",
@@ -1610,14 +1639,14 @@
         },
         {
           "title": "Search Query",
-          "tooltip": "(Optional) Query using which you want to filter incident relations to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on: \"Id\", \"Name\", \"Type\", and \"RelatedResourceId\".\nFor example [name eq sample] retrieves all the indicators that are equal to specific.",
+          "tooltip": "(Optional) Query using which you want to filter incident relations to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on fields.\nFor example [name eq sample] retrieves all the indicators that are equal to specific name.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "$filter",
           "placeholder": "e.g. name eq sample",
-          "description": "(Optional) Query using which you want to filter incident relations to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on: \"Id\", \"Name\", \"Type\", and \"RelatedResourceId\".\nFor example [name eq sample] retrieves all the indicators that are equal to specific."
+          "description": "(Optional) Query using which you want to filter incident relations to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on fields.\nFor example [name eq sample] retrieves all the indicators that are equal to specific name."
         },
         {
           "title": "Order By",
@@ -1982,14 +2011,14 @@
         },
         {
           "title": "Search Query",
-          "tooltip": "(Optional) Query using which you want to filter incident comments to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on: \"Id\", \"CreatedDateTime\", \"Name\", \"Type\", and \"LastModifiedTimeUtc\".\nFor example [createdDateTime gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z",
+          "tooltip": "(Optional) Query using which you want to filter incident comments to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [createdDateTime gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "$filter",
           "placeholder": "e.g. createdTimeUtc gt 2020-04-23T00:00:00Z",
-          "description": "(Optional) Query using which you want to filter incident comments to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on: \"Id\", \"CreatedDateTime\", \"Name\", \"Type\", and \"LastModifiedTimeUtc\".\nFor example [createdDateTime gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z"
+          "description": "(Optional) Query using which you want to filter incident comments to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [createdDateTime gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z"
         },
         {
           "title": "Order By",

@@ -160,21 +160,30 @@ def delete_threat_intelligence_indicator(config, params, connector_info):
 
 
 def get_incident_list(config, params, connector_info):
+    filter_list = []
     url = INCIDENT_API + "?api-version=2022-11-01"
     endpoint = create_endpoint(params, url)
     date_time = params.get('created_datetime')
     filter = params.get('$filter')
-    if filter:
-        if date_time:
-            filter = 'properties/{0} and properties/createdTimeUtc ge {1}'.format(filter, date_time)
+    filter_params = {
+        'createdTimeUtc': date_time,
+        'status': params.get('Status'),
+        'severity': params.get('Severity')
+    }
+    filter_params = {k: v for k, v in filter_params.items() if v is not None and v != ''}
+    for item, value in filter_params.items():
+        if item == 'createdTimeUtc':
+            filter_list.append('properties/' + item + ' ge ' + value)
+        elif item == 'status':
+            filter_list.append('properties/' + item + ' eq ' + f"'{value}'")
         else:
-            filter = 'properties/{0}'.format(filter)
-    else:
-        if date_time:
-            filter = 'properties/createdTimeUtc ge {0}'.format(date_time)
+            filter_list.append('properties/' + item + ' eq ' + f"'{value}'")
+    if filter:
+        filter_list.append(filter)
+    filter_str = ' and '.join(filter_list)
     orderby = params.get('$orderby')
     payload = {
-        '$filter': filter,
+        '$filter': filter_str,
         '$orderby': orderby,
         '$top': params.get('$top'),
         '$skipToken': params.get('$skipToken')
