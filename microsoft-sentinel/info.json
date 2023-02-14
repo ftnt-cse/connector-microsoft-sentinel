@@ -376,52 +376,54 @@
           "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
-      "output_schema": [
-        {
-          "id": "",
-          "name": "",
-          "etag": "",
-          "type": "",
-          "kind": "",
-          "properties": {
-            "confidence": "",
-            "created": "",
-            "createdByRef": "",
-            "extensions": {
-              "sentinel-ext": {
-                "severity": ""
-              }
-            },
-            "externalId": "",
-            "externalReferences": [],
-            "granularMarkings": [],
-            "labels": [],
-            "lastUpdatedTimeUtc": "",
-            "revoked": "",
-            "source": "",
-            "threatIntelligenceTags": [],
-            "displayName": "",
-            "description": "",
-            "threatTypes": [],
-            "killChainPhases": [],
-            "parsedPattern": [
-              {
-                "patternTypeKey": "",
-                "patternTypeValues": [
-                  {
-                    "valueType": "",
-                    "value": ""
-                  }
-                ]
-              }
-            ],
-            "pattern": "",
-            "patternType": "",
-            "validFrom": "",
-            "validUntil": ""
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "name": "",
+            "etag": "",
+            "type": "",
+            "kind": "",
+            "properties": {
+              "confidence": "",
+              "created": "",
+              "createdByRef": "",
+              "extensions": {
+                "sentinel-ext": {
+                  "severity": ""
+                }
+              },
+              "externalId": "",
+              "externalReferences": [],
+              "granularMarkings": [],
+              "labels": [],
+              "lastUpdatedTimeUtc": "",
+              "revoked": "",
+              "source": "",
+              "threatIntelligenceTags": [],
+              "displayName": "",
+              "description": "",
+              "threatTypes": [],
+              "killChainPhases": [],
+              "parsedPattern": [
+                {
+                  "patternTypeKey": "",
+                  "patternTypeValues": [
+                    {
+                      "valueType": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              ],
+              "pattern": "",
+              "patternType": "",
+              "validFrom": "",
+              "validUntil": ""
+            }
           }
-        }
-      ],
+        ]
+      },
       "enabled": true
     },
     {
@@ -912,47 +914,49 @@
           "name": "incidentId"
         }
       ],
-      "output_schema": [
-        {
-          "id": "",
-          "name": "",
-          "type": "",
-          "kind": "",
-          "properties": {
-            "systemAlertId": "",
-            "tactics": [],
-            "alertDisplayName": "",
-            "description": "",
-            "confidenceLevel": "",
-            "severity": "",
-            "vendorName": "",
-            "productName": "",
-            "productComponentName": "",
-            "alertType": "",
-            "processingEndTime": "",
-            "status": "",
-            "endTimeUtc": "",
-            "startTimeUtc": "",
-            "timeGenerated": "",
-            "providerAlertId": "",
-            "resourceIdentifiers": [
-              {
-                "type": "",
-                "workspaceId": "",
-                "subscriptionId": "",
-                "resourceGroup": ""
-              }
-            ],
-            "additionalData": {
-              "AlertMessageEnqueueTime": "",
-              "Search Query Results Overall Count": "",
-              "OriginalProductName": "",
-              "OriginalProductComponentName": ""
-            },
-            "friendlyName": ""
+      "output_schema": {
+        "value": [
+          {
+            "id": "",
+            "name": "",
+            "type": "",
+            "kind": "",
+            "properties": {
+              "systemAlertId": "",
+              "tactics": [],
+              "alertDisplayName": "",
+              "description": "",
+              "confidenceLevel": "",
+              "severity": "",
+              "vendorName": "",
+              "productName": "",
+              "productComponentName": "",
+              "alertType": "",
+              "processingEndTime": "",
+              "status": "",
+              "endTimeUtc": "",
+              "startTimeUtc": "",
+              "timeGenerated": "",
+              "providerAlertId": "",
+              "resourceIdentifiers": [
+                {
+                  "type": "",
+                  "workspaceId": "",
+                  "subscriptionId": "",
+                  "resourceGroup": ""
+                }
+              ],
+              "additionalData": {
+                "AlertMessageEnqueueTime": "",
+                "Search Query Results Overall Count": "",
+                "OriginalProductName": "",
+                "OriginalProductComponentName": ""
+              },
+              "friendlyName": ""
+            }
           }
-        }
-      ],
+        ]
+      },
       "enabled": true
     },
     {

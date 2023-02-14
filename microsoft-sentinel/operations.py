@@ -127,7 +127,7 @@ def get_all_threat_intelligence_indicators(config, params, connector_info):
     }
     payload = {k: v for k, v in payload.items() if v is not None and v != ''}
     response = api_request("GET", endpoint, connector_info, config, params=payload)
-    return response.get('value')
+    return response
 
 
 def get_threat_intelligence_indicator(config, params, connector_info):
@@ -224,7 +224,7 @@ def get_alert_list(config, params, connector_info):
     url = INCIDENT_API + "/{3}/alerts?api-version=2022-11-01"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("POST", endpoint, connector_info, config, json={})
-    return response.get('value')
+    return response
 
 
 def get_entities_list(config, params, connector_info):
@@ -238,7 +238,7 @@ def get_bookmarks_list(config, params, connector_info):
     url = INCIDENT_API + "/{3}/bookmarks?api-version=2022-11-01"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("POST", endpoint, connector_info, config, json={})
-    return response.get('value')
+    return response
 
 
 def create_incident_relations(config, params, connector_info):
