@@ -5,7 +5,7 @@
   Copyright end """
 
 from connectors.core.connector import get_logger, ConnectorError
-from requests import exceptions as req_exceptions
+import requests
 from .microsoft_api_auth import *
 from .constant import *
 import random, uuid
@@ -21,54 +21,40 @@ def api_request(method, endpoint, connector_info, config, params=None, data=None
         headers['Authorization'] = token
         headers['Content-Type'] = 'application/json'
         headers['consistencylevel'] = 'eventual'
-        try:
-            response = request(method, endpoint, headers=headers, params=params, data=data, json=json,
-                               verify=ms.verify_ssl)
-            if response.status_code in [200, 201, 202, 204]:
-                if response.text != "":
-                    return response.json()
-                else:
-                    return True
-            elif response.status_code == 404:
-                return response
+        response = request(method, endpoint, headers=headers, params=params, data=data, json=json,
+                           verify=ms.verify_ssl)
+        if response.status_code in [200, 201, 202, 204]:
+            if 'json' in str(response.headers):
+                return response.json()
             else:
-                if response.text != "":
-                    err_resp = response.json()
-                    failure_msg = err_resp['error']['message']
-                    error_msg = 'Response [{0}:{1} Details: {2}]'.format(response.status_code, response.reason,
-                                                                         failure_msg if failure_msg else '')
-                else:
-                    error_msg = 'Response [{0}:{1}]'.format(response.status_code, response.reason)
-                logger.error(error_msg)
-                raise ConnectorError(error_msg)
-        except req_exceptions.SSLError:
-            logger.error('An SSL error occurred')
-            raise ConnectorError('An SSL error occurred')
-        except req_exceptions.ConnectionError:
-            logger.error('A connection error occurred')
-            raise ConnectorError('A connection error occurred')
-        except req_exceptions.Timeout:
-            logger.error('The request timed out')
-            raise ConnectorError('The request timed out')
-        except req_exceptions.RequestException:
-            logger.error('There was an error while handling the request')
-            raise ConnectorError('There was an error while handling the request')
-        except Exception as err:
-            raise ConnectorError(str(err))
+                return response
+        elif response.status_code == 404:
+            return response
+        else:
+            raise ConnectorError("{0}".format(response.content))
+    except requests.exceptions.SSLError:
+        raise ConnectorError('SSL certificate validation failed')
+    except requests.exceptions.ConnectTimeout:
+        raise ConnectorError('The request timed out while trying to connect to the server')
+    except requests.exceptions.ReadTimeout:
+        raise ConnectorError(
+            'The server did not send any data in the allotted amount of time')
+    except requests.exceptions.ConnectionError:
+        raise ConnectorError('Invalid Credentials')
     except Exception as err:
         raise ConnectorError(str(err))
 
 
-def create_endpoint(params, url, id=None):
+def create_endpoint(config, url, id=None):
     if id:
-        endpoint = url.format(params.get('WorkspaceSubscriptionId'),
-                              params.get('WorkspaceResourceGroup'),
-                              params.get('WorkspaceName'),
+        endpoint = url.format(config.get('WorkspaceSubscriptionId'),
+                              config.get('WorkspaceResourceGroup'),
+                              config.get('WorkspaceName'),
                               id)
     else:
-        endpoint = url.format(params.get('WorkspaceSubscriptionId'),
-                              params.get('WorkspaceResourceGroup'),
-                              params.get('WorkspaceName'))
+        endpoint = url.format(config.get('WorkspaceSubscriptionId'),
+                              config.get('WorkspaceResourceGroup'),
+                              config.get('WorkspaceName'))
     return endpoint
 
 
@@ -82,6 +68,11 @@ def check_payload(payload):
         elif value:
             updated_payload[key] = value
     return updated_payload
+
+
+def extract_token(skip_token):
+    skip_token = skip_token.split("$skipToken=")[1]
+    return skip_token
 
 
 def threat_indicator_payload(params):
@@ -114,7 +105,7 @@ def threat_indicator_payload(params):
 
 def create_threat_intelligence_indicator(config, params, connector_info):
     url = THREAT_INDICATORS_API + "/createIndicator?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url)
+    endpoint = create_endpoint(config, url)
     payload = threat_indicator_payload(params)
     response = api_request("POST", endpoint, connector_info, config, json=payload)
     return response
@@ -122,14 +113,17 @@ def create_threat_intelligence_indicator(config, params, connector_info):
 
 def get_all_threat_intelligence_indicators(config, params, connector_info):
     url = THREAT_INDICATORS_API + "/indicators?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url)
+    endpoint = create_endpoint(config, url)
     filter = params.get('$filter')
     orderby = params.get('$orderby')
+    skip_token = params.get('$skipToken')
+    if skip_token:
+        skip_token = extract_token(skip_token)
     payload = {
         '$filter': 'properties/' + filter if filter else '',
         '$orderby': 'properties/' + orderby if orderby else '',
         '$top': params.get('$top'),
-        '$skipToken': params.get('$skipToken')
+        '$skipToken': skip_token
     }
     payload = {k: v for k, v in payload.items() if v is not None and v != ''}
     response = api_request("GET", endpoint, connector_info, config, params=payload)
@@ -138,14 +132,14 @@ def get_all_threat_intelligence_indicators(config, params, connector_info):
 
 def get_threat_intelligence_indicator(config, params, connector_info):
     url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('id'))
+    endpoint = create_endpoint(config, url, id=params.get('id'))
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
 
 
 def update_threat_intelligence_indicator(config, params, connector_info):
     url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('id'))
+    endpoint = create_endpoint(config, url, id=params.get('id'))
     payload = threat_indicator_payload(params)
     response = api_request("PUT", endpoint, connector_info, config, json=payload)
     return response
@@ -153,7 +147,7 @@ def update_threat_intelligence_indicator(config, params, connector_info):
 
 def delete_threat_intelligence_indicator(config, params, connector_info):
     url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('id'))
+    endpoint = create_endpoint(config, url, id=params.get('id'))
     response = api_request("DELETE", endpoint, connector_info, config, params={})
     if response:
         return {"result": "Successfully deleted the indicator {0}".format(params.get("id"))}
@@ -162,7 +156,7 @@ def delete_threat_intelligence_indicator(config, params, connector_info):
 def get_incident_list(config, params, connector_info):
     filter_list = []
     url = INCIDENT_API + "?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url)
+    endpoint = create_endpoint(config, url)
     date_time = params.get('created_datetime')
     filter = params.get('$filter')
     filter_params = {
@@ -182,11 +176,14 @@ def get_incident_list(config, params, connector_info):
         filter_list.append(filter)
     filter_str = ' and '.join(filter_list)
     orderby = params.get('$orderby')
+    skip_token = params.get('$skipToken')
+    if skip_token:
+        skip_token = extract_token(skip_token)
     payload = {
         '$filter': filter_str,
         '$orderby': orderby,
         '$top': params.get('$top'),
-        '$skipToken': params.get('$skipToken')
+        '$skipToken': skip_token
     }
     payload = check_payload(payload)
     response = api_request("GET", endpoint, connector_info, config, params=payload)
@@ -195,14 +192,14 @@ def get_incident_list(config, params, connector_info):
 
 def get_incident(config, params, connector_info):
     url = INCIDENT_API + "/{3}?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('incidentId'))
+    endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
 
 
 def update_incident(config, params, connector_info):
     url = INCIDENT_API + "/{3}?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('incidentId'))
+    endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     payload = {
         'etag': params.get('etag'),
         'properties': {
@@ -225,27 +222,27 @@ def update_incident(config, params, connector_info):
 
 def get_alert_list(config, params, connector_info):
     url = INCIDENT_API + "/{3}/alerts?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('incidentId'))
+    endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("POST", endpoint, connector_info, config, json={})
     return response.get('value')
 
 
 def get_entities_list(config, params, connector_info):
     url = INCIDENT_API + "/{3}/entities?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('incidentId'))
+    endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("POST", endpoint, connector_info, config, json={})
     return response
 
 
 def get_bookmarks_list(config, params, connector_info):
     url = INCIDENT_API + "/{3}/bookmarks?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('incidentId'))
+    endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("POST", endpoint, connector_info, config, json={})
     return response.get('value')
 
 
 def create_incident_relations(config, params, connector_info):
-    endpoint = create_endpoint(params, INCIDENT_RELATION_API,
+    endpoint = create_endpoint(config, INCIDENT_RELATION_API,
                                id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
         params.get('relationName'))
     payload = {
@@ -259,14 +256,17 @@ def create_incident_relations(config, params, connector_info):
 
 def get_all_incident_relations(config, params, connector_info):
     url = INCIDENT_RELATION_API + "?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('incidentId'))
+    endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     filter = params.get('$filter')
     orderby = params.get('$orderby')
+    skip_token = params.get('$skipToken')
+    if skip_token:
+        skip_token = extract_token(skip_token)
     payload = {
         '$filter': 'properties/' + filter if filter else '',
         '$orderby': 'properties/' + orderby if orderby else '',
         '$top': params.get('$top'),
-        '$skipToken': params.get('$skipToken')
+        '$skipToken': skip_token
     }
     payload = {k: v for k, v in payload.items() if v is not None and v != ''}
     response = api_request("GET", endpoint, connector_info, config, params=payload)
@@ -274,7 +274,7 @@ def get_all_incident_relations(config, params, connector_info):
 
 
 def get_incident_relations(config, params, connector_info):
-    endpoint = create_endpoint(params, INCIDENT_RELATION_API,
+    endpoint = create_endpoint(config, INCIDENT_RELATION_API,
                                id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
         params.get('relationName'))
     response = api_request("GET", endpoint, connector_info, config, params={})
@@ -282,7 +282,7 @@ def get_incident_relations(config, params, connector_info):
 
 
 def update_incident_relations(config, params, connector_info):
-    endpoint = create_endpoint(params, INCIDENT_RELATION_API,
+    endpoint = create_endpoint(config, INCIDENT_RELATION_API,
                                id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
         params.get('relationName'))
     payload = {
@@ -295,7 +295,7 @@ def update_incident_relations(config, params, connector_info):
 
 
 def delete_incident_relation(config, params, connector_info):
-    endpoint = create_endpoint(params, INCIDENT_RELATION_API,
+    endpoint = create_endpoint(config, INCIDENT_RELATION_API,
                                id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
         params.get('relationName'))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
@@ -304,7 +304,7 @@ def delete_incident_relation(config, params, connector_info):
 
 
 def create_incident_comment(config, params, connector_info):
-    endpoint = create_endpoint(params, INCIDENT_COMMENT_API,
+    endpoint = create_endpoint(config, INCIDENT_COMMENT_API,
                                id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
         str(random.getrandbits(128)))
     payload = {
@@ -318,14 +318,17 @@ def create_incident_comment(config, params, connector_info):
 
 def get_all_incident_comments(config, params, connector_info):
     url = INCIDENT_COMMENT_API + "?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('incidentId'))
+    endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     filter = params.get('$filter')
     orderby = params.get('$orderby')
+    skip_token = params.get('$skipToken')
+    if skip_token:
+        skip_token = extract_token(skip_token)
     payload = {
         '$filter': 'properties/' + filter if filter else '',
         '$orderby': 'properties/' + orderby if orderby else '',
         '$top': params.get('$top'),
-        '$skipToken': params.get('$skipToken')
+        '$skipToken': skip_token
     }
     payload = {k: v for k, v in payload.items() if v is not None and v != ''}
     response = api_request("GET", endpoint, connector_info, config, params=payload)
@@ -333,7 +336,7 @@ def get_all_incident_comments(config, params, connector_info):
 
 
 def get_incident_comment(config, params, connector_info):
-    endpoint = create_endpoint(params, INCIDENT_COMMENT_API,
+    endpoint = create_endpoint(config, INCIDENT_COMMENT_API,
                                id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
         params.get('incidentcommentId'))
     response = api_request("GET", endpoint, connector_info, config, params={})
@@ -341,7 +344,7 @@ def get_incident_comment(config, params, connector_info):
 
 
 def update_incident_comment(config, params, connector_info):
-    endpoint = create_endpoint(params, INCIDENT_COMMENT_API,
+    endpoint = create_endpoint(config, INCIDENT_COMMENT_API,
                                id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
         params.get('incidentcommentId'))
     payload = {
@@ -354,7 +357,7 @@ def update_incident_comment(config, params, connector_info):
 
 
 def delete_incident_comment(config, params, connector_info):
-    endpoint = create_endpoint(params, INCIDENT_COMMENT_API,
+    endpoint = create_endpoint(config, INCIDENT_COMMENT_API,
                                id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
         params.get('incidentcommentId'))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
@@ -364,7 +367,7 @@ def delete_incident_comment(config, params, connector_info):
 
 def create_watchlist(config, params, connector_info):
     url = WATCHLIST_API + "/{3}?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('watchlistAlias'))
+    endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     payload = {
         'etag': params.get('etag'),
         'properties': {
@@ -385,9 +388,12 @@ def create_watchlist(config, params, connector_info):
 
 def get_all_watchlist(config, params, connector_info):
     url = WATCHLIST_API + "?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url)
+    endpoint = create_endpoint(config, url)
+    skip_token = params.get('$skipToken')
+    if skip_token:
+        skip_token = extract_token(skip_token)
     payload = {
-        '$skipToken': params.get('$skipToken')
+        '$skipToken': skip_token
     }
     payload = {k: v for k, v in payload.items() if v is not None and v != ''}
     response = api_request("GET", endpoint, connector_info, config, params=payload)
@@ -396,14 +402,14 @@ def get_all_watchlist(config, params, connector_info):
 
 def get_watchlist(config, params, connector_info):
     url = WATCHLIST_API + "/{3}?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('watchlistAlias'))
+    endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
 
 
 def update_watchlist(config, params, connector_info):
     url = WATCHLIST_API + "/{3}?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('watchlistAlias'))
+    endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     payload = {
         'etag': params.get('etag'),
         'properties': {
@@ -424,14 +430,14 @@ def update_watchlist(config, params, connector_info):
 
 def delete_watchlist(config, params, connector_info):
     url = WATCHLIST_API + "/{3}?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('watchlistAlias'))
+    endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
     return {"result": "Successfully deleted the watchlist {0}".format(
         params.get("watchlistAlias"))}
 
 
 def create_watchlist_item(config, params, connector_info):
-    endpoint = create_endpoint(params, WATCHLIST_ITEM_API,
+    endpoint = create_endpoint(config, WATCHLIST_ITEM_API,
                                id=params.get('watchlistAlias')) + "/{0}?api-version=2022-11-01".format(
         uuid.uuid4())
     payload = {
@@ -450,9 +456,12 @@ def create_watchlist_item(config, params, connector_info):
 
 def get_all_watchlist_items(config, params, connector_info):
     url = WATCHLIST_ITEM_API + "?api-version=2022-11-01"
-    endpoint = create_endpoint(params, url, id=params.get('watchlistAlias'))
+    endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
+    skip_token = params.get('$skipToken')
+    if skip_token:
+        skip_token = extract_token(skip_token)
     payload = {
-        '$skipToken': params.get('$skipToken')
+        '$skipToken': skip_token
     }
     payload = {k: v for k, v in payload.items() if v is not None and v != ''}
     response = api_request("GET", endpoint, connector_info, config, params=payload)
@@ -460,7 +469,7 @@ def get_all_watchlist_items(config, params, connector_info):
 
 
 def get_watchlist_item(config, params, connector_info):
-    endpoint = create_endpoint(params, WATCHLIST_ITEM_API,
+    endpoint = create_endpoint(config, WATCHLIST_ITEM_API,
                                id=params.get('watchlistAlias')) + "/{0}?api-version=2022-11-01".format(
         params.get('watchlistItemId'))
     response = api_request("GET", endpoint, connector_info, config, params={})
@@ -468,7 +477,7 @@ def get_watchlist_item(config, params, connector_info):
 
 
 def update_watchlist_item(config, params, connector_info):
-    endpoint = create_endpoint(params, WATCHLIST_ITEM_API,
+    endpoint = create_endpoint(config, WATCHLIST_ITEM_API,
                                id=params.get('watchlistAlias')) + "/{0}?api-version=2022-11-01".format(
         params.get('watchlistItemId'))
     payload = {
@@ -486,7 +495,7 @@ def update_watchlist_item(config, params, connector_info):
 
 
 def delete_watchlist_item(config, params, connector_info):
-    endpoint = create_endpoint(params, WATCHLIST_ITEM_API,
+    endpoint = create_endpoint(config, WATCHLIST_ITEM_API,
                                id=params.get('watchlistAlias')) + "/{0}?api-version=2022-11-01".format(
         params.get('watchlistItemId'))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
@@ -496,7 +505,8 @@ def delete_watchlist_item(config, params, connector_info):
 
 def _check_health(config, connector_info):
     try:
-        return check(config, connector_info)
+        if check(config, connector_info) and get_incident_list(config, params={}, connector_info=connector_info):
+            return True
     except Exception as err:
         raise ConnectorError(str(err))
 

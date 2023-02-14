@@ -80,6 +80,33 @@
         "visible": true
       },
       {
+        "title": "Workspace Subscription ID",
+        "description": "Azure active directory subscription ID from which you want to create the threat intelligence indicator in Microsoft Sentinel.",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "WorkspaceSubscriptionId"
+      },
+      {
+        "title": "Workspace Resource Group",
+        "description": "Azure active directory resource group from which you want to create the threat intelligence indicator in Microsoft Sentinel.",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "WorkspaceResourceGroup"
+      },
+      {
+        "title": "Workspace Name",
+        "description": "Name of the workspace from which you want to create the threat intelligence indicator in Microsoft Sentinel",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "WorkspaceName"
+      },
+      {
         "title": "Verify SSL",
         "required": false,
         "editable": true,
@@ -99,33 +126,6 @@
       "category": "investigation",
       "annotation": "create_threat_intelligence_indicator",
       "parameters": [
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to create the threat intelligence indicator in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to create the threat intelligence indicator in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to create the threat intelligence indicator in Microsoft Sentinel",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
-        },
         {
           "title": "Pattern Type",
           "required": true,
@@ -335,33 +335,6 @@
       "annotation": "get_all_threat_intelligence_indicators",
       "parameters": [
         {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the threat intelligence indicators from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the threat intelligence indicators from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the threat intelligence indicators from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
-        },
-        {
           "title": "Search Query",
           "tooltip": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [properties/created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z",
           "required": false,
@@ -397,9 +370,10 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "type": "integer",
+          "type": "text",
           "name": "$skipToken",
-          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
       "output_schema": [
@@ -465,33 +439,6 @@
           "visible": true,
           "type": "text",
           "name": "id"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve a specific threat intelligence indicator from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve a specific threat intelligence indicator from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve a specific threat intelligence indicator from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -555,33 +502,6 @@
           "visible": true,
           "type": "text",
           "name": "id"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to update the indicator in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to update the indicator in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to update the indicator in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         },
         {
           "title": "Pattern Type",
@@ -788,33 +708,6 @@
           "visible": true,
           "type": "text",
           "name": "id"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to delete the indicator in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to delete the indicator in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to delete the indicator in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -829,33 +722,6 @@
       "category": "investigation",
       "annotation": "get_incident_list",
       "parameters": [
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the incident from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the incident from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the incident from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
-        },
         {
           "title": "Created DateTime",
           "description": "(Optional) Created Datetime based on which you want to retrieve incidents from Microsoft Sentinel.",
@@ -928,10 +794,11 @@
         },
         {
           "title": "Skip Token",
+          "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
           "required": false,
           "editable": true,
           "visible": true,
-          "type": "integer",
+          "type": "text",
           "name": "$skipToken",
           "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
@@ -991,33 +858,6 @@
           "visible": true,
           "type": "text",
           "name": "incidentId"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the incident from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the incident from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the incident from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -1070,33 +910,6 @@
           "visible": true,
           "type": "text",
           "name": "incidentId"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the alerts from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the alerts from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the alerts from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": [
@@ -1157,33 +970,6 @@
           "visible": true,
           "type": "text",
           "name": "incidentId"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the incident entities from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the incident entities from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the incident entities from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -1224,33 +1010,6 @@
           "visible": true,
           "type": "text",
           "name": "incidentId"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the bookmarks from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the bookmarks from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the bookmarks from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -1304,33 +1063,6 @@
           "visible": true,
           "type": "text",
           "name": "incidentId"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID in which you want to update the incident in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group in which you want to update the incident in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace based on which you want to update the incident in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         },
         {
           "title": "Severity",
@@ -1552,33 +1284,6 @@
           "visible": true,
           "type": "text",
           "name": "resourceId"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to create the incident relations in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to create the incident relations in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to create the incident relations in Microsoft Sentinel",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -1609,33 +1314,6 @@
           "visible": true,
           "type": "text",
           "name": "incidentId"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the incident relations from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the incident relations from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the incident relations from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         },
         {
           "title": "Search Query",
@@ -1673,9 +1351,10 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "type": "integer",
+          "type": "text",
           "name": "$skipToken",
-          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
       "output_schema": {
@@ -1719,33 +1398,6 @@
           "visible": true,
           "type": "text",
           "name": "relationName"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the incident relation from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the incident relation from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the incident relation from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -1794,33 +1446,6 @@
           "visible": true,
           "type": "text",
           "name": "resourceId"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to update the incident relations in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to update the incident relations in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to update the incident relations in Microsoft Sentinel",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -1860,33 +1485,6 @@
           "visible": true,
           "type": "text",
           "name": "relationName"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to delete the incident relation in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to delete the incident relation in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to delete the incident relation in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -1918,33 +1516,6 @@
           "visible": true,
           "type": "text",
           "name": "message"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to create the incident comment in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to create the incident comment in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to create the incident comment in Microsoft Sentinel",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -1983,33 +1554,6 @@
           "name": "incidentId"
         },
         {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the incident comments from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the incident comments from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the incident comments from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
-        },
-        {
           "title": "Search Query",
           "tooltip": "(Optional) Query using which you want to filter incident comments to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [createdDateTime gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z",
           "required": false,
@@ -2045,9 +1589,10 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "type": "integer",
+          "type": "text",
           "name": "$skipToken",
-          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
       "output_schema": {
@@ -2097,33 +1642,6 @@
           "visible": true,
           "type": "text",
           "name": "incidentId"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the incident comment from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the incident comment from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the incident comment from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -2178,33 +1696,6 @@
           "visible": true,
           "type": "text",
           "name": "message"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to update the incident comment in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to update the incident comment in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to update the incident comment in Microsoft Sentinel",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -2250,33 +1741,6 @@
           "visible": true,
           "type": "text",
           "name": "incidentId"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to delete the incident comment in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to delete the incident comment in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to delete the incident comment in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -2340,33 +1804,6 @@
           "type": "text",
           "name": "source",
           "placeholder": "For e.g. Local file or Remote storage"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to create the watchlist in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to create the watchlist in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to create the watchlist in Microsoft Sentinel",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         },
         {
           "title": "Description",
@@ -2448,40 +1885,14 @@
       "annotation": "get_all_watchlist",
       "parameters": [
         {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the watchlist from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the watchlist from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the watchlist from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
-        },
-        {
           "title": "Skip Token",
           "required": false,
           "editable": true,
           "visible": true,
-          "type": "integer",
+          "type": "text",
           "name": "$skipToken",
-          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
       "output_schema": {
@@ -2544,33 +1955,6 @@
           "visible": true,
           "type": "text",
           "name": "watchlistAlias"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the watchlist from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the watchlist from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the watchlist from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -2671,33 +2055,6 @@
           "placeholder": "For e.g. Local file or Remote storage"
         },
         {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to update the watchlist in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to update the watchlist in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to update the watchlist in Microsoft Sentinel",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
-        },
-        {
           "title": "Description",
           "description": "(Optional) Description of the watchlist that you want to update in Microsoft Sentinel.",
           "required": false,
@@ -2783,33 +2140,6 @@
           "visible": true,
           "type": "text",
           "name": "watchlistAlias"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to delete the watchlist in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to delete the watchlist in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to delete the watchlist in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -2851,33 +2181,6 @@
           "type": "json",
           "name": "itemsKeyValue",
           "tooltip": "Specify a key-value pairs for a watchlist item to create the watchlist item in Microsoft Sentinel."
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to create the watchlist item in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to create the watchlist item in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to create the watchlist item in Microsoft Sentinel",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         },
         {
           "title": "ETag",
@@ -2957,40 +2260,14 @@
           "name": "watchlistAlias"
         },
         {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the watchlist items from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the watchlist items from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the watchlist items from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
-        },
-        {
           "title": "Skip Token",
           "required": false,
           "editable": true,
           "visible": true,
-          "type": "integer",
+          "type": "text",
           "name": "$skipToken",
-          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
       "output_schema": {
@@ -3057,33 +2334,6 @@
           "visible": true,
           "type": "text",
           "name": "watchlistAlias"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to retrieve the watchlist item from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to retrieve the watchlist item from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to retrieve the watchlist item from Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
@@ -3156,33 +2406,6 @@
           "type": "json",
           "name": "itemsKeyValue",
           "tooltip": "Specify a key-value pairs for a watchlist item to update the watchlist item in Microsoft Sentinel."
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to update the watchlist item in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to update the watchlist item in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to update the watchlist item in Microsoft Sentinel",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         },
         {
           "title": "ETag",
@@ -3265,33 +2488,6 @@
           "visible": true,
           "type": "text",
           "name": "watchlistAlias"
-        },
-        {
-          "title": "Workspace Subscription ID",
-          "description": "Azure active directory subscription ID from which you want to delete the watchlist item in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceSubscriptionId"
-        },
-        {
-          "title": "Workspace Resource Group",
-          "description": "Azure active directory resource group from which you want to delete the watchlist item in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceResourceGroup"
-        },
-        {
-          "title": "Workspace Name",
-          "description": "Name of the workspace from which you want to delete the watchlist item in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "WorkspaceName"
         }
       ],
       "output_schema": {
