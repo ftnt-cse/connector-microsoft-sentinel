@@ -8,7 +8,7 @@
       "visible": true,
       "image": null,
       "uuid": "8589641d-44c6-4319-b1ee-46d286522fe3",
-      "id": 138,
+      "id": 276,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [],
@@ -73,12 +73,9 @@
                   "description": "",
                   "displayName": "",
                   "threatTypes": "",
-                  "WorkspaceName": "FortiSOAR-Integration",
                   "indicatorTypes": "",
                   "additional_fields": "",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "threatIntelligenceTags": "",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "threatIntelligenceTags": ""
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -109,7 +106,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "21d735d8-0d07-4df6-9add-66cfcae2ce26",
-          "id": 1626,
+          "id": 3776,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -173,10 +170,7 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "watchlistAlias": "highValueAsset",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "watchlistAlias": "highValueAsset"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -207,7 +201,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "38c7fcb0-16a2-4ae9-b10b-b38d93cae0dc",
-          "id": 1627,
+          "id": 3777,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -275,10 +269,7 @@
                   "$filter": "",
                   "$orderby": "",
                   "$skipToken": "",
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -309,7 +300,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "3b9b5b99-67db-4509-857a-582dcc022603",
-          "id": 1628,
+          "id": 3778,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -327,12 +318,12 @@
           "tag": null,
           "description": "Retrieves all incidents from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameters that you have specified.",
           "isActive": false,
-          "debug": true,
+          "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1672901772,
+          "lastModifyDate": 1676386045,
           "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/d92d5fbe-6df9-4ab4-8666-aa69ef824ba5",
@@ -346,13 +337,12 @@
                 "config": "",
                 "params": {
                   "$top": "",
+                  "Status": "",
                   "$filter": "",
                   "$orderby": "",
+                  "Severity": "",
                   "$skipToken": "",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "created_datetime": "2023-01-05T06:17:00.000Z",
-                  "WorkspaceResourceGroup": "ftnt-fsr-pune-office",
-                  "WorkspaceSubscriptionId": "b490cd38-86fd-4a84-9557-01d895873451"
+                  "created_datetime": ""
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -411,7 +401,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "3c603956-4cbf-45d1-83d1-ec05537b68f6",
-          "id": 1629,
+          "id": 3779,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -452,10 +442,7 @@
                   "Status": "Active",
                   "Severity": "Low",
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "Description": "",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "Description": ""
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -514,7 +501,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "3e2944e6-4fec-4cff-9044-09b29d9aea5f",
-          "id": 1630,
+          "id": 3780,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -578,10 +565,7 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -612,7 +596,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "422da236-ecb8-4b6e-946f-50514a1add02",
-          "id": 1631,
+          "id": 3781,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -653,12 +637,9 @@
                   "description": "",
                   "displayName": "",
                   "threatTypes": "",
-                  "WorkspaceName": "FortiSOAR-Integration",
                   "indicatorTypes": "",
                   "additional_fields": "",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "threatIntelligenceTags": "",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "threatIntelligenceTags": ""
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -717,7 +698,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "5bf4eeeb-b76a-491b-8ad7-a206829c4fa6",
-          "id": 1632,
+          "id": 3782,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -753,10 +734,7 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -815,7 +793,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "5ef2c493-fc19-4485-997a-3d421e76b1f6",
-          "id": 1633,
+          "id": 3783,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -852,10 +830,7 @@
                 "config": "",
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -914,7 +889,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "6f68b530-8200-49f5-ba6a-cf5cbba523ab",
-          "id": 1634,
+          "id": 3784,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -982,10 +957,7 @@
                   "$filter": "",
                   "$orderby": "",
                   "$skipToken": "",
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -1016,7 +988,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "70264404-fe02-4398-b083-e0a2862c5892",
-          "id": 1635,
+          "id": 3785,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1054,10 +1026,7 @@
                 "params": {
                   "message": "Also, please provide bookmark id.",
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -1116,7 +1085,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "72d5fda3-8778-4044-96b5-7d4148ec6456",
-          "id": 1636,
+          "id": 3786,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1139,7 +1108,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1672998468,
+          "lastModifyDate": 1676386319,
           "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/3c8dd29e-e8c7-4fdc-95be-0248026b2f15",
@@ -1176,7 +1145,7 @@
                   "input": {
                     "params": []
                   },
-                  "_configuration_schema": "[\n  {\n    \"title\": \"Workspace Subscription ID\",\n    \"description\": \"Azure active directory subscription ID from which you want to retrieve the incident from Microsoft Sentinel.\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"text\",\n    \"name\": \"WorkspaceSubscriptionId\",\n    \"value\": \"b490cd38-86fd-4a84-9557-01d895873451\"\n  },\n  {\n    \"title\": \"Workspace Resource Group\",\n    \"description\": \"Azure active directory resource group from which you want to retrieve the incident from Microsoft Sentinel.\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"text\",\n    \"name\": \"WorkspaceResourceGroup\",\n    \"value\": \"ftnt-fsr-pune-office\"\n  },\n  {\n    \"title\": \"Workspace Name\",\n    \"description\": \"Name of the workspace from which you want to retrieve the incident from Microsoft Sentinel.\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"text\",\n    \"name\": \"WorkspaceName\",\n    \"value\": \"FortiSOAR-Integration\"\n  },\n  {\n    \"title\": \"Pull Incidents from Last X Minutes\",\n    \"name\": \"Pull_Sample_Events_in_Past_X_Minutes\",\n    \"type\": \"text\",\n    \"tooltip\": \"Fetch incidents from last X minutes. e.g 5\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"value\": 10\n  },\n  {\n    \"title\": \"Severity\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"select\",\n    \"name\": \"Severity\",\n    \"description\": \"(Optional) Specify a severity for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational.\",\n    \"options\": [\n      \"High\",\n      \"Medium\",\n      \"Low\",\n      \"Informational\"\n    ]\n  },\n  {\n    \"title\": \"Status\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"select\",\n    \"name\": \"Status\",\n    \"description\": \"(Optional) Specify a status for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Active, New, or Closed.\",\n    \"options\": [\n      \"Active\",\n      \"New\",\n      \"Closed\"\n    ]\n  }\n]",
+                  "_configuration_schema": "[\n  {\n    \"title\": \"Pull Incidents from Last X Minutes\",\n    \"name\": \"Pull_Sample_Events_in_Past_X_Minutes\",\n    \"type\": \"text\",\n    \"tooltip\": \"Fetch incidents from last X minutes. e.g 5\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"value\": 10\n  },\n  {\n    \"title\": \"Severity\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"select\",\n    \"name\": \"Severity\",\n    \"description\": \"(Optional) Specify a severity for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational.\",\n    \"options\": [\n      \"High\",\n      \"Medium\",\n      \"Low\",\n      \"Informational\"\n    ]\n  },\n  {\n    \"title\": \"Status\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"select\",\n    \"name\": \"Status\",\n    \"description\": \"(Optional) Specify a status for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Active, New, or Closed.\",\n    \"options\": [\n      \"Active\",\n      \"New\",\n      \"Closed\"\n    ]\n  },\n  {\n    \"title\": \"Number of Incidents to Fetch\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"integer\",\n    \"value\": 1000,\n    \"name\": \"$top\",\n    \"description\": \"(Optional) Maximum number of incidents that this operation should return from Microsoft Sentinel.\"\n  }\n]",
                   "MicrosoftSentinelLastIncidentPullTime": "MicrosoftSentinelLastIncidentPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}"
                 }
               },
@@ -1192,11 +1161,9 @@
               "name": "Configuration",
               "description": null,
               "arguments": {
+                "top": "1000",
                 "Status": "New",
                 "Severity": "High",
-                "WorkspaceName": "FortiSOAR-Integration",
-                "WorkspaceResourceGroup": "ftnt-fsr-pune-office",
-                "WorkspaceSubscriptionId": "b490cd38-86fd-4a84-9557-01d895873451",
                 "Pull_Sample_Events_in_Past_X_Minutes": "10"
               },
               "status": null,
@@ -1213,10 +1180,7 @@
               "arguments": {
                 "data": "{{vars.steps.Get_Incident_List.data.get(\"value\", [])}}",
                 "macro_name": "{{vars.MicrosoftSentinelLastIncidentPullTime}}",
-                "WorkspaceName": "{{vars.WorkspaceName}}",
-                "curr_timestamp": "{{vars.curr_timestamp}}",
-                "WorkspaceResourceGroup": "{{vars.WorkspaceResourceGroup}}",
-                "WorkspaceSubscriptionId": "{{vars.WorkspaceSubscriptionId}}"
+                "curr_timestamp": "{{vars.curr_timestamp}}"
               },
               "status": null,
               "top": "705",
@@ -1233,16 +1197,13 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "$top": "",
+                  "$top": "{{vars.top}}",
                   "Status": "{{vars.Status}}",
                   "$filter": "",
                   "$orderby": "",
                   "Severity": "{{vars.Severity}}",
                   "$skipToken": "",
-                  "WorkspaceName": "{{vars.WorkspaceName}}",
-                  "created_datetime": "{{vars.last_pull_time}}",
-                  "WorkspaceResourceGroup": "{{vars.WorkspaceResourceGroup}}",
-                  "WorkspaceSubscriptionId": "{{vars.WorkspaceSubscriptionId}}"
+                  "created_datetime": "{{vars.last_pull_time}}"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -1263,7 +1224,7 @@
               "name": "Set Time Configuration",
               "description": null,
               "arguments": {
-                "curr_timestamp": "{{arrow.utcnow().format('YYYY-MM-DDTHH:mm:ss.ssss')+\"Z\"}}",
+                "curr_timestamp": "{{arrow.get(arrow.utcnow().int_timestamp).strftime('%Y-%m-%dT%H:%M:%S.%fZ')}}",
                 "last_pull_time": "{% if (vars.steps.Get_Macro_Value.data[\"hydra:member\"] | length) < 1%}{{arrow.utcnow().shift(minutes=-vars.Pull_Sample_Events_in_Past_X_Minutes).format('YYYY-MM-DDTHH:mm:ss.ssss')}}Z{% else %}{{vars.steps.Get_Macro_Value.data['hydra:member'][0]['value']}}{% endif %}"
               },
               "status": null,
@@ -1324,7 +1285,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "73f30444-db95-411c-ace9-dada9da16781",
-          "id": 1637,
+          "id": 3787,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1394,11 +1355,8 @@
                   "provider": "Local file",
                   "description": "",
                   "displayName": "High Value Assets Watchlist",
-                  "WorkspaceName": "FortiSOAR-Integration",
                   "itemsSearchKey": "Header",
-                  "custom_attributes": "",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "custom_attributes": ""
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -1429,7 +1387,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "7b40607b-6269-4b46-9a74-2d5ee69a81f3",
-          "id": 1638,
+          "id": 3788,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1494,12 +1452,9 @@
                 "config": "",
                 "params": {
                   "etag": "",
-                  "WorkspaceName": "FortiSOAR-Integration",
                   "itemsKeyValue": "{\n  \"Gateway subnet\": \"10.0.255.224/27\",\n  \"Web Tier\": \"10.0.1.0/24\",\n  \"Business tier\": \"10.0.2.0/24\",\n  \"Data tier\": \"10.0.2.0/24\",\n  \"Private DMZ in\": \"10.0.0.0/27\",\n  \"Public DMZ out\": \"10.0.0.96/27\"\n}",
                   "watchlistAlias": "highValueAsset",
-                  "custom_attributes": "",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "custom_attributes": ""
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -1530,7 +1485,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "7cdb076a-3891-4c3d-8442-831401d9bcc5",
-          "id": 1639,
+          "id": 3789,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1567,10 +1522,7 @@
                 "config": "",
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -1629,7 +1581,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "8195a3ca-f6dc-4ea0-a6ea-c97b4684c5b6",
-          "id": 1640,
+          "id": 3790,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1694,10 +1646,7 @@
                 "config": "",
                 "params": {
                   "message": "Please provide entity id.",
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -1728,7 +1677,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "9084d9e0-4e29-474d-a013-f5a321b68f28",
-          "id": 1641,
+          "id": 3791,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1769,12 +1718,9 @@
                   "provider": "Local file",
                   "description": "",
                   "displayName": "High Value Assets Watchlist",
-                  "WorkspaceName": "FortiSOAR-Integration",
                   "itemsSearchKey": "Header",
                   "watchlistAlias": "highValueAsset",
-                  "custom_attributes": "",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "custom_attributes": ""
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -1833,7 +1779,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "972e1925-802c-421b-9395-ad6b147857a7",
-          "id": 1642,
+          "id": 3792,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1870,13 +1816,10 @@
                 "config": "",
                 "params": {
                   "etag": "",
-                  "WorkspaceName": "FortiSOAR-Integration",
                   "itemsKeyValue": "{\n  \"Gateway subnet\": \"10.0.255.224/27\",\n  \"Web Tier\": \"10.0.1.0/24\",\n  \"Business tier\": \"10.0.2.0/24\",\n  \"Data tier\": \"10.0.2.0/24\",\n  \"Private DMZ in\": \"10.0.0.0/27\",\n  \"Public DMZ out\": \"10.0.0.96/27\"\n}",
                   "watchlistAlias": "highValueAsset",
                   "watchlistItemId": "3f8901fe-63d9-4875-9ad5-9fb3b8105797",
-                  "custom_attributes": "",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "custom_attributes": ""
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -1935,7 +1878,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "9cf9b558-561f-45dd-9c3c-61f61fad8a47",
-          "id": 1643,
+          "id": 3793,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2000,10 +1943,7 @@
                 "config": "",
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -2034,7 +1974,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "a2f75f28-2ed8-4b3b-837a-7bf198bae0c9",
-          "id": 1644,
+          "id": 3794,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2101,10 +2041,7 @@
                   "$top": "",
                   "$filter": "",
                   "$orderby": "",
-                  "$skipToken": "",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "$skipToken": ""
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -2135,7 +2072,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "a478ffbe-4a0c-429f-abb5-72f030f17053",
-          "id": 1645,
+          "id": 3795,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2200,10 +2137,7 @@
                 "config": "",
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -2234,7 +2168,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "af6026ed-2667-4c93-bbf5-c5b28876b8bc",
-          "id": 1646,
+          "id": 3796,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2298,11 +2232,8 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "WorkspaceName": "FortiSOAR-Integration",
                   "watchlistAlias": "highValueAsset",
-                  "watchlistItemId": "3f8901fe-63d9-4875-9ad5-9fb3b8105797",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "watchlistItemId": "3f8901fe-63d9-4875-9ad5-9fb3b8105797"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -2333,7 +2264,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "b7534939-a911-45b0-ac4e-587b923f3f76",
-          "id": 1647,
+          "id": 3797,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2369,10 +2300,7 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -2431,7 +2359,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "b88d8b6e-bd13-4288-9aea-27734e990d89",
-          "id": 1648,
+          "id": 3798,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2517,10 +2445,7 @@
                   "condition": ""
                 },
                 "arguments": {
-                  "incidentdata": "{{vars.item}}",
-                  "WorkspaceName": "{{vars.steps.List_Incidents.WorkspaceName}}",
-                  "WorkspaceResourceGroup": "{{vars.steps.List_Incidents.WorkspaceResourceGroup}}",
-                  "WorkspaceSubscriptionId": "{{vars.steps.List_Incidents.WorkspaceSubscriptionId}}"
+                  "incidentdata": "{{vars.item}}"
                 },
                 "apply_async": false,
                 "step_variables": [],
@@ -2590,7 +2515,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "ba46dcc0-5bb2-4b27-b390-ef7433be2bb5",
-          "id": 1649,
+          "id": 3799,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2627,10 +2552,7 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "relationName": "highValueAsset",
-                  "WorkspaceName": "FortiSOAR-Integratio",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "relationName": "highValueAsset"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -2689,7 +2611,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "bf695c0f-3c70-49b3-a2ff-3327f6adefaa",
-          "id": 1650,
+          "id": 3800,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2753,10 +2675,7 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -2787,7 +2706,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "c0975faa-a3a2-4e53-9b23-46f78dbbf4be",
-          "id": 1651,
+          "id": 3801,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2823,10 +2742,7 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -2885,7 +2801,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "c0de2fe1-6521-46ec-adaf-600f32ffd309",
-          "id": 1652,
+          "id": 3802,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2922,10 +2838,7 @@
                 "config": "",
                 "params": {
                   "$skipToken": "",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "watchlistAlias": "highValueAsset",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "watchlistAlias": "highValueAsset"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -2984,7 +2897,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "cad7c746-7290-4906-a4c0-af9c0b657973",
-          "id": 1653,
+          "id": 3803,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -3006,10 +2919,7 @@
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [
-            "incidentdata",
-            "WorkspaceSubscriptionId",
-            "WorkspaceResourceGroup",
-            "WorkspaceName"
+            "incidentdata"
           ],
           "synchronous": false,
           "lastModifyDate": 1672998477,
@@ -3060,10 +2970,7 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "incidentId": "{{vars.input.params.incidentdata.name}}",
-                  "WorkspaceName": "{{vars.input.params.WorkspaceName}}",
-                  "WorkspaceResourceGroup": "{{vars.input.params.WorkspaceResourceGroup}}",
-                  "WorkspaceSubscriptionId": "{{vars.input.params.WorkspaceSubscriptionId}}"
+                  "incidentId": "{{vars.input.params.incidentdata.name}}"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -3147,7 +3054,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "cf89bfca-2b17-4338-b712-aa9beb11ca97",
-          "id": 1654,
+          "id": 3804,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -3186,10 +3093,7 @@
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
                   "resourceId": "/subscriptions/6212c9c8-54a6-41ee-846b-37727030c040/resourceGroups/fortinet-pune/providers/Microsoft.OperationalInsights/workspaces/FortiSOAR-Integration/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096",
-                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -3248,7 +3152,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "d53d5c45-c7bb-44f4-98b8-ee1b9fc38ec4",
-          "id": 1655,
+          "id": 3805,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -3314,10 +3218,7 @@
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
                   "resourceId": "/subscriptions/6212c9c8-54a6-41ee-846b-37727030c040/resourceGroups/fortinet-pune/providers/Microsoft.OperationalInsights/workspaces/FortiSOAR-Integration/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096",
-                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -3348,7 +3249,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "e8f5053e-d8d6-4ad9-b2bf-eb9065ca6e37",
-          "id": 1656,
+          "id": 3806,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -3371,7 +3272,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1672206074,
+          "lastModifyDate": 1676386331,
           "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/68765b7d-a23d-463e-8d88-b0643e900345",
@@ -3412,10 +3313,7 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -3446,7 +3344,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "f4a34344-b9fd-45b3-9097-0625ff327bcf",
-          "id": 1657,
+          "id": 3807,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -3482,11 +3380,8 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "WorkspaceName": "FortiSOAR-Integration",
                   "watchlistAlias": "highValueAsset",
-                  "watchlistItemId": "82ba292c-dc97-4dfc-969d-d4dd9e666842",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "watchlistItemId": "82ba292c-dc97-4dfc-969d-d4dd9e666842"
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -3545,7 +3440,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "f68de8d1-a3a3-4f70-aa8d-3a1f6e191717",
-          "id": 1658,
+          "id": 3808,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -3609,10 +3504,7 @@
                 "name": "Microsoft Sentinel",
                 "config": "",
                 "params": {
-                  "$skipToken": "",
-                  "WorkspaceName": "FortiSOAR-Integration",
-                  "WorkspaceResourceGroup": "fortinet-pune",
-                  "WorkspaceSubscriptionId": "6212c9c8-54a6-41ee-846b-37727030c040"
+                  "$skipToken": ""
                 },
                 "version": "1.0.0",
                 "connector": "microsoft-sentinel",
@@ -3643,7 +3535,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "ffbc41be-c852-4b73-96d8-3032e992f363",
-          "id": 1659,
+          "id": 3809,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
