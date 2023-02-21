@@ -29,7 +29,7 @@ def api_request(method, endpoint, connector_info, config, params=None, data=None
             else:
                 return response
         elif response.status_code == 404:
-            return response
+            return {"message": "Not Found"}
         else:
             raise ConnectorError("{0}".format(response.content))
     except requests.exceptions.SSLError:
@@ -98,7 +98,7 @@ def threat_indicator_payload(params):
     }
     additional_fields = params.get('additional_fields')
     if additional_fields:
-        payload.update({'properties': additional_fields})
+        payload['properties'].update(additional_fields)
     payload = check_payload(payload)
     return payload
 
@@ -120,8 +120,8 @@ def get_all_threat_intelligence_indicators(config, params, connector_info):
     if skip_token:
         skip_token = extract_token(skip_token)
     payload = {
-        '$filter': 'properties/' + filter if filter else '',
-        '$orderby': 'properties/' + orderby if orderby else '',
+        '$filter': filter if filter else '',
+        '$orderby': orderby if orderby else '',
         '$top': params.get('$top'),
         '$skipToken': skip_token
     }
@@ -149,7 +149,9 @@ def delete_threat_intelligence_indicator(config, params, connector_info):
     url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2022-11-01"
     endpoint = create_endpoint(config, url, id=params.get('id'))
     response = api_request("DELETE", endpoint, connector_info, config, params={})
-    if response:
+    if response.get('message'):
+        return response
+    else:
         return {"result": "Successfully deleted the indicator {0}".format(params.get("id"))}
 
 
@@ -214,7 +216,7 @@ def update_incident(config, params, connector_info):
     }
     custom_attributes = params.get('custom_attributes')
     if custom_attributes:
-        payload.update({'properties': custom_attributes})
+        payload['properties'].update(custom_attributes)
     payload = check_payload(payload)
     response = api_request("PUT", endpoint, connector_info, config, json=payload)
     return response
@@ -299,8 +301,11 @@ def delete_incident_relation(config, params, connector_info):
                                id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
         params.get('relationName'))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
-    return {"result": "Successfully deleted the incident relation \'{0}\' for specific incident \'{1}\'".format(
-        params.get("relationName"), params.get('incidentId'))}
+    if response.get('message'):
+        return response
+    else:
+        return {"result": "Successfully deleted the incident relation \'{0}\' for specific incident \'{1}\'".format(
+            params.get("relationName"), params.get('incidentId'))}
 
 
 def create_incident_comment(config, params, connector_info):
@@ -361,8 +366,11 @@ def delete_incident_comment(config, params, connector_info):
                                id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
         params.get('incidentcommentId'))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
-    return {"result": "Successfully deleted the indicident comment {0} for a particular incident {1}".format(
-        params.get("incidentcommentId"), params.get('incidentId'))}
+    if response.get('message'):
+        return response
+    else:
+        return {"result": "Successfully deleted the indicident comment {0} for a particular incident {1}".format(
+            params.get("incidentcommentId"), params.get('incidentId'))}
 
 
 def create_watchlist(config, params, connector_info):
@@ -380,7 +388,7 @@ def create_watchlist(config, params, connector_info):
     }
     custom_attributes = params.get('custom_attributes')
     if custom_attributes:
-        payload.update({'properties': custom_attributes})
+        payload['properties'].update(custom_attributes)
     payload = check_payload(payload)
     response = api_request("PUT", endpoint, connector_info, config, json=payload)
     return response
@@ -422,7 +430,7 @@ def update_watchlist(config, params, connector_info):
     }
     custom_attributes = params.get('custom_attributes')
     if custom_attributes:
-        payload.update({'properties': custom_attributes})
+        payload['properties'].update(custom_attributes)
     payload = check_payload(payload)
     response = api_request("PUT", endpoint, connector_info, config, json=payload)
     return response
@@ -432,8 +440,11 @@ def delete_watchlist(config, params, connector_info):
     url = WATCHLIST_API + "/{3}?api-version=2022-11-01"
     endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
-    return {"result": "Successfully deleted the watchlist {0}".format(
-        params.get("watchlistAlias"))}
+    if response.get('message'):
+        return response
+    else:
+        return {"result": "Successfully deleted the watchlist {0}".format(
+            params.get("watchlistAlias"))}
 
 
 def create_watchlist_item(config, params, connector_info):
@@ -448,7 +459,7 @@ def create_watchlist_item(config, params, connector_info):
     }
     custom_attributes = params.get('custom_attributes')
     if custom_attributes:
-        payload.update({'properties': custom_attributes})
+        payload['properties'].update(custom_attributes)
     payload = check_payload(payload)
     response = api_request("PUT", endpoint, connector_info, config, json=payload)
     return response
@@ -488,7 +499,7 @@ def update_watchlist_item(config, params, connector_info):
     }
     custom_attributes = params.get('custom_attributes')
     if custom_attributes:
-        payload.update({'properties': custom_attributes})
+        payload['properties'].update(custom_attributes)
     payload = check_payload(payload)
     response = api_request("PUT", endpoint, connector_info, config, json=payload)
     return response
@@ -499,14 +510,21 @@ def delete_watchlist_item(config, params, connector_info):
                                id=params.get('watchlistAlias')) + "/{0}?api-version=2022-11-01".format(
         params.get('watchlistItemId'))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
-    return {"result": "Successfully deleted the watchlist item {0}".format(
-        params.get("watchlistItemId"))}
+    if response.get('message'):
+        return response
+    else:
+        return {"result": "Successfully deleted the watchlist item {0}".format(
+            params.get("watchlistItemId"))}
 
 
 def _check_health(config, connector_info):
     try:
-        if check(config, connector_info) and get_incident_list(config, params={}, connector_info=connector_info):
-            return True
+        if check(config, connector_info):
+            incidents = get_incident_list(config, params={}, connector_info=connector_info)
+            if not incidents.get('message'):
+                return True
+            else:
+                raise ConnectorError("Invalid Credentials")
     except Exception as err:
         raise ConnectorError(str(err))
 

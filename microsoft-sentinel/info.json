@@ -69,17 +69,6 @@
         "visible": true
       },
       {
-        "title": "Redirect URI",
-        "name": "redirect_uri",
-        "type": "text",
-        "tooltip": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal.",
-        "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. The redirect URL that you specify here must exactly match one of the redirect_uri's you have registered in your app registration portal.",
-        "placeholder": "E.g. https://localhost/myapp",
-        "required": false,
-        "editable": true,
-        "visible": true
-      },
-      {
         "title": "Workspace Subscription ID",
         "description": "Azure active directory subscription ID from which you want to create the threat intelligence indicator in Microsoft Sentinel.",
         "required": true,
@@ -105,6 +94,17 @@
         "visible": true,
         "type": "text",
         "name": "WorkspaceName"
+      },
+      {
+        "title": "Redirect URI",
+        "name": "redirect_uri",
+        "type": "text",
+        "tooltip": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal.",
+        "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. The redirect URL that you specify here must exactly match one of the redirect_uri's you have registered in your app registration portal.",
+        "placeholder": "E.g. https://localhost/myapp",
+        "required": false,
+        "editable": true,
+        "visible": true
       },
       {
         "title": "Verify SSL",
@@ -336,14 +336,14 @@
       "parameters": [
         {
           "title": "Search Query",
-          "tooltip": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [properties/created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z",
+          "tooltip": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "$filter",
-          "placeholder": "e.g. properties/created gt 2020-04-23T00:00:00Z",
-          "description": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [properties/created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z"
+          "placeholder": "e.g. created gt 2020-04-23T00:00:00Z",
+          "description": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z"
         },
         {
           "title": "Order By",
@@ -354,7 +354,7 @@
           "name": "$orderby",
           "description": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
           "tooltip": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
-          "placeholder": "e.g. properties/displayName desc"
+          "placeholder": "e.g. displayName desc"
         },
         {
           "title": "Number of Indicators to Fetch",
@@ -1169,47 +1169,6 @@
           "description": "(Optional) Description of the specified incident that you want to update in Microsoft Sentinel."
         },
         {
-          "title": "Classification",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "classification",
-          "description": "(Optional) Updates the classification of the specific incident in Microsoft Sentinel. You can choose from the following options: BenignPositive, FalsePositive, TruePositive, or Undetermined.",
-          "options": [
-            "BenignPositive",
-            "FalsePositive",
-            "TruePositive",
-            "Undetermined"
-          ],
-          "tooltip": "The reason the incident was closed."
-        },
-        {
-          "title": "Classification Reason",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "reason",
-          "description": "(Optional) Updates the classification reason of the specific incident in Microsoft Sentinel. You can choose from the following options: InaccurateData, IncorrectAlertLogic, SuspiciousActivity, or SuspiciousButExpected.",
-          "options": [
-            "InaccurateData",
-            "IncorrectAlertLogic",
-            "SuspiciousActivity",
-            "SuspiciousButExpected"
-          ],
-          "tooltip": "The classification reason the incident was closed with."
-        },
-        {
-          "title": "Classification Comment",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "Comment",
-          "description": "(Optional) Describes the reason the incident was closed in Microsoft Sentinel."
-        },
-        {
           "title": "Custom Properties",
           "name": "custom_attributes",
           "type": "json",
@@ -1760,15 +1719,6 @@
       "annotation": "create_watchlist",
       "parameters": [
         {
-          "title": "Watchlist Alias",
-          "description": "Alias of the watchlist that you want to update in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "watchlistAlias"
-        },
-        {
           "title": "Display Name",
           "description": "Display Name of the watchlist that you want to create in Microsoft Sentinel.",
           "required": true,
@@ -1808,6 +1758,15 @@
           "type": "text",
           "name": "source",
           "placeholder": "For e.g. Local file or Remote storage"
+        },
+        {
+          "title": "Watchlist Alias",
+          "description": "Alias of the watchlist that you want to update in Microsoft Sentinel.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistAlias"
         },
         {
           "title": "Description",
@@ -2159,15 +2118,6 @@
       "annotation": "create_watchlist_item",
       "parameters": [
         {
-          "title": "Watchlist Item ID",
-          "description": "ID of the watchlist item that you want to create in Microsoft Sentinel.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "watchlistItemId"
-        },
-        {
           "title": "Watchlist Alias",
           "description": "Alias of the watchlist item that you want to create in Microsoft Sentinel.",
           "required": true,
@@ -2185,6 +2135,15 @@
           "type": "json",
           "name": "itemsKeyValue",
           "tooltip": "Specify a key-value pairs for a watchlist item to create the watchlist item in Microsoft Sentinel."
+        },
+        {
+          "title": "Watchlist Item ID",
+          "description": "ID of the watchlist item that you want to create in Microsoft Sentinel.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistItemId"
         },
         {
           "title": "ETag",
