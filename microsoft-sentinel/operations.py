@@ -27,7 +27,7 @@ def api_request(method, endpoint, connector_info, config, params=None, data=None
             if 'json' in str(response.headers):
                 return response.json()
             else:
-                return response
+                return dict()
         elif response.status_code == 404:
             return {"message": "Not Found"}
         else:
@@ -92,7 +92,7 @@ def threat_indicator_payload(params):
             'indicatorTypes': indicatorTypes.split(",") if indicatorTypes else "",
             'labels': labels.split(",") if labels else "",
             'patternType': pattern_type,
-            'pattern': "[{0}:value = {1}]".format(pattern_type, params.get('pattern')),
+            'pattern': "[{0}:value = '{1}']".format(pattern_type, params.get('pattern')),
             'source': params.get('source')
         }
     }
