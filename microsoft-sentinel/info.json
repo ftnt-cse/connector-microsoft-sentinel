@@ -63,14 +63,14 @@
         "name": "code",
         "type": "password",
         "tooltip": "The authorization code that you acquired in the authorization step.",
-        "description": "The authorization code that you acquired during the authorization step. For more information, see the Getting Access Tokens using the On behalf of the user – Delegate Permission method section. ",
+        "description": "The authorization code that you acquired during the authorization step. For more information, see the Getting Authorization Code using the Generating the Authorization Code section.",
         "required": true,
         "editable": true,
         "visible": true
       },
       {
         "title": "Workspace Subscription ID",
-        "description": "Azure active directory subscription ID from which you want to create the threat intelligence indicator in Microsoft Sentinel.",
+        "description": "Subscription ID of the Microsoft Sentinel that is used to access the Sentinel APIs.",
         "required": true,
         "editable": true,
         "visible": true,
@@ -79,7 +79,7 @@
       },
       {
         "title": "Workspace Resource Group",
-        "description": "Azure active directory resource group from which you want to create the threat intelligence indicator in Microsoft Sentinel.",
+        "description": "Resource Group of the Microsoft Sentinel that is used to access the Sentinel APIs.",
         "required": true,
         "editable": true,
         "visible": true,
@@ -88,7 +88,7 @@
       },
       {
         "title": "Workspace Name",
-        "description": "Name of the workspace from which you want to create the threat intelligence indicator in Microsoft Sentinel",
+        "description": "Workspace name of the Microsoft Sentinel that is used to access the Sentinel APIs.",
         "required": true,
         "editable": true,
         "visible": true,
@@ -121,7 +121,7 @@
   "operations": [
     {
       "title": "Create Threat Intelligence Indicator",
-      "description": "Creates a threat intelligence indicator in Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+      "description": "Creates a threat intelligence indicator in Microsoft Sentinel based on the display name, pattern type, source, and other input parameters you have specified.",
       "operation": "create_threat_intelligence_indicator",
       "category": "investigation",
       "annotation": "create_threat_intelligence_indicator",
@@ -329,7 +329,7 @@
     },
     {
       "title": "Get All Threat Intelligence Indicators",
-      "description": "Retrieves all threat intelligence indicators from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+      "description": "Retrieves all threat intelligence indicators from Microsoft Sentinel based on the input parameters you have specified.",
       "operation": "get_all_threat_intelligence_indicators",
       "category": "investigation",
       "annotation": "get_all_threat_intelligence_indicators",
@@ -428,7 +428,7 @@
     },
     {
       "title": "Get Threat Intelligence Indicator",
-      "description": "Retrieves a specific threat intelligence indicator from Microsoft Sentinel based on the threat intelligence indicator ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "description": "Retrieves a specific threat intelligence indicator from Microsoft Sentinel based on the threat intelligence indicator ID that you have specified.",
       "operation": "get_threat_intelligence_indicator",
       "category": "investigation",
       "annotation": "get_threat_intelligence_indicator",
@@ -491,7 +491,7 @@
     },
     {
       "title": "Update Threat Intelligence Indicator",
-      "description": "Updates a specific threat intelligence indicator in Microsoft Sentinel based on the threat intelligence indicator ID, workspace subscription ID, workspace resource group, workspace name and other input parameters that you have specified.",
+      "description": "Updates a specific threat intelligence indicator in Microsoft Sentinel based on the threat intelligence indicator ID, display name, pattern type, source, and other input parameters that you have specified.",
       "operation": "update_threat_intelligence_indicator",
       "category": "investigation",
       "annotation": "update_threat_intelligence_indicator",
@@ -697,7 +697,7 @@
     },
     {
       "title": "Delete Threat Intelligence Indicator",
-      "description": "Deletes a specific threat intelligence indicator in Microsoft Sentinel based on the threat Intelligence Indicator ID, workspace subscription ID, workspace resource group, workspace name that you have specified.",
+      "description": "Deletes a specific threat intelligence indicator in Microsoft Sentinel based on the threat Intelligence Indicator ID that you have specified.",
       "operation": "delete_threat_intelligence_indicator",
       "category": "investigation",
       "annotation": "delete_threat_intelligence_indicator",
@@ -719,7 +719,7 @@
     },
     {
       "title": "Get Incident List",
-      "description": "Retrieves all incidents from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameters that you have specified.",
+      "description": "Retrieves all incidents from Microsoft Sentinel based on the input parameters that you have specified.",
       "operation": "get_incident_list",
       "category": "investigation",
       "annotation": "get_incident_list",
@@ -847,7 +847,7 @@
     },
     {
       "title": "Get Incident Details",
-      "description": "Retrieves an specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "description": "Retrieves an specific incident from Microsoft Sentinel based on the incident ID that you have specified.",
       "operation": "get_incident",
       "category": "investigation",
       "annotation": "get_incident",
@@ -899,7 +899,7 @@
     },
     {
       "title": "Get Incident Alert List",
-      "description": "Retrieves all alerts associated with a specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group, workspace name ID that you have specified.",
+      "description": "Retrieves all alerts associated with a specific incident from Microsoft Sentinel based on the incident ID that you have specified.",
       "operation": "get_alert_list",
       "category": "investigation",
       "annotation": "get_alert_list",
@@ -961,7 +961,7 @@
     },
     {
       "title": "Get Incident Entities List",
-      "description": "Retrieves all entities associated with a specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace name ID, workspace resource group, workspace name that you have specified.",
+      "description": "Retrieves all entities associated with a specific incident from Microsoft Sentinel based on the incident ID that you have specified.",
       "operation": "get_entities_list",
       "category": "investigation",
       "annotation": "get_entities_list",
@@ -1001,7 +1001,7 @@
     },
     {
       "title": "Get Incident Bookmarks List",
-      "description": "Retrieves an bookmarks associated with a specific incident from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "description": "Retrieves an bookmarks associated with a specific incident from Microsoft Sentinel based on the incident ID that you have specified.",
       "operation": "get_bookmarks_list",
       "category": "investigation",
       "annotation": "get_bookmarks_list",
@@ -1054,7 +1054,7 @@
     },
     {
       "title": "Update Incident",
-      "description": "Updates an incident in Microsoft Sentinel based on the incident ID, Workspace Subscription ID, Workspace Resource Group, workspace name ID, and other input parameters that you have specified.",
+      "description": "Updates an incident in Microsoft Sentinel based on the incident ID, severity, status, title, and other input parameters that you have specified.",
       "operation": "update_incident",
       "category": "investigation",
       "annotation": "update_incident",
@@ -1216,7 +1216,7 @@
     },
     {
       "title": "Create Incident Relations",
-      "description": "Creates a incident relations in Microsoft Sentinel based on the incident ID, relation name, resource ID, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+      "description": "Creates a incident relations in Microsoft Sentinel based on the incident ID, relation name and resource ID that you have specified.",
       "operation": "create_incident_relations",
       "category": "investigation",
       "annotation": "create_incident_relations",
@@ -1264,7 +1264,7 @@
     },
     {
       "title": "Get All Incident Relations",
-      "description": "Retrieves all incident relations from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+      "description": "Retrieves all incident relations from Microsoft Sentinel based on the incident ID, and other input parameters you have specified.",
       "operation": "get_all_incident_relations",
       "category": "investigation",
       "annotation": "get_all_incident_relations",
@@ -1339,7 +1339,7 @@
     },
     {
       "title": "Get Incident Relation",
-      "description": "Retrieves a specific relation of a incident from Microsoft Sentinel based on the incident ID, relation name, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "description": "Retrieves a specific relation of a incident from Microsoft Sentinel based on the incident ID and relation name that you have specified.",
       "operation": "get_incident_relations",
       "category": "investigation",
       "annotation": "get_incident_relations",
@@ -1378,7 +1378,7 @@
     },
     {
       "title": "Update Incident Relations",
-      "description": "Updates an incident relations in Microsoft Sentinel based on the incident ID, relation name, resource ID, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+      "description": "Updates an incident relations in Microsoft Sentinel based on the incident ID, relation name and resource ID that you have specified.",
       "operation": "update_incident_relations",
       "category": "investigation",
       "annotation": "update_incident_relations",
@@ -1426,7 +1426,7 @@
     },
     {
       "title": "Delete Incident Relation",
-      "description": "Deletes a specific incident relation in Microsoft Sentinel based on the incident ID, relation name, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "description": "Deletes a specific incident relation in Microsoft Sentinel based on the incident ID and relation name that you have specified.",
       "operation": "delete_incident_relation",
       "category": "investigation",
       "annotation": "delete_incident_relation",
@@ -1457,7 +1457,7 @@
     },
     {
       "title": "Create Incident Comment",
-      "description": "Creates a incident comment in Microsoft Sentinel based on the incident ID, message, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+      "description": "Creates a incident comment in Microsoft Sentinel based on the incident ID and message that you have specified.",
       "operation": "create_incident_comment",
       "category": "investigation",
       "annotation": "create_incident_comment",
@@ -1502,7 +1502,7 @@
     },
     {
       "title": "Get All Incident Comments",
-      "description": "Retrieves all incident comments from Microsoft Sentinel based on the incident ID, workspace subscription ID, workspace resource group, workspace name, and other input parameters you have specified.",
+      "description": "Retrieves all incident comments from Microsoft Sentinel based on the incident ID, and other input parameters you have specified.",
       "operation": "get_all_incident_comments",
       "category": "investigation",
       "annotation": "get_all_incident_comments",
@@ -1583,7 +1583,7 @@
     },
     {
       "title": "Get Incident Comment",
-      "description": "Retrieves a specific comment of a incident from Microsoft Sentinel based on the incident comment ID, incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "description": "Retrieves a specific comment of a incident from Microsoft Sentinel based on the incident comment ID and incident ID that you have specified.",
       "operation": "get_incident_comment",
       "category": "investigation",
       "annotation": "get_incident_comment",
@@ -1628,7 +1628,7 @@
     },
     {
       "title": "Update Incident Comment",
-      "description": "Updates an incident comment in Microsoft Sentinel based on the incident comment ID, incident ID, message, workspace subscription ID, workspace resource group, and workspace name that you have specified.",
+      "description": "Updates an incident comment in Microsoft Sentinel based on the incident comment ID, incident ID and message that you have specified.",
       "operation": "update_incident_comment",
       "category": "investigation",
       "annotation": "update_incident_comment",
@@ -1682,7 +1682,7 @@
     },
     {
       "title": "Delete Incident Comment",
-      "description": "Deletes a specific incident comment in Microsoft Sentinel based on the incident comment ID, incident ID, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "description": "Deletes a specific incident comment in Microsoft Sentinel based on the incident comment ID and incident ID that you have specified.",
       "operation": "delete_incident_comment",
       "category": "investigation",
       "annotation": "delete_incident_comment",
@@ -1713,7 +1713,7 @@
     },
     {
       "title": "Create Watchlist",
-      "description": "Creates a watchlist in Microsoft Sentinel based on the display name, item search key, provider, source, workspace subscription ID, workspace resource group, workspace name and other input parameters that you have specified.",
+      "description": "Creates a watchlist in Microsoft Sentinel based on the display name, item search key, provider, source, and other input parameters that you have specified.",
       "operation": "create_watchlist",
       "category": "investigation",
       "annotation": "create_watchlist",
@@ -1842,7 +1842,7 @@
     },
     {
       "title": "Get All Watchlist",
-      "description": "Retrieves all watchlist from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameter you have specified.",
+      "description": "Retrieves all watchlist from Microsoft Sentinel based on the input parameter you have specified.",
       "operation": "get_all_watchlist",
       "category": "investigation",
       "annotation": "get_all_watchlist",
@@ -1905,7 +1905,7 @@
     },
     {
       "title": "Get Watchlist",
-      "description": "Retrieves a specific watchlist without watchlist items from Microsoft Sentinel based on the watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "description": "Retrieves a specific watchlist without watchlist items from Microsoft Sentinel based on the watchlist alias that you have specified.",
       "operation": "get_watchlist",
       "category": "investigation",
       "annotation": "get_watchlist",
@@ -1964,7 +1964,7 @@
     },
     {
       "title": "Update Watchlist",
-      "description": "Updates an watchlist in Microsoft Sentinel based on the watchlist alias, display name, item search key, provider, source, workspace subscription ID, workspace resource group, workspace name, and other input parameters that you have specified.",
+      "description": "Updates an watchlist in Microsoft Sentinel based on the watchlist alias, display name, item search key, provider, source, and other input parameters that you have specified.",
       "operation": "update_watchlist",
       "category": "investigation",
       "annotation": "update_watchlist",
@@ -2090,7 +2090,7 @@
     },
     {
       "title": "Delete Watchlist",
-      "description": "Deletes a specific watchlist in Microsoft Sentinel based on the watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "description": "Deletes a specific watchlist in Microsoft Sentinel based on the watchlist alias that you have specified.",
       "operation": "delete_watchlist",
       "category": "investigation",
       "annotation": "delete_watchlist",
@@ -2112,7 +2112,7 @@
     },
     {
       "title": "Create Watchlist Item",
-      "description": "Creates a watchlist item in Microsoft Sentinel based on the watchlist alias, item key value, workspace subscription ID, workspace resource group, workspace name and other input parameters that you have specified.",
+      "description": "Creates a watchlist item in Microsoft Sentinel based on the watchlist alias, item key value, and other input parameters that you have specified.",
       "operation": "create_watchlist_item",
       "category": "investigation",
       "annotation": "create_watchlist_item",
@@ -2208,7 +2208,7 @@
     },
     {
       "title": "Get All Watchlist Items",
-      "description": "Retrieves all watchlist items from Microsoft Sentinel based on the workspace subscription ID, workspace resource group, workspace name, and other input parameter you have specified.",
+      "description": "Retrieves all watchlist items from Microsoft Sentinel based on the watchlist alias, and other input parameter you have specified.",
       "operation": "get_all_watchlist_items",
       "category": "investigation",
       "annotation": "get_all_watchlist_items",
@@ -2275,7 +2275,7 @@
     },
     {
       "title": "Get Watchlist Item",
-      "description": "Retrieves a specific watchlist item from Microsoft Sentinel based on the watchlist item ID, watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "description": "Retrieves a specific watchlist item from Microsoft Sentinel based on the watchlist item ID and watchlist alias that you have specified.",
       "operation": "get_watchlist_item",
       "category": "investigation",
       "annotation": "get_watchlist_item",
@@ -2337,7 +2337,7 @@
     },
     {
       "title": "Update Watchlist Item",
-      "description": "Updates an watchlist item in Microsoft Sentinel based on the watchlist item ID, watchlist alias, item key value, workspace subscription ID, workspace resource group, workspace name, and other input parameters that you have specified.",
+      "description": "Updates an watchlist item in Microsoft Sentinel based on the watchlist item ID, watchlist alias, item key value, and other input parameters that you have specified.",
       "operation": "update_watchlist_item",
       "category": "investigation",
       "annotation": "update_watchlist_item",
@@ -2429,7 +2429,7 @@
     },
     {
       "title": "Delete Watchlist Item",
-      "description": "Deletes a specific watchlist item in Microsoft Sentinel based on the watchlist item ID, watchlist alias, workspace subscription ID, workspace resource group and workspace name that you have specified.",
+      "description": "Deletes a specific watchlist item in Microsoft Sentinel based on the watchlist item ID and watchlist alias that you have specified.",
       "operation": "delete_watchlist_item",
       "category": "investigation",
       "annotation": "delete_watchlist_item",
