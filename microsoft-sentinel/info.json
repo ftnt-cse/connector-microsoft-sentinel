@@ -127,6 +127,15 @@
       "annotation": "create_threat_intelligence_indicator",
       "parameters": [
         {
+          "title": "Display Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "displayName",
+          "description": "Display name of the threat represented by the indicator that you want to create in Microsoft Sentinel."
+        },
+        {
           "title": "Pattern Type",
           "required": true,
           "editable": true,
@@ -210,15 +219,6 @@
           "description": "Specify a source of a threat intelligence entity that you want to create in Microsoft Sentinel.",
           "value": "Microsoft Sentinel",
           "placeholder": "For e.g. Microsoft Sentinel"
-        },
-        {
-          "title": "Display Name",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "displayName",
-          "description": "Display name of the threat represented by the indicator that you want to create in Microsoft Sentinel."
         },
         {
           "title": "Confidence",
@@ -506,6 +506,15 @@
           "name": "id"
         },
         {
+          "title": "Display Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "displayName",
+          "description": "Display name of the threat represented by the indicator that you want to update in Microsoft Sentinel."
+        },
+        {
           "title": "Pattern Type",
           "required": true,
           "editable": true,
@@ -608,15 +617,6 @@
           "type": "text",
           "name": "description",
           "description": "Brief description (100 characters or less) of the threat represented by the indicator that you want to update in Microsoft Sentinel."
-        },
-        {
-          "title": "Display Name",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "displayName",
-          "description": "Display name of the threat represented by the indicator that you want to update in Microsoft Sentinel."
         },
         {
           "title": "Tags",

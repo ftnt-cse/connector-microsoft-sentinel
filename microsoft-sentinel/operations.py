@@ -92,7 +92,7 @@ def threat_indicator_payload(params):
             'indicatorTypes': indicatorTypes.split(",") if indicatorTypes else "",
             'labels': labels.split(",") if labels else "",
             'patternType': pattern_type,
-            'pattern': "[{0}:value = {1}]".format(pattern_type, params.get('pattern')),
+            'pattern': "[{0}:value = '{1}']".format(pattern_type, params.get('pattern')),
             'source': params.get('source')
         }
     }
