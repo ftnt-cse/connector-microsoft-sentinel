@@ -27,7 +27,7 @@ def api_request(method, endpoint, connector_info, config, params=None, data=None
             if 'json' in str(response.headers):
                 return response.json()
             else:
-                return response
+                return dict()
         elif response.status_code == 404:
             return {"message": "Not Found"}
         else:
