@@ -9,7 +9,7 @@
   "category": "Analytics and SIEM",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/microsoft-sentinel/514/microsoft-sentinel-v1-0-0",
   "ingestion_supported": true,
   "ingestion_modes": [
     "scheduled"
@@ -142,7 +142,7 @@
           "visible": true,
           "type": "select",
           "name": "patternType",
-          "description": "Type of the pattern that represented by the indicator that you want to create in Microsoft Sentinel.",
+          "description": "Select a pattern type of the threat indicator to create in Microsoft Sentinel. You can choose from the following options: Domain Name, File, IPV4 Address, IPV6 Address, or URL",
           "options": [
             "Domain Name",
             "File",
@@ -156,7 +156,7 @@
                 "title": "Domain Name",
                 "name": "pattern",
                 "type": "text",
-                "description": "Specify a domain name for those you want to create a indicator in Microsoft Sentinel.",
+                "description": "Specify a domain name that you want to create as an indicator in Microsoft Sentinel.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -167,7 +167,7 @@
                 "title": "Hashes",
                 "name": "pattern",
                 "type": "text",
-                "description": "Specify a hashes for those you want to create a indicator in Microsoft Sentinel.",
+                "description": "Specify file hashes that you want to create as indicators in Microsoft Sentinel.",
                 "required": true,
                 "editable": true,
                 "visible": true,
@@ -179,7 +179,7 @@
                 "title": "IPV4 Address",
                 "name": "pattern",
                 "type": "text",
-                "description": "Specify a IPV4 address for those you want to create a indicator in Microsoft Sentinel.",
+                "description": "Specify an IPV4 address that you want to create as an indicator in Microsoft Sentinel.\n",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -190,7 +190,7 @@
                 "title": "IPV6 Address",
                 "name": "pattern",
                 "type": "text",
-                "description": "Specify a IPV6 address for those you want to create a indicator in Microsoft Sentinel.",
+                "description": "Specify an IPV6 address that you want to create as an indicator in Microsoft Sentinel.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -201,7 +201,7 @@
                 "title": "URL",
                 "name": "pattern",
                 "type": "text",
-                "description": "Specify a URL for those you want to create a indicator in Microsoft Sentinel.",
+                "description": "Specify a URL that you want to create as an indicator in Microsoft Sentinel.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -216,7 +216,7 @@
           "visible": true,
           "type": "text",
           "name": "source",
-          "description": "Specify a source of a threat intelligence entity that you want to create in Microsoft Sentinel.",
+          "description": "Specify the source of the indicator's threat intelligence entity that you want to create in Microsoft Sentinel.",
           "value": "Microsoft Sentinel",
           "placeholder": "For e.g. Microsoft Sentinel"
         },
@@ -227,7 +227,7 @@
           "visible": true,
           "type": "integer",
           "name": "confidence",
-          "description": "(Optional) Integer value representing the confidence in the accuracy of the data within the indicator that identifies malicious behavior. You can enter any value between 0-100, where 100 is the highest.",
+          "description": "(Optional) Specify an integer value representing the confidence in the accuracy of the data within the indicator that identifies malicious behavior. You can enter any value between 0-100, where 100 is the highest.",
           "tooltip": "Acceptable values are 0 – 100 with 100 being the highest."
         },
         {
@@ -237,7 +237,7 @@
           "visible": true,
           "type": "text",
           "name": "description",
-          "description": "Brief description (100 characters or less) of the threat represented by the indicator that you want to create in Microsoft Sentinel."
+          "description": "Specify a brief description (100 characters or less) of the threat indicator that you want to create in Microsoft Sentinel."
         },
         {
           "title": "Tags",
@@ -246,7 +246,7 @@
           "visible": true,
           "type": "text",
           "name": "threatIntelligenceTags",
-          "description": "Tags of threat that you want to assign to the indicator that you are creating in Microsoft Sentinel."
+          "description": "Specify tags that you want to assign to the indicator being created in Microsoft Sentinel."
         },
         {
           "title": "Threat Type",
@@ -275,7 +275,7 @@
           "visible": true,
           "type": "text",
           "name": "labels",
-          "description": "Labels of indicator that you want to assign to the indicator that you are creating in Microsoft Sentinel."
+          "description": "Specify indicator labels that you want to assign to the indicator being created in Microsoft Sentinel."
         },
         {
           "title": "Additional Fields",
@@ -343,7 +343,7 @@
           "type": "text",
           "name": "$filter",
           "placeholder": "e.g. created gt 2020-04-23T00:00:00Z",
-          "description": "(Optional) Query using which you want to filter indicators to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [created gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z"
+          "description": "(Optional) Specify the query using which you want to filter indicators retrieved from Microsoft Sentinel. The OData Filter query is supported based on fields. For example [created gt 2019-09-22T00:00:00Z] retrieves all the indicators that were created after 2019-09-22T00:00:00Z"
         },
         {
           "title": "Order By",
@@ -352,7 +352,7 @@
           "visible": true,
           "type": "text",
           "name": "$orderby",
-          "description": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "description": "(Optional) Specify the order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc. By default, this is set to asc.",
           "tooltip": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
           "placeholder": "e.g. displayName desc"
         },
@@ -363,7 +363,7 @@
           "visible": true,
           "type": "integer",
           "name": "$top",
-          "description": "(Optional) Maximum number of indicators that this operation should return from Microsoft Sentinel."
+          "description": "(Optional) Specify the maximum number of indicators that this operation should return from Microsoft Sentinel."
         },
         {
           "title": "Skip Token",
@@ -372,7 +372,7 @@
           "visible": true,
           "type": "text",
           "name": "$skipToken",
-          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "description": "(Optional) Specify a Skiptoken if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skiptoken parameter that specifies a starting point to use for subsequent calls.",
           "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
@@ -435,7 +435,7 @@
       "parameters": [
         {
           "title": "Threat Intelligence Indicator ID",
-          "description": "ID of the indicator based on which you want to retrieve a specific threat intelligence indicator from Microsoft Sentinel.",
+          "description": "Specify the indicator ID based on which you want to retrieve the threat intelligence indicator from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -498,7 +498,7 @@
       "parameters": [
         {
           "title": "Threat Intelligence Indicator ID",
-          "description": "Unique GUID or ID that is generated by the system when an indicator is ingested based on which you want to update a specific threat intelligence indicator in Microsoft Sentinel.",
+          "description": "Specify a unique GUID or ID, generated by the system after ingestion, based on which you want to update that threat intelligence indicator in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -512,7 +512,7 @@
           "visible": true,
           "type": "text",
           "name": "displayName",
-          "description": "Display name of the threat represented by the indicator that you want to update in Microsoft Sentinel."
+          "description": "Specify the display name of the threat indicator that you want to update in Microsoft Sentinel."
         },
         {
           "title": "Pattern Type",
@@ -521,7 +521,7 @@
           "visible": true,
           "type": "select",
           "name": "patternType",
-          "description": "Type of the pattern that represented by the indicator that you want to update in Microsoft Sentinel.",
+          "description": "Select a pattern type of the indicator that you want to update in Microsoft Sentinel. You can choose from the following options: Domain Name, File, IPV4 Address, IPV6 Address, or URL",
           "options": [
             "Domain Name",
             "File",
@@ -535,7 +535,7 @@
                 "title": "Domain Name",
                 "name": "pattern",
                 "type": "text",
-                "description": "Specify a domain name for those you want to update a indicator in Microsoft Sentinel.",
+                "description": "Specify the domain name that you want to update as an indicator in Microsoft Sentinel.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -546,7 +546,7 @@
                 "title": "Hashes",
                 "name": "pattern",
                 "type": "text",
-                "description": "Specify a hashes for those you want to update a indicator in Microsoft Sentinel.",
+                "description": "Specify file hashes that you want to update as indicators in Microsoft Sentinel.",
                 "required": true,
                 "editable": true,
                 "visible": true,
@@ -558,7 +558,7 @@
                 "title": "IPV4 Address",
                 "name": "pattern",
                 "type": "text",
-                "description": "Specify a IPV4 address for those you want to update a indicator in Microsoft Sentinel.",
+                "description": "Specify an IPV4 address that you want to update as an indicator in Microsoft Sentinel.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -569,7 +569,7 @@
                 "title": "IPV6 Address",
                 "name": "pattern",
                 "type": "text",
-                "description": "Specify a IPV6 address for those you want to update a indicator in Microsoft Sentinel.",
+                "description": "Specify an IPV6 address that you want to update as an indicator in Microsoft Sentinel.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -580,7 +580,7 @@
                 "title": "URL",
                 "name": "pattern",
                 "type": "text",
-                "description": "Specify a URL for those you want to update a indicator in Microsoft Sentinel.",
+                "description": "Specify a URL that you want to update as an indicator in Microsoft Sentinel.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -595,7 +595,7 @@
           "visible": true,
           "type": "text",
           "name": "source",
-          "description": "Specify a source of a threat intelligence entity that you want to update in Microsoft Sentinel.",
+          "description": "Specify the source of the indicator's threat intelligence entity that you want to update in Microsoft Sentinel.",
           "value": "Microsoft Sentinel",
           "placeholder": "For e.g. Microsoft Sentinel"
         },
@@ -606,7 +606,7 @@
           "visible": true,
           "type": "integer",
           "name": "confidence",
-          "description": "(Optional) Integer value representing the confidence in the accuracy of the data within the indicator that identifies malicious behavior. You can enter any value between 0-100, where 100 is the highest.",
+          "description": "(Optional) Specify an integer value representing the confidence in the accuracy of the data within the indicator that identifies malicious behavior. You can enter any value between 0-100, where 100 is the highest.",
           "tooltip": "Acceptable values are 0 – 100 with 100 being the highest."
         },
         {
@@ -616,7 +616,7 @@
           "visible": true,
           "type": "text",
           "name": "description",
-          "description": "Brief description (100 characters or less) of the threat represented by the indicator that you want to update in Microsoft Sentinel."
+          "description": "Specify a brief description (100 characters or less) of the threat indicator that you want to update in Microsoft Sentinel."
         },
         {
           "title": "Tags",
@@ -625,7 +625,7 @@
           "visible": true,
           "type": "text",
           "name": "threatIntelligenceTags",
-          "description": "Tags of threat that you want to assign to the indicator that you are updating in Microsoft Sentinel."
+          "description": "Specify tags that you want to assign to the indicator being updated in Microsoft Sentinel."
         },
         {
           "title": "Threat Type",
@@ -644,7 +644,7 @@
           "visible": true,
           "type": "text",
           "name": "indicatorTypes",
-          "description": "Type of indicator that you want to assign to the indicator that you are updating in Microsoft Sentinel.",
+          "description": "Specify the indicator type that you want to assign to the indicator being updated in Microsoft Sentinel.",
           "tooltip": "Specify a valid indicator type."
         },
         {
@@ -654,7 +654,7 @@
           "visible": true,
           "type": "text",
           "name": "labels",
-          "description": "Labels of indicator that you want to assign to the indicator that you are updating in Microsoft Sentinel."
+          "description": "Specify indicator labels that you want to assign to the indicator being updated in Microsoft Sentinel."
         },
         {
           "title": "Additional Fields",
@@ -664,7 +664,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Additional fields, in the JSON format, based on which you want to update indicator in Microsoft Sentinel.",
-          "description": "Additional fields, in the JSON format, based on which you want to update indicator in Microsoft Sentinel."
+          "description": "Specify additional fields, in JSON format, based on which you want to update the threat indicator in Microsoft Sentinel."
         }
       ],
       "output_schema": {
@@ -704,7 +704,7 @@
       "parameters": [
         {
           "title": "Threat Intelligence Indicator ID",
-          "description": "Unique GUID or ID that is generated by the system when an indicator is ingested based on which you want to delete a specific threat intelligence indicator in Microsoft Sentinel.",
+          "description": "Specify a unique GUID or ID, generated by the system after ingestion, based on which you want to delete that threat indicator in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -726,7 +726,7 @@
       "parameters": [
         {
           "title": "Created DateTime",
-          "description": "(Optional) Created Datetime based on which you want to retrieve incidents from Microsoft Sentinel.",
+          "description": "(Optional) Specify the date and time of the creation of incidents to retrieve from Microsoft Sentinel.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -741,7 +741,7 @@
           "visible": true,
           "type": "select",
           "name": "Severity",
-          "description": "(Optional) Specify a severity for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational.",
+          "description": "(Optional) Specify the severity of the incident to retrieve from Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational",
           "options": [
             "High",
             "Medium",
@@ -756,7 +756,7 @@
           "visible": true,
           "type": "select",
           "name": "Status",
-          "description": "(Optional) Specify a status for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Active, New, or Closed.",
+          "description": "(Optional) Specify the status of the incident to retrieve from Microsoft Sentinel. You can choose from the following options: Active, New, or Closed",
           "options": [
             "Active",
             "New",
@@ -772,7 +772,7 @@
           "type": "text",
           "name": "$filter",
           "placeholder": "e.g. classification eq 'FalsePositive'",
-          "description": "(Optional) Query using which you want to filter incidents to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [classification eq 'FalsePositive'] retrieves all the incidents that classification are FalsePositive"
+          "description": "(Optional) Specify the query to filter indicators retrieved from Microsoft Sentinel. The OData Filter query is supported based on fields. For example, [classification eq 'FalsePositive'] retrieves all the incidents that are classified are FalsePositive."
         },
         {
           "title": "Order By",
@@ -781,7 +781,7 @@
           "visible": true,
           "type": "text",
           "name": "$orderby",
-          "description": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "description": "(Optional) Specify the order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc. By default, this is set to asc.",
           "tooltip": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
           "placeholder": "e.g. properties/title desc"
         },
@@ -802,7 +802,7 @@
           "visible": true,
           "type": "text",
           "name": "$skipToken",
-          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+          "description": "(Optional) Specify a Skiptoken if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
       "output_schema": {
@@ -847,14 +847,14 @@
     },
     {
       "title": "Get Incident Details",
-      "description": "Retrieves an specific incident from Microsoft Sentinel based on the incident ID that you have specified.",
+      "description": "Retrieves a specific incident from Microsoft Sentinel based on the incident ID that you have specified.",
       "operation": "get_incident",
       "category": "investigation",
       "annotation": "get_incident",
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident those details you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the incident ID to retrieve its details from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -906,7 +906,7 @@
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident those associated alerts that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the incident ID to retrieve the associated alerts from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -968,7 +968,7 @@
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident those associated entities that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the incident ID to retrieve associated entities from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1001,14 +1001,14 @@
     },
     {
       "title": "Get Incident Bookmarks List",
-      "description": "Retrieves an bookmarks associated with a specific incident from Microsoft Sentinel based on the incident ID that you have specified.",
+      "description": "Retrieves bookmarks associated with a specific incident from Microsoft Sentinel based on the incident ID that you have specified.",
       "operation": "get_bookmarks_list",
       "category": "investigation",
       "annotation": "get_bookmarks_list",
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident those associated bookmarks that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the incident ID to retrieve associated bookmarks from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1061,7 +1061,7 @@
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident that you want to update in Microsoft Sentinel.",
+          "description": "Specify the ID of the incident to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1075,7 +1075,7 @@
           "visible": true,
           "type": "select",
           "name": "Severity",
-          "description": "(Optional) Updates the severity of the specific incident in Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational.",
+          "description": "(Optional) Specify the severity of the incident to update in Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational",
           "options": [
             "High",
             "Medium",
@@ -1090,7 +1090,7 @@
           "visible": true,
           "type": "select",
           "name": "Status",
-          "description": "(Optional) Updates the status of the specific incident in Microsoft Sentinel. You can choose from the following options: Active, New, or Closed.",
+          "description": "(Optional) Updates the status of the specific incident in Microsoft Sentinel. You can choose from the following options: Active, New, or Closed",
           "options": [
             "Active",
             "New",
@@ -1105,7 +1105,7 @@
                 "visible": true,
                 "type": "text",
                 "name": "Comment",
-                "description": "Comment that you want to associate with the specified incident that you want to closed in Microsoft Sentinel."
+                "description": "Specify a classification comment to associate with the specified incident being closed in Microsoft Sentinel."
               },
               {
                 "title": "Classification",
@@ -1114,7 +1114,7 @@
                 "visible": true,
                 "type": "select",
                 "name": "classification",
-                "description": "Reason that you want to associate with the specified incident that you want to closed in Microsoft Sentinel.",
+                "description": "Select a classification reason for the incident being closed in Microsoft Sentinel. You can choose from the following options: BenignPositive, FalsePositive, TruePositive, or Undetermined",
                 "options": [
                   "BenignPositive",
                   "FalsePositive",
@@ -1129,7 +1129,7 @@
                 "visible": true,
                 "type": "select",
                 "name": "reason",
-                "description": "Classification Reason that you want to associate with the specified incident that you want to closed with InaccurateData, IncorrectAlertLogic, SuspiciousActivity, or SuspiciousButExpected in Microsoft Sentinel.",
+                "description": "Select a reason justifying the classification of the incident being closed. You can choose from the following options: InaccurateData, IncorrectAlertLogic, SuspiciousActivity, or SuspiciousButExpected.",
                 "options": [
                   "InaccurateData",
                   "IncorrectAlertLogic",
@@ -1147,11 +1147,11 @@
           "visible": true,
           "type": "text",
           "name": "Title",
-          "description": "(Optional) Title of the specified incident that you want to update in Microsoft Sentinel."
+          "description": "(Optional) Specify a title of the incident to update in Microsoft Sentinel."
         },
         {
           "title": "ETag",
-          "description": "(Optional) Etag in which you want to update the incident in Microsoft Sentinel.",
+          "description": "(Optional) Specify an Etag of the incident to update in Microsoft Sentinel.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -1166,13 +1166,13 @@
           "visible": true,
           "type": "text",
           "name": "Description",
-          "description": "(Optional) Description of the specified incident that you want to update in Microsoft Sentinel."
+          "description": "(Optional) Specify a description of the incident to update in Microsoft Sentinel."
         },
         {
           "title": "Custom Properties",
           "name": "custom_attributes",
           "type": "json",
-          "description": "Additional properties, in the JSON format, that you want to update incident in Microsoft Sentinel. The additional properties signify additional fields associated with the incident.",
+          "description": "Specify additional properties, in JSON format, of the incident to update in Microsoft Sentinel. The additional properties signify additional fields associated with the incident.",
           "tooltip": "Additional properties, in the JSON format, that you want to update incident in Microsoft Sentinel. The additional properties signify additional fields associated with the incident.",
           "visible": true,
           "required": false,
@@ -1216,14 +1216,14 @@
     },
     {
       "title": "Create Incident Relations",
-      "description": "Creates a incident relations in Microsoft Sentinel based on the incident ID, relation name and resource ID that you have specified.",
+      "description": "Creates incident relations in Microsoft Sentinel based on the incident ID, relation name, and resource ID that you have specified.",
       "operation": "create_incident_relations",
       "category": "investigation",
       "annotation": "create_incident_relations",
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident those relations that you want to create in Microsoft Sentinel.",
+          "description": "Specify an ID of the incident whose relations you want to create in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1232,7 +1232,7 @@
         },
         {
           "title": "Relation Name",
-          "description": "Name of the relation those relations that you want to create in Microsoft Sentinel.",
+          "description": "Specify the name of the incident whose relations you want to create in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1241,7 +1241,7 @@
         },
         {
           "title": "Resource ID",
-          "description": "ID of the resource those associate incident relations that you want to create in Microsoft Sentinel.",
+          "description": "Specify the ID of the resource whose associated incident relations you want to create in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1264,14 +1264,14 @@
     },
     {
       "title": "Get All Incident Relations",
-      "description": "Retrieves all incident relations from Microsoft Sentinel based on the incident ID, and other input parameters you have specified.",
+      "description": "Retrieves all incident relations from Microsoft Sentinel based on the incident ID and other input parameters you have specified.",
       "operation": "get_all_incident_relations",
       "category": "investigation",
       "annotation": "get_all_incident_relations",
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident those incident relations that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the ID of the incident whose relations you want to retrieve from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1287,7 +1287,7 @@
           "type": "text",
           "name": "$filter",
           "placeholder": "e.g. name eq sample",
-          "description": "(Optional) Query using which you want to filter incident relations to be retrieved from Microsoft Sentinel. The OData's Filter query is supported on fields.\nFor example [name eq sample] retrieves all the indicators that are equal to specific name."
+          "description": "(Optional) Specify the query using which you want to filter incident relations retrieved from Microsoft Sentinel. The OData Filter query is supported based on fields. For example [name eq sample] retrieves all the indicators that are equal to the specified name."
         },
         {
           "title": "Order By",
@@ -1296,7 +1296,7 @@
           "visible": true,
           "type": "text",
           "name": "$orderby",
-          "description": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "description": "(Optional) Specify the order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc. By default, this is set to asc.",
           "tooltip": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
           "placeholder": "e.g. properties/relatedResourceName desc"
         },
@@ -1316,7 +1316,7 @@
           "visible": true,
           "type": "text",
           "name": "$skipToken",
-          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "description": "(Optional) Specify a Skiptoken if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skiptoken parameter that specifies a starting point to use for subsequent calls.",
           "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
@@ -1339,14 +1339,14 @@
     },
     {
       "title": "Get Incident Relation",
-      "description": "Retrieves a specific relation of a incident from Microsoft Sentinel based on the incident ID and relation name that you have specified.",
+      "description": "Retrieves a specific relation of an incident from Microsoft Sentinel based on the incident ID and relation name that you have specified.",
       "operation": "get_incident_relations",
       "category": "investigation",
       "annotation": "get_incident_relations",
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident those incident relation that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the ID of the incident whose relation you want to retrieve from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1355,7 +1355,7 @@
         },
         {
           "title": "Relation Name",
-          "description": "Name of the relation those incident relation that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the name of the incident relation you want to retrieve from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1378,14 +1378,14 @@
     },
     {
       "title": "Update Incident Relations",
-      "description": "Updates an incident relations in Microsoft Sentinel based on the incident ID, relation name and resource ID that you have specified.",
+      "description": "Updates incident relations in Microsoft Sentinel based on the incident ID, relation name, and resource ID that you have specified.",
       "operation": "update_incident_relations",
       "category": "investigation",
       "annotation": "update_incident_relations",
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident those relations that you want to update in Microsoft Sentinel.",
+          "description": "Specify the ID of the incident whose relation you want to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1394,7 +1394,7 @@
         },
         {
           "title": "Relation Name",
-          "description": "Name of the relation those relations that you want to update in Microsoft Sentinel.",
+          "description": "Specify the name of the incident relation you want to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1403,7 +1403,7 @@
         },
         {
           "title": "Resource ID",
-          "description": "ID of the resource those associate incident relations that you want to update in Microsoft Sentinel.",
+          "description": "Specify the ID of the resource whose associated incident relations you want to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1433,7 +1433,7 @@
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident those incident relation that you want to delete in Microsoft Sentinel.",
+          "description": "Specify an ID of the incident whose relations you want to delete from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1442,7 +1442,7 @@
         },
         {
           "title": "Relation Name",
-          "description": "Name of the relation those incident relation that you want to delete in Microsoft Sentinel.",
+          "description": "Specify the name of the incident relation you want to delete from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1457,14 +1457,14 @@
     },
     {
       "title": "Create Incident Comment",
-      "description": "Creates a incident comment in Microsoft Sentinel based on the incident ID and message that you have specified.",
+      "description": "Creates an incident comment in Microsoft Sentinel based on the incident ID and message that you have specified.",
       "operation": "create_incident_comment",
       "category": "investigation",
       "annotation": "create_incident_comment",
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident based on which you want to add comment in Microsoft Sentinel.",
+          "description": "Specify the ID of the incident to which to add a comment in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1473,7 +1473,7 @@
         },
         {
           "title": "Message",
-          "description": "Specify a message those you want to add for incident in Microsoft Sentinel.",
+          "description": "Specify a message those you want to add to the incident in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1509,7 +1509,7 @@
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "ID of the incident those incident comments that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the ID of the incident whose comments you want to retrieve from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1525,7 +1525,7 @@
           "type": "text",
           "name": "$filter",
           "placeholder": "e.g. createdTimeUtc gt 2020-04-23T00:00:00Z",
-          "description": "(Optional) Query using which you want to filter incident comments to be retrieved from Microsoft Sentinel. The OData's Filter query is supported based on fields.\nFor example [createdDateTime gt 2019-09-22T00:00:00Z] retrieves all the indicators that are created after 2019-09-22T00:00:00Z"
+          "description": "((Optional) Specify the query using which you want to filter incident comments retrieved from Microsoft Sentinel. The OData Filter query is supported based on fields. For example [created gt 2019-09-22T00:00:00Z] retrieves all the incident comments that were created after 2019-09-22T00:00:00Z"
         },
         {
           "title": "Order By",
@@ -1534,7 +1534,7 @@
           "visible": true,
           "type": "text",
           "name": "$orderby",
-          "description": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
+          "description": "(Optional) Specify the order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc. By default, this is set to asc.",
           "tooltip": "(Optional) Order in which you want to sort the results retrieved from Microsoft Sentinel. You can specify asc or desc.\nBy default, this is set to asc.",
           "placeholder": "e.g. properties/createdTimeUtc desc"
         },
@@ -1554,7 +1554,7 @@
           "visible": true,
           "type": "text",
           "name": "$skipToken",
-          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "description": "(Optional) Specify a Skiptoken if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skiptoken parameter that specifies a starting point to use for subsequent calls.",
           "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
@@ -1583,14 +1583,14 @@
     },
     {
       "title": "Get Incident Comment",
-      "description": "Retrieves a specific comment of a incident from Microsoft Sentinel based on the incident comment ID and incident ID that you have specified.",
+      "description": "Retrieves a specific comment of an incident from Microsoft Sentinel based on the incident comment ID and incident ID that you have specified.",
       "operation": "get_incident_comment",
       "category": "investigation",
       "annotation": "get_incident_comment",
       "parameters": [
         {
           "title": "Incident Comment ID",
-          "description": "Comment ID of the incident those incident comment that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the comment ID of the incident whose comments you want to retrieve from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1599,7 +1599,7 @@
         },
         {
           "title": "Incident ID",
-          "description": "ID of the incident those incident comment that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the ID of the incident whose incident comments you want to retrieve from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1628,14 +1628,14 @@
     },
     {
       "title": "Update Incident Comment",
-      "description": "Updates an incident comment in Microsoft Sentinel based on the incident comment ID, incident ID and message that you have specified.",
+      "description": "Updates an incident comment in Microsoft Sentinel based on the incident comment ID, incident ID, and message that you have specified.",
       "operation": "update_incident_comment",
       "category": "investigation",
       "annotation": "update_incident_comment",
       "parameters": [
         {
           "title": "Incident Comment ID",
-          "description": "Comment ID of the incident those comment that you want to update in Microsoft Sentinel.",
+          "description": "Specify a comment ID of the incident whose comments you want to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1644,7 +1644,7 @@
         },
         {
           "title": "Incident ID",
-          "description": "ID of the incident those comment that you want to update in Microsoft Sentinel.",
+          "description": "Specify the ID of the incident whose comments you want to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1653,7 +1653,7 @@
         },
         {
           "title": "Message",
-          "description": "Specify a message those associate incident comment that you want to update in Microsoft Sentinel.",
+          "description": "Specify a message whose associate incident comment you want to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1689,7 +1689,7 @@
       "parameters": [
         {
           "title": "Incident Comment ID",
-          "description": "Comment ID of the incident those incident comment that you want to delete in Microsoft Sentinel.",
+          "description": "Specify the comment ID of the incident whose comments you want to delete from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1698,7 +1698,7 @@
         },
         {
           "title": "Incident ID",
-          "description": "ID of the incident those incident comment that you want to delete in Microsoft Sentinel.",
+          "description": "Specify the ID of the incident whose comments you want to delete from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1719,8 +1719,17 @@
       "annotation": "create_watchlist",
       "parameters": [
         {
+          "title": "Watchlist Alias",
+          "description": "Specify the alias of the watchlist to update in Microsoft Sentinel.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "watchlistAlias"
+        },
+        {
           "title": "Display Name",
-          "description": "Display Name of the watchlist that you want to create in Microsoft Sentinel.",
+          "description": "Specify a display name of the watchlist to create in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1730,7 +1739,7 @@
         },
         {
           "title": "Item Search key",
-          "description": "The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address.",
+          "description": "Specify the search key to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining other event data by IP address.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1740,7 +1749,7 @@
         },
         {
           "title": "Provider",
-          "description": "The provider of the watchlist that you want to create in Microsoft Sentinel.",
+          "description": "Specify the provider of this watchlist to create in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1751,7 +1760,7 @@
         },
         {
           "title": "Source",
-          "description": "The source of the watchlist that you want to create in Microsoft Sentinel.",
+          "description": "Specify the source of the watchlist to create in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1760,17 +1769,8 @@
           "placeholder": "For e.g. Local file or Remote storage"
         },
         {
-          "title": "Watchlist Alias",
-          "description": "Alias of the watchlist that you want to update in Microsoft Sentinel.",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "watchlistAlias"
-        },
-        {
           "title": "Description",
-          "description": "(Optional) Description of the watchlist that you want to create in Microsoft Sentinel.",
+          "description": "(Optional) Specify the description of the watchlist to create in Microsoft Sentinel.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -1779,7 +1779,7 @@
         },
         {
           "title": "ETag",
-          "description": "(Optional) Etag in which you want to create the watchlist in Microsoft Sentinel.",
+          "description": "(Optional) Specify the Etag of the watchlist to create in Microsoft Sentinel.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -1791,7 +1791,7 @@
           "title": "Custom Properties",
           "name": "custom_attributes",
           "type": "json",
-          "description": "Additional properties, in the JSON format, that you want to create watchlist in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist.",
+          "description": "Specify additional properties, in JSON format, of the watchlist to create in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist.",
           "tooltip": "Additional properties, in the JSON format, that you want to create watchlist in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist.",
           "visible": true,
           "required": false,
@@ -1842,7 +1842,7 @@
     },
     {
       "title": "Get All Watchlist",
-      "description": "Retrieves all watchlist from Microsoft Sentinel based on the input parameter you have specified.",
+      "description": "Retrieves all watchlists from Microsoft Sentinel based on the input parameter you have specified.",
       "operation": "get_all_watchlist",
       "category": "investigation",
       "annotation": "get_all_watchlist",
@@ -1854,7 +1854,7 @@
           "visible": true,
           "type": "text",
           "name": "$skipToken",
-          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "description": "(Optional) Specify a Skiptoken if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skiptoken parameter that specifies a starting point to use for subsequent calls.",
           "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
@@ -1912,7 +1912,7 @@
       "parameters": [
         {
           "title": "Watchlist Alias",
-          "description": "Alias of the watchlist that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the alias of the watchlist to retrieve from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1964,14 +1964,14 @@
     },
     {
       "title": "Update Watchlist",
-      "description": "Updates an watchlist in Microsoft Sentinel based on the watchlist alias, display name, item search key, provider, source, and other input parameters that you have specified.",
+      "description": "Updates a watchlist in Microsoft Sentinel based on the watchlist alias, display name, item search key, provider, source, and other input parameters that you have specified.",
       "operation": "update_watchlist",
       "category": "investigation",
       "annotation": "update_watchlist",
       "parameters": [
         {
           "title": "Watchlist Alias",
-          "description": "Alias of the watchlist that you want to update in Microsoft Sentinel.",
+          "description": "Specify an alias of the watchlist to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1980,7 +1980,7 @@
         },
         {
           "title": "Display Name",
-          "description": "Display Name of the watchlist that you want to update in Microsoft Sentinel.",
+          "description": "Specify the display name of the watchlist to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1989,7 +1989,7 @@
         },
         {
           "title": "Item Search key",
-          "description": "The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address.",
+          "description": "Specify the search key to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining other event data by IP address.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -1999,7 +1999,7 @@
         },
         {
           "title": "Provider",
-          "description": "The provider of the watchlist that you want to update in Microsoft Sentinel.",
+          "description": "Specify the provider of this watchlist to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2009,7 +2009,7 @@
         },
         {
           "title": "Source",
-          "description": "The source of the watchlist that you want to update in Microsoft Sentinel.",
+          "description": "Specify the source of the watchlist to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2019,7 +2019,7 @@
         },
         {
           "title": "Description",
-          "description": "(Optional) Description of the watchlist that you want to update in Microsoft Sentinel.",
+          "description": "(Optional) Specify the description of the watchlist to update in Microsoft Sentinel.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -2028,7 +2028,7 @@
         },
         {
           "title": "ETag",
-          "description": "(Optional) Etag in which you want to update the watchlist in Microsoft Sentinel.",
+          "description": "(Optional) Specify the Etag of the watchlist to update in Microsoft Sentinel.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -2040,7 +2040,7 @@
           "title": "Custom Properties",
           "name": "custom_attributes",
           "type": "json",
-          "description": "Additional properties, in the JSON format, that you want to update watchlist in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist.",
+          "description": "Specify additional properties, in JSON format, of the watchlist to update in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist.",
           "tooltip": "Additional properties, in the JSON format, that you want to update watchlist in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist.",
           "visible": true,
           "required": false,
@@ -2097,7 +2097,7 @@
       "parameters": [
         {
           "title": "Watchlist Alias",
-          "description": "Alias of the watchlist that you want to delete in Microsoft Sentinel.",
+          "description": "Specify the alias of the watchlist to delete from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2119,7 +2119,7 @@
       "parameters": [
         {
           "title": "Watchlist Alias",
-          "description": "Alias of the watchlist item that you want to create in Microsoft Sentinel.",
+          "description": "Specify the alias of the watchlist item to create in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2128,7 +2128,7 @@
         },
         {
           "title": "Item Key Value",
-          "description": "Specify a key-value pairs for a watchlist item to create the watchlist item in Microsoft Sentinel.",
+          "description": "Specify a key-value pair for the watchlist item to create in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2138,7 +2138,7 @@
         },
         {
           "title": "Watchlist Item ID",
-          "description": "ID of the watchlist item that you want to create in Microsoft Sentinel.",
+          "description": "Specify the ID of the watchlist item to create in Microsoft Sentinel.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -2147,7 +2147,7 @@
         },
         {
           "title": "ETag",
-          "description": "(Optional) Etag in which you want to create the watchlist item in Microsoft Sentinel.",
+          "description": "(Optional) Specify the Etag of the watchlist item to create in Microsoft Sentinel.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -2159,7 +2159,7 @@
           "title": "Custom Properties",
           "name": "custom_attributes",
           "type": "json",
-          "description": "Additional properties, in the JSON format, that you want to create watchlist item in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist item.",
+          "description": "Specify additional properties, in JSON format, of the watchlist item to create in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist item.",
           "tooltip": "Additional properties, in the JSON format, that you want to create watchlist item in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist item.",
           "visible": true,
           "required": false,
@@ -2208,14 +2208,14 @@
     },
     {
       "title": "Get All Watchlist Items",
-      "description": "Retrieves all watchlist items from Microsoft Sentinel based on the watchlist alias, and other input parameter you have specified.",
+      "description": "Retrieves all watchlist items from Microsoft Sentinel based on the watchlist alias, and other input parameters you have specified.",
       "operation": "get_all_watchlist_items",
       "category": "investigation",
       "annotation": "get_all_watchlist_items",
       "parameters": [
         {
           "title": "Watchlist Alias",
-          "description": "Alias of the watchlist items that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the alias of the watchlist to retrieve from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2229,7 +2229,7 @@
           "visible": true,
           "type": "text",
           "name": "$skipToken",
-          "description": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "description": "(Optional) Specify a Skiptoken if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skiptoken parameter that specifies a starting point to use for subsequent calls.",
           "tooltip": "(Optional) Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
         }
       ],
@@ -2282,7 +2282,7 @@
       "parameters": [
         {
           "title": "Watchlist Item ID",
-          "description": "ID of the watchlist item that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the ID of the watchlist item to retrieve from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2291,7 +2291,7 @@
         },
         {
           "title": "Watchlist Alias",
-          "description": "Alias of the watchlist item that you want to retrieve from Microsoft Sentinel.",
+          "description": "Specify the alias of the watchlist item to retrieve from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2337,14 +2337,14 @@
     },
     {
       "title": "Update Watchlist Item",
-      "description": "Updates an watchlist item in Microsoft Sentinel based on the watchlist item ID, watchlist alias, item key value, and other input parameters that you have specified.",
+      "description": "Updates a watchlist item in Microsoft Sentinel based on the watchlist item ID, watchlist alias, item key value, and other input parameters that you have specified.",
       "operation": "update_watchlist_item",
       "category": "investigation",
       "annotation": "update_watchlist_item",
       "parameters": [
         {
           "title": "Watchlist Item ID",
-          "description": "ID of the watchlist item that you want to update in Microsoft Sentinel.",
+          "description": "Specify the ID of the watchlist item to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2353,7 +2353,7 @@
         },
         {
           "title": "Watchlist Alias",
-          "description": "Alias of the watchlist that you want to update in Microsoft Sentinel.",
+          "description": "Specify the alias of the watchlist item to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2362,7 +2362,7 @@
         },
         {
           "title": "Item Key Value",
-          "description": "Specify a key-value pairs for a watchlist item to update the watchlist item in Microsoft Sentinel.",
+          "description": "Specify the key-value pair for the watchlist item to update in Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2372,7 +2372,7 @@
         },
         {
           "title": "ETag",
-          "description": "(Optional) Etag in which you want to update the watchlist item in Microsoft Sentinel.",
+          "description": "(Optional) Specify the Etag of the watchlist item to update in Microsoft Sentinel.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -2384,7 +2384,7 @@
           "title": "Custom Properties",
           "name": "custom_attributes",
           "type": "json",
-          "description": "Additional properties, in the JSON format, that you want to update watchlist item in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist item.",
+          "description": "Specify additional properties, in JSON format, of the watchlist item to update in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist item.",
           "tooltip": "Additional properties, in the JSON format, that you want to update watchlist item in Microsoft Sentinel. The additional properties signify additional fields associated with the watchlist item.",
           "visible": true,
           "required": false,
@@ -2436,7 +2436,7 @@
       "parameters": [
         {
           "title": "Watchlist Item ID",
-          "description": "ID of the watchlist item that you want to delete in Microsoft Sentinel.",
+          "description": "Specify the ID of the watchlist item to delete from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2445,7 +2445,7 @@
         },
         {
           "title": "Watchlist Alias",
-          "description": "Alias of the watchlist item that you want to delete in Microsoft Sentinel.",
+          "description": "Specify the alias of the watchlist item to delete from Microsoft Sentinel.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -2460,4 +2460,3 @@
     }
   ]
 }
-
